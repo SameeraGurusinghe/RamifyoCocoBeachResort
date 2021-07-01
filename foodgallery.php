@@ -6,14 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <meta name="description" content=""/>
   <meta name="author" content=""/>
-  <title>foodgallery</title>
+  <title>Dashtreme Admin - Free Dashboard for Bootstrap 4 by Codervent</title>
+  <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="assets/js/pace.min.js"></script>
+  <!--favicon-->
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <!-- simplebar CSS-->
   <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
+  <!-- Bootstrap core CSS-->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- animate CSS-->
   <link href="assets/css/animate.css" rel="stylesheet" type="text/css"/>
+  <!-- Icons CSS-->
   <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
+  <!-- Sidebar CSS-->
   <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
+  <!-- Custom Style-->
   <link href="assets/css/app-style.css" rel="stylesheet"/>
   
 </head>
@@ -22,7 +31,7 @@
 
 <!-- start loader -->
    <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner" ><div class="loader"></div></div></div></div>
-<!-- end loader -->
+   <!-- end loader -->
 
 <!-- Start wrapper-->
  <div id="wrapper">
@@ -31,10 +40,12 @@
    <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
      <div class="brand-logo">
       <a href="index.html">
-       <h5 class="logo-text">Dashboard</h5>
+       <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+       <h5 class="logo-text">Dashtreme Admin</h5>
      </a>
    </div>
    <ul class="sidebar-menu do-nicescrol">
+      <li class="sidebar-header">MAIN NAVIGATION</li>
      <li>
         <a href="admindashbord.php">
           <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
@@ -42,6 +53,7 @@
       </li>
 
       
+
 
       <li>
         <a href="foodgallery.html">
@@ -52,6 +64,14 @@
        <li>
         <a href="News & Feedback.html">
           <i class="zmdi zmdi-calendar-check"></i> <span>News & Feedback</span>
+          <small class="badge float-right badge-light">New</small>
+        </a>
+      </li>
+
+      <li>
+        <a href="calendar.html">
+          <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
+          <small class="badge float-right badge-light">New</small>
         </a>
       </li>
 
@@ -112,7 +132,11 @@
           </a>
         </li>
         <li class="dropdown-divider"></li>
+        <li class="dropdown-item"><i class="icon-envelope mr-2"></i> Inbox</li>
+        <li class="dropdown-divider"></li>
         <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
+        <li class="dropdown-divider"></li>
+        <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
         <li class="dropdown-divider"></li>
         <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
       </ul>
@@ -136,7 +160,7 @@
 			  <div class="table-responsive">
               
               <!--ADD NEW FOODS code start-->
-              							<div class="p-4">
+              	<div class="p-4">
 								<div class="p-2">
 									
 									<div class="card card-body" style="background-color: rgb(184, 185, 196);">
@@ -165,7 +189,7 @@
 											</div>
                       <div class="p-2">
                       
-                      <input type="text" name="fprice" class="form-control" id="Enter FOOD Name" aria-describedby="Enter FOOD Price"  placeholder="Enter FOOD Name" required>
+                      <input type="text" name="fprice" class="form-control" id="Enter FOOD Name" aria-describedby="Enter FOOD Price"  placeholder="Enter FOOD price" required>
 											</div>
 
 											</div>
@@ -176,7 +200,7 @@
 											<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addpro"><b>ADD</b>
 
 											<?php
-                      include_once("includes/dbconnection.php");
+                                            include_once("includes/dbconnection.php");
 
 											if(isset($_POST["addpro"])){
 											$resid = $_POST["fid"];
@@ -325,15 +349,17 @@
             </div>
           </div>
         </div>
-      </div><!--End Row-->
+          </div><!--End Row-->
 
-
+   
       <div class="row">
+      <hr>
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
+            
               <h5 class="card-title">DEVELS</h5>
-			  <div class="table-responsive">
+			       <div class="table-responsive">
                <table class="table table-striped">
                   <thead>
                     <tr>
@@ -523,7 +549,48 @@
    <!--Start Back To Top Button-->
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
     <!--End Back To Top Button-->
+	
+	<!--Start footer-->
 
+	<!--End footer-->
+	
+	<!--start color switcher-->
+   <div class="right-sidebar">
+    <div class="switcher-icon">
+      <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+    </div>
+    <div class="right-sidebar-content">
+
+      <p class="mb-0">Gaussion Texture</p>
+      <hr>
+      
+      <ul class="switcher">
+        <li id="theme1"></li>
+        <li id="theme2"></li>
+        <li id="theme3"></li>
+        <li id="theme4"></li>
+        <li id="theme5"></li>
+        <li id="theme6"></li>
+      </ul>
+
+      <p class="mb-0">Gradient Background</p>
+      <hr>
+      
+      <ul class="switcher">
+        <li id="theme7"></li>
+        <li id="theme8"></li>
+        <li id="theme9"></li>
+        <li id="theme10"></li>
+        <li id="theme11"></li>
+        <li id="theme12"></li>
+		<li id="theme13"></li>
+        <li id="theme14"></li>
+        <li id="theme15"></li>
+      </ul>
+      
+     </div>
+   </div>
+  <!--end color switcher-->
    
   </div><!--End wrapper-->
 
@@ -532,10 +599,21 @@
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
+	
+  <!-- simplebar js -->
   <script src="assets/plugins/simplebar/js/simplebar.js"></script>
+  <!-- sidebar-menu js -->
   <script src="assets/js/sidebar-menu.js"></script>
+  
+  <!-- Custom scripts -->
   <script src="assets/js/app-script.js"></script>
   
 	
 </body>
+<?php
+include_once("includes/footer.php");
+?>
 </html>
+<?php
+include_once("includes/footer.php");
+?>
