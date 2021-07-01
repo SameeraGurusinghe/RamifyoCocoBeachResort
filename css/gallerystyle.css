@@ -1,0 +1,64 @@
+
+
+/*************Style for image gallary reponsive START*************/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    outline: none!important
+}
+
+.fix {
+    overflow: hidden;
+}
+
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
+
+.aligncenter {
+    display: block;
+    margin: 0 auto;
+}
+
+.display-table {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+
+.display-table-cell {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+a:hover,
+a:focus,
+a:active {
+    color: inherit;
+}
+
+a:focus {
+    outline-offset: -2px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a:hover {
+    text-decoration: none
+}
+
+/*************Style for image gallary reponsive START*************/

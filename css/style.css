@@ -1,0 +1,605 @@
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body{
+	background-size: cover;
+}
+
+/******Header start******/
+#ramifyotitle{
+	font-family: fantasy;
+	font-size: 30px;
+	color: #b2beb5;
+	text-decoration: none;
+}
+#timehandle{
+	font-family: monospace;
+	font-size: 14px;
+	color: #b2beb5;
+	text-decoration: none;
+}
+.menu-bar{
+	background: rgb(0,140,150);
+	text-align: center;
+}
+.menu-bar ul{
+	display: inline-flex;
+	list-style: none;
+	color: #fff;
+}
+.menu-bar ul li{
+	width: 100px;
+	margin: 10px;
+	padding: 10px;
+}
+.menu-bar ul li a{
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 20px;
+	color: white;
+}
+.active, .menu-bar ul li:hover{
+	background: #05a0ab;
+	border-radius: 5px;
+}
+.sub-menu-1{
+	display: none;
+}
+.menu-bar ul li:hover .sub-menu-1{
+	display: inline-flex;
+	position: static;
+	background: #05a0ab;
+	margin-top: 8px;
+	margin-left: -60px;
+	border-radius: 5px;
+}
+.menu-bar ul li:hover .sub-menu-1 ul{
+	display: block;
+	margin: 10px;
+}
+.menu-bar ul li:hover .sub-menu-1 ul li{
+	width: 150px;
+	padding: 5px;
+	border-bottom: 1px dotted #fff;
+	background: transparent;
+	border-radius: 0;
+	text-align: left;
+	font-weight: 10px;
+	cursor: pointer;
+}
+.menu-bar ul li:hover .sub-menu-1 ul li:last-child{
+	border-bottom: none;
+}
+.menu-bar ul li:hover .sub-menu-1 ul li a:hover{
+	color: #b2beb5;
+}
+.fa-angle-right{
+	float: right;
+}
+.sub-menu-2{
+	display: none;
+}
+.hover-me:hover .sub-menu-2{
+	position: absolute;
+	display: block;
+	margin-top: -30px;
+	margin-left: 120px;
+	background-color: #05a0ab;
+	border-radius: 5px;
+}
+/******Header End******/
+
+
+/******LOGIN PAGE START******/
+.log{
+	height: auto;
+	width: 100%;
+	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(../images/Login.jpg);
+	background-position: center;
+	background-size: cover;
+	display: inline-flex;
+}
+.form-box{
+	width: 480px;
+	height: 780px;
+	position: relative;
+	margin: 6% auto;
+	background: rgb(187, 216, 224);
+	padding: 10px;
+	overflow: hidden;
+}
+.button-box{
+	width: 320px;
+	margin: 45px auto;
+	position: relative;
+	box-shadow: 0 0 20px 9px #b3291f60;
+	border-radius: 30px;
+}
+.toggle-btn{
+	padding: 10px 50px;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	outline: none;
+	position: relative;
+}
+#btn{
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 160px;
+	height: 100%;
+	background: linear-gradient(to right, #ff105f,#ffad06);
+	border-radius: 40px;
+	transition: .5s;
+}
+.input-group{
+	top: 150px;
+	position: absolute;
+	width: 290px;
+	transition: .5s;
+}
+.input-group .forgot-pass a{
+	color: blue;
+}
+.input-field{
+	width: 100%;
+	padding: 6px 0;
+	margin: 5px 0;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	border-bottom: 1px solid #cf9f52;
+	outline: none;
+	background: transparent;
+	/*font-weight: bold;*/
+}
+.submit-btn{
+	width: 80%;
+	padding: 10px 20px;
+	cursor: pointer;
+	display: block;
+	margin: auto;
+	background: linear-gradient(to right, #ff105f,#ffad06);
+	border: 0;
+	outline: none;
+	border-radius: 20px;
+	margin-top: 10px;
+}
+.forgot-pass{
+	text-align: center;
+	font-size: 13px;
+}
+#login{
+	left: 80px;
+}
+#register{
+	left: 600px;
+}
+/******LOGIN PAGE END******/
+
+
+/**************************************Body area All Styles STARTS****************************************/
+
+/*Main about us area start*/
+.overlay {
+	position: relative;
+	z-index: 1;
+}
+
+.overlay:after {
+	background-color: rgba(0, 0, 0, 0.8);
+	content: "";
+	left: 0;
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+}
+
+.section-padding {
+	background: linear-gradient(to right, #e0ce9e,#d0d4d1,#e0ce9e);
+	padding: 60px 0;
+}
+
+.section-title {
+	border: 0.15em dotted #008c96;
+	font-size: 15px;
+	font-weight: 300;
+	margin-bottom: 50px;
+}
+
+.section-title h2 {
+	margin-bottom: 10px;
+	position: relative;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.section-title p {
+	text-transform: capitalize;
+	margin-top: 10px;
+	font-size: 18px;
+}
+.section-title b {
+	font-weight: 500;
+}
+
+.section-title .title-line {
+	color: #ffd000;
+	position: relative;
+}
+
+.section-title .title-line::after {
+	background-color: #333;
+	content: "";
+	height: 2px;
+	left: -60px;
+	position: absolute;
+	top: 5px;
+	width: 50px;
+}
+
+.section-title .title-line::before {
+	background-color: #333;
+	content: "";
+	height: 2px;
+	position: absolute;
+	right: -60px;
+	top: 5px;
+	width: 50px;
+}
+
+.overlay .section-title h2,
+.overlay .section-title p {
+	color: #fff;
+}
+
+.overlay .section-title .title-line::after,
+.overlay .section-title .title-line::before {
+	background-color: #fff;
+}
+/*Main about us area end*/
+
+/*****Our vision and mission area start*****/
+.section-title2 {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.7)) ,url(../images/visionmission.png);
+	font-size: 8px;
+	font-weight: 200;
+	margin-bottom: 10px;
+}
+
+.section-title2 h2 {
+	color: #fff;
+	margin-bottom: 10px;
+	position: relative;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.section-title2 p {
+	color: #fff;
+	opacity: o.5;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 16px;
+}
+
+.section-title3 {
+	border: 1px solid rgb(51,195,185);
+}
+
+.section-title3 i.fa {
+	font-size: 15px;
+	color: #c19040;
+}
+
+.section-title2 i.fa {
+	font-size: 55px;
+	color: #c19040;
+}
+
+.section-title i.fa {
+	font-size: 30px;
+	color: #c19040;
+}
+/*****Our vision and mission area END*****/
+
+
+
+/*== Service Area CSS Start ******************************need this**************************** ==*/
+
+/*service box width and heighe control start*/
+.service-item {
+	background-color: #e9e8e7;
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+	color: #222;
+	margin-bottom: 30px;
+	padding: 50px 25px;
+}
+/*service box width and height control end*/
+
+.service-item h3 {
+	color: #000;
+	font-size: 25px;
+	font-weight: 500;
+	text-transform: uppercase;
+	margin: 20px 0 15px;
+}
+
+.service-item p {
+	color: #000;
+	font-size: 14px;
+	font-weight: 400;
+	color: #7a857d;
+}
+
+.service-item i.fa {
+	font-size: 55px;
+	color: #c19040;
+}
+
+/*service content width and height*/
+.service-container-wrap .service-item {
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);;
+	border: 2px solid #008c96;
+	padding: 50px 30px;
+}
+
+/*== Service Area CSS End ==*/
+
+
+/*== Article Area CSS Start  //***********************needed************************************==*/
+/*artical box*/
+.single-gallery {
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+	padding: 10px;
+	margin-bottom: 50px;
+	text-transform: uppercase;
+}
+
+.col-lg-12:last-child .single-gallery {
+	margin-bottom: 0;
+}
+
+.single-gallery .gallery-thumb {
+	margin: -10px;
+}
+
+.single-gallery .middle .gallery-thumb {
+	margin-right: -10px;
+}
+
+.gallery-thumb img {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	/*width: 500px;
+	height: 270px;*/
+}
+
+.single-gallery:hover .gallery-thumb img {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+}
+
+.article-body {
+	position: relative;
+}
+
+.article-body h3 a {
+	font-size: 20px;
+	color: #333;
+}
+.article-body p {
+	color: #999;
+	line-height: 1.8;
+	text-transform: capitalize;
+}
+
+/*== Article Area CSS End ==*/
+
+
+
+/*== SlideShow CSS start ==*/
+#slideslow-bg{
+	height: 600px;
+	background-image: url("../images/gallery/homemain.jpg");
+}
+.slideshowcontent {
+	/*color: ;*/
+	line-height: 2;
+	margin-top: 30px;
+}
+.slideshowcontent h1 {
+	color: #ffd000;
+	margin-bottom: 30px;
+	font-family: fantasy;
+}
+.slideshowcontent h5 {
+	color: white;
+	margin-bottom: 10px;
+}
+
+/*== SlideShow CSS end ==*/
+
+
+/******Body area All Styles END*****/
+
+
+/* Ramifyo hotel OUR STORY START*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background: linear-gradient(to right, #e0ce9e,#d0d4d1,#e0ce9e);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.modal-content p{
+	font-family: cursive;
+	font-size: 15px;
+	color: black;
+	line-height: 1.7;
+}
+
+.modal-content h2{
+	font-weight: bold;
+	color: #008c96;
+}
+#chairmanMessage {
+	border: 1px solid;
+}
+#chairmanMessage p{
+	color: black;
+}
+
+/* The Close Button */
+.close {
+  color: #b61919;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #b61919;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Ramifyo hotel OUR STORY END*/
+
+
+/* Contact Us page CSS start */
+.container-fluid{
+		background: linear-gradient(to right, #e0ce9e,#d0d4d1,#e0ce9e);
+}
+.container-fluid h1{
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+.social{
+	border: 1px solid;
+}
+.social h5{
+	font-weight: bold;
+}
+.social h6{
+	color: #008c96;
+	font-weight: 500;
+	text-decoration: none;
+}
+.social a{
+	color: black;
+}
+
+/* Contact Us page CSS end */
+
+
+/* Feedback page CSS start */
+.form-out-border{
+	border: 1px dotted;
+}
+.feedback-info-us{
+	border: 1px dotted;
+}
+
+.feedback-info-us h5{
+	font-family: monospace;
+	font-weight: bold;
+	font-size: 18px;
+	color: #008c96;
+	line-height: 1.5;
+}
+
+.lable-deco{
+	font-family: monospace;
+	font-weight: bold;
+	font-size: 18px;
+	color: #008c96;
+	line-height: 1.5;
+	margin-right: 60px;
+}
+
+.feedback-field{
+	width: 450px;
+	margin-bottom: 20px;
+}
+
+.feedback-clear{
+	color: #000;
+	background-color: #e99502;
+	width: 60px;
+	height: 30px;
+	border-radius: 10%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.feedback-submit{
+	color: #000;
+	background-color: #038717;
+	width: 60px;
+	height: 30px;
+	border-radius: 10%;
+}
+/* Feedback page CSS end */
+
+/* News page CSS start */
+.news{
+	border: 1px solid;
+}
+.news h5{
+	text-align: justify;
+	margin-left: 10px;
+	margin-right: 10px;
+	line-height: 1.5;
+}
+.offer-img{
+	margin-bottom: 10px;
+}
+/* News page CSS end */
+
+
+/* Food Menu page CSS start */
+.container-fluid{
+		background: linear-gradient(to right, #e0ce9e,#d0d4d1,#e0ce9e);
+}
+/* Food Menu page CSS end */
+
+
+/******footer image resolution start******/
+.hometheme{
+	margin-right: 15px;
+	width: 300px;
+	height: 180px;
+}
+/******footer image resolution end******/
