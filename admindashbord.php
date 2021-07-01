@@ -34,13 +34,9 @@ if(!isset($_SESSION['email'])){
 
 <!-- Start wrapper-->
  <div id="wrapper">
- 
+
   <!--Start sidebar-wrapper-->
-   <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
-      <div class="brand-logo">
-        <a href="index.html"><h5 class="logo-text">Dashboard</h5></a>
-      </div>
-   
+   <div id="sidebar-wrapper" data-simplebar-auto-hide="true">
       <ul class="sidebar-menu do-nicescrol">
         <li>
           <a href="admindashbord.php">
@@ -76,11 +72,8 @@ if(!isset($_SESSION['email'])){
    </div></div>
    <!--End sidebar-wrapper-->
 
-
 <!--header start-->
-<?php
-include_once("includes/header.php");
-?>
+<?php include_once("includes/header.php");?>
 <!--header end-->
 
 <!--Start topbar header-->
@@ -261,7 +254,8 @@ include_once("includes/header.php");
 	
 	
    
-  </div><!--End wrapper-->
+  </div>
+  <!--End wrapper-->
 
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
@@ -276,9 +270,7 @@ include_once("includes/header.php");
   
 
 <!--footer start-->
-<?php
-include_once("includes/footer.php");
-?>
+<?php include_once("includes/footer.php"); ?>
 <!--footer end-->
 
 </body>
