@@ -86,7 +86,7 @@
             	header('location: ../admindashbord.php');
         		}
         		elseif ($utype=='2') {
-            	header('location: ../employee.php');
+            	header('location: ../employeedashbord.php');
         		}
         		elseif ($utype=='0'){
 				header('location: ../UserHomePage.php');} //page on which the user is sent to after logging in

@@ -1,3 +1,12 @@
+<!--Session start-->
+<?php
+session_start();
+if(!isset($_SESSION['email'])){
+    header('location:Login.php');
+}
+?>
+
+<!--Session end here-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +45,7 @@
 
   <!--Start sidebar-wrapper-->
    <div id="sidebar-wrapper" data-simplebar-auto-hide="true">
-      <ul class="sidebar-menu do-nicescrol">
+     <ul class="sidebar-menu do-nicescrol">
         <li>
           <a href="employeedashbord.php">
           <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
@@ -51,7 +60,7 @@
       
 
         <li>
-        <a href="empcalendar.html">
+        <a href="empcalendar.php">
           <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
         </a>
         </li>
@@ -91,7 +100,7 @@
 	
   <div class="content-wrapper">
     <div class="container-fluid">
-    
+    <BR>
     <div class="mt-3">
       <div id='calendar'></div>
     </div>
