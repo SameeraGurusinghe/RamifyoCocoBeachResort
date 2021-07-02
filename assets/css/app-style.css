@@ -506,11 +506,27 @@ hr {
 }
 
 /*Cards */
+.bg{
+    background: linear-gradient(to right, #e0ce9e,#d0d4d1,#e0ce9e);
+}
+
+.profileupdateinfo{
+    text-align: center;
+    color: #008c96;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.container-fluid{
+    padding: 80px;
+}
+
 .card{
-   margin-bottom: 25px; 
-   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+   padding: 80px;
+   margin-top: -50px;
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
    border: none;
-   background-color: rgba(0,0,0,.2);
+   background-color: rgba(26, 24, 24, 0.452);
 }
 
 .card-header {
