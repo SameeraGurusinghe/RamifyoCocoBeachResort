@@ -45,7 +45,7 @@ include_once("includes/header.php");
       <div class="card">
         <div class="card-body">
 
-              <form action="profile_update_action.php" method="post">
+              <form action="action_pages/profile_update_action.php" method="post" enctype="multipart/form-data">
 
               <?php
               if (isset($_SESSION['email'])) {
@@ -65,7 +65,7 @@ include_once("includes/header.php");
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Full name</label>
                     <div class="col-lg-9 text-center">
-                      <input class="form-control"  type="text" value="<?php echo "$fullname"; ?>" name="fname">
+                      <input class="form-control"  type="text" value="<?php echo "$fullname"; ?>" name="fullname">
                     </div>
                 </div>
 
@@ -79,7 +79,7 @@ include_once("includes/header.php");
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Change profile</label>
                     <div class="col-lg-9">
-                      <input class="form-control" type="file" name="profile">
+                      <input class="form-control" type="file" value="" name="profilepic">
                     </div>
                 </div>
                         
@@ -119,13 +119,6 @@ include_once("includes/header.php");
                   <label class="col-lg-3 col-form-label form-control-label">Password</label>
                     <div class="col-lg-9">
                       <input class="form-control" type="password" value="" name="password">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
-                    <div class="col-lg-9">
-                      <input class="form-control" type="password" value="" name="conform_password">
                     </div>
                 </div>
 

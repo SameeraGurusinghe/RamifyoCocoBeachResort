@@ -52,13 +52,6 @@
 				/*echo "Data added Faild.";
 				echo ("<br>");*/
 			}
-			
-			/*storing email of the logged in user, in the session variable
-			$_SESSION['email'] = $email;
-			$_SESSION['success'] = "You have logged in"; //welcome message
-			header('location: Login.php'); 
-			//page on which the user will be redirected after logging in
-			*/
 
 	}
 
@@ -76,12 +69,9 @@
 			$utype = $row["usertype"];
 			$_SESSION["email"] = $email;
 			}
-
+			
+			//page on which the user is sent to after logging in start
 			if($c){
-
-			//if (mysqli_num_rows($Result) == 1) {
-				//$_SESSION['email'] = $email; //storing email in session variable
-				//$_SESSION['success'] = "You have logged in!"; //welcome message in User Home page
 				if ($utype=='1') {
             	header('location: ../admindashbord.php');
         		}
@@ -89,8 +79,9 @@
             	header('location: ../employeedashbord.php');
         		}
         		elseif ($utype=='0'){
-				header('location: ../UserHomePage.php');} //page on which the user is sent to after logging in
+				header('location: ../UserHomePage.php');}
 			}
+			//page on which the user is sent to after logging in end
 			
 			else {
 				echo "<script type='text/javascript'>			

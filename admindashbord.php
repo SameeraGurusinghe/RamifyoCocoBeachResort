@@ -61,13 +61,7 @@ if(!isset($_SESSION['email'])){
           <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
         </a>
         </li>
-
-        <li>
-          <a href="profile.php">
-          <i class="zmdi zmdi-face"></i> <span>Profile</span>
-          </a>
-        </li>
-      
+             
       </ul>
    </div></div>
    <!--End sidebar-wrapper-->
@@ -247,7 +241,9 @@ if(!isset($_SESSION['email'])){
     </div>
     <!-- End container-fluid-->
     
-    </div><!--End content-wrapper-->
+    </div>
+    <!--End content-wrapper-->
+
    <!--Start Back To Top Button-->
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
     <!--End Back To Top Button-->

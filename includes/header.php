@@ -1,6 +1,8 @@
 <?php
 date_default_timezone_set('Asia/Colombo');
+include_once("includes/dbconnection.php");
 ?>
+  	
 
 <!DOCTYPE html>
 <html>
@@ -11,13 +13,13 @@ date_default_timezone_set('Asia/Colombo');
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
 
-	<!--**********script for chat box strat***********-->
+<!--**********script for chat box strat***********-->
   <script type="text/javascript">
 		function openWin(){
       window.open("livechat/employee/chatindex.php", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=300,left=500,width=500,height=500");
       }
   </script>
-  <!--***********script for chat box end***********-->
+<!--***********script for chat box end***********-->
 
 </head>
 
@@ -79,6 +81,13 @@ date_default_timezone_set('Asia/Colombo');
 
 	<!--== When customer logged in, new "Feedback" button display and "LOG IN" button automatically change to "LOG OUT" button start ==-->
 	<?php if (isset($_SESSION['email'])) {
+		$useremail = $_SESSION['email'];
+	$Result = mysqli_query($db,"SELECT * FROM users WHERE email='$useremail' ");
+	while($row = mysqli_fetch_array($Result)){
+	$utype = $row["usertype"];
+	$prophoto = $row["propicture"];
+	$id = $row['nic'];
+	}
 	echo "<li><a href='feedback.php'><i class='fas fa-comments'>&nbsp;&nbsp;Feedback</i></a></li>";
 
 	echo "<li><a onclick='openWin()'><i class='fas fa-question-circle'>&nbsp;&nbsp;Chat</i></a></li>";
@@ -86,11 +95,22 @@ date_default_timezone_set('Asia/Colombo');
 	echo "<li><a href='UserHomePage.php'><i class='fas fa-user'>&nbsp;&nbsp;My Info</i></a>";
 	echo "<div class='sub-menu-1'>";
 	echo "<ul>";
-	echo "<h5 style='color: yellow;'>";
+	echo "<span style='color: yellow;'>";
 	echo "Hi ".$_SESSION['email'];
-	echo "</h5>";
-	echo "<img class='user-image' src='images/aa.png' alt='picture'>";
-	echo "<li><a href='#'><i class='fas fa-pencil-square-o'>&nbsp;&nbsp;Edit Profile</i></a></li>";
+	echo "</span>";
+	echo "<img class='user-image' src='images/profilepicture/986756455v.png'>";
+	echo "<li><a href='profile.php'><i class='fas fa-pencil-square-o'>&nbsp;&nbsp;Edit Profile</i></a></li>";
+
+	/****** Display button for access to the dashboard if usertype is 1 or 2 end ******/
+
+		if ($utype == '1') {
+		echo "<li><a href='admindashbord.php'><i class='fas fa-cogs'>&nbsp;&nbsp;Dashboard</i></a></li>";
+		}
+		elseif($utype == '2'){
+		echo "<li><a href='admindashbord.php'><i class='fas fa-cogs'>&nbsp;&nbsp;Dashboard</i></a></li>";
+		}
+	/****** Display button for access to the dashboard if usertype is 1 or 2 end ******/
+	
 	echo "<li><a href='action_pages/Logout.php'><i class='fas fa-sign-out-alt'>&nbsp;&nbsp;Log Out</i></a></li>";
 	echo "<ul>";
 	echo "</div>";
@@ -105,9 +125,7 @@ date_default_timezone_set('Asia/Colombo');
 	<!--== When customer logged in, new "Feedback" button display and "LOG IN" button automatically change to "LOG OUT" button end ==-->
 
 <!--== Ramifyo header button design end ==-->
-
 </div>
-
 
 <!-- The Modal -->
 <div id="RamifyoModalBox" class="modal">

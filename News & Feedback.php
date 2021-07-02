@@ -76,12 +76,6 @@ include_once("includes/dbconnection.php");
         <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
       </a>
       </li>
-
-      <li>
-        <a href="profile.php">
-        <i class="zmdi zmdi-face"></i> <span>Profile</span>
-        </a>
-      </li>
     
     </ul>
  </div></div>
