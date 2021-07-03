@@ -33,9 +33,9 @@ $Result = mysqli_query($db,"INSERT INTO news (title,descriptions,dates) VALUES('
 if($Result){
 	echo "<script type='text/javascript'>
                 
-	swal({ title: 'Announcement has been published!',text: '',icon: 'success'}).then(okay => {
+	swal({ title: 'News has been published!',text: '',icon: 'success'}).then(okay => {
 	if (okay) {
-    window.location.href = '../admin.php';}
+    window.location.href = '../News & Feedback.php';}
 	});
     </script>";
 	/*echo "Data added successfully.";

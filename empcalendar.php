@@ -30,16 +30,10 @@ if(!isset($_SESSION['email'])){
 
 <body class="bg-theme bg-theme1">
 
-  <!-- start loader -->
-     <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner" ><div class="loader"></div></div></div></div>
-  <!-- end loader -->
-  
-  <!-- Start wrapper-->
-   <div id="wrapper">
-  
-  <!-- Start wrapper-->
-  <div id="wrapper">
-   
+<!-- start loader -->
+<div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner" ><div class="loader"></div></div></div></div>
+<!-- end loader -->
+ 
 <!-- Start wrapper-->
 <div id="wrapper">
 
@@ -88,30 +82,27 @@ if(!isset($_SESSION['email'])){
     </nav>
   </header>
   <!--End topbar header-->
+	
+<div class="content-wrapper">
+<div class="container-fluid">
 
-<div class="clearfix"></div>
-	
-  <div class="content-wrapper">
-    <div class="container-fluid">
-    <BR>
-    <div class="mt-3">
-      <div id='calendar'></div>
-    </div>
+<div class="mt-3">
+  <div id='calendar'></div>
+</div>
 			
-		<!--start overlay-->
-		  <div class="overlay toggle-menu"></div>
-		<!--end overlay-->	
+<!--start overlay-->
+<div class="overlay toggle-menu"></div>
+<!--end overlay-->	
 			
-    </div>
-    <!-- End container-fluid-->
-   </div><!--End content-wrapper-->
+</div><!-- End container-fluid-->
+</div><!--End content-wrapper-->
    
-  <!--Start Back To Top Button-->
-    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-    <!--End Back To Top Button-->
+<!--Start Back To Top Button-->
+<a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+<!--End Back To Top Button-->
 	
-   
-  </div><!--End wrapper-->
+
+</div><!--End wrapper-->
 
 
   <script src="assets/js/jquery.min.js"></script>

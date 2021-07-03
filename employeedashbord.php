@@ -27,7 +27,6 @@ if(!isset($_SESSION['email'])){
   <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
   <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
   <link href="assets/css/app-style.css" rel="stylesheet"/>
-  
 </head>
 
 <body class="bg-theme bg-theme1">
@@ -51,13 +50,13 @@ if(!isset($_SESSION['email'])){
         </li>
       
         <li>
-        <a href="empcalendar.html">
+        <a href="empcalendar.php">
           <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
         </a>
         </li>
       
       </ul>
-   </div></div>
+   </div>
    <!--End sidebar-wrapper-->
 
 <!--header start-->
@@ -77,65 +76,28 @@ if(!isset($_SESSION['email'])){
   </nav>
 </header>
 <!--End topbar header-->
-
-<div class="clearfix"></div>
 	
-  <div class="content-wrapper">
-    <div class="container-fluid">
+<div class="content-wrapper">
+  <div class="container-fluid">
 
-  <!--Start Dashboard Content-->
+<!--employee content code design start-->
+***********************************
+<!--employee content code design end-->
 
-	<div class="card mt-3">
-    <div class="card-content">
-        <div class="row row-group m-0">
-        </div>
-    </div>
- </div>  
-	  
-	<div class="row">
-            <div class="col-12 col-lg-8 col-xl-12">
-	    
-        
-        
-        
-        
-        <!--Methana employee dashbord akata adala code aka
-        
-        
-        gahanne
-        
-        
-        
-        
-        
-        -->
-        <BR>
-        
-        
-        
-	       </div>
-
-	</div><!--End Row-->
 	
 	
-	<!--start overlay-->
-		<div class="overlay toggle-menu"></div>
-	<!--end overlay-->
+<!--start overlay-->
+<div class="overlay toggle-menu"></div>
+<!--end overlay-->
 		
-    </div>
-  <!-- End container-fluid-->
-    
-    </div>
-  <!--End content-wrapper-->
+</div><!-- End container-fluid-->
+</div><!--End content-wrapper-->
 
-   <!--Start Back To Top Button-->
-    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-  <!--End Back To Top Button-->
-	
-	
-   
-  </div>
-  <!--End wrapper-->
+<!--Start Back To Top Button-->
+<a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+<!--End Back To Top Button-->
+
+</div><!--End wrapper-->
 
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
@@ -146,7 +108,6 @@ if(!isset($_SESSION['email'])){
   <script src="assets/js/app-script.js"></script>
   <script src="assets/plugins/Chart.js/Chart.min.js"></script>
   <script src="assets/js/index.js"></script>
-
 
 <!--footer start-->
 <?php include_once("includes/footer.php"); ?>
