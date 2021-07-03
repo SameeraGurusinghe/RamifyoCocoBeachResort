@@ -33,7 +33,7 @@
 					  VALUES('$fullname', '$nic', '$phoneno','$email', '$password', '$date')"); //inserting data into table
 
 				echo "<script type='text/javascript'>			
-				swal({ title: 'SUCCESSFUL',text: 'users Successfully!',icon: 'success'}).then(okay => {
+				swal({ title: 'SUCCESS',text: 'Registration completed!',icon: 'success'}).then(okay => {
 				if (okay) {
 				window.location.href = '../Login.php';}
 				});

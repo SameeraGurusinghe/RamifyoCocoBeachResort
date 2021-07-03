@@ -8,9 +8,7 @@ if(!isset($_SESSION['email'])){
 <!--Session end-->
 
 <!--database connection-->
-<?php
-include_once("includes/dbconnection.php");
-?>
+<?php include_once("includes/dbconnection.php"); ?>
 
 
 <!DOCTYPE html>
@@ -104,16 +102,29 @@ include_once("includes/header.php");
     <div class="col-lg-12">
       <div class="card">
         <div class="card-body">
-          <h4 style="text-align: center;"><b>POST A NEWS</b></h4>
+          <h4 style="text-align: center;"><b>POST A NEWS OR OFFER</b></h4>
 				
-            <form action="admin_php/admin_announcement_action.php" method="post">
+            <form action="admin_php/admin_announcement_action.php" method="post" enctype="multipart/form-data">
               
+              <div class="p-2">           
+                <select class="form-control" name="posttype" required>
+                  <option selected>Select post type - News or Offer</option>
+                  <option value="news">News</option>
+                  <option value="offer">Offer</option>
+                </select>
+							</div>
+
               <div class="p-2">           
                 <input type="text" name="tit" class="form-control" id="Write Announcement Title"  placeholder="News Title" required>
 							</div>
                           
               <div class="p-2">
                 <textarea type="text" name="annou" class="form-control" id="Write Description"  placeholder="Description" required></textarea>
+              </div>
+
+              <div class="p-2">
+                <h6>Attach a image. No required.</h6>
+                <input class="form-control" type="file" value="" name="postimage">
               </div>
 									
 							<div class="p-2">

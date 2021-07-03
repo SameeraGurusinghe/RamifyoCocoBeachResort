@@ -87,6 +87,7 @@ include_once("includes/dbconnection.php");
 	$utype = $row["usertype"];
 	$prophoto = $row["propicture"];
 	$id = $row['nic'];
+	$proimg = $row["propicture"];
 	}
 	echo "<li><a href='feedback.php'><i class='fas fa-comments'>&nbsp;&nbsp;Feedback</i></a></li>";
 
@@ -98,7 +99,7 @@ include_once("includes/dbconnection.php");
 	echo "<span style='color: yellow;'>";
 	echo "Hi ".$_SESSION['email'];
 	echo "</span>";
-	echo "<img class='user-image' src='images/profilepicture/986756455v.png'>";
+	echo "<img class='user-image' src='action_pages/$proimg' alt='No profile picture'>";
 	echo "<li><a href='profile.php'><i class='fas fa-pencil-square-o'>&nbsp;&nbsp;Edit Profile</i></a></li>";
 
 	/****** Display button for access to the dashboard if usertype is 1 or 2 end ******/

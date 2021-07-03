@@ -10,30 +10,35 @@
 </html>
 
 <?php
-	include_once("../includes/dbconnection.php");
-    
-$a=$_POST["tit"];
-$b=$_POST["annou"];
+include_once("../includes/dbconnection.php");
 
+$a = $_POST["posttype"];
+$b = $_POST["tit"];
+$c = $_POST["annou"];
+
+//Post image upload
+$file = $_FILES["postimage"]["tmp_name"];
+$path1 = "postimages/".$b.".jpg";
+$r = move_uploaded_file($file, $path1);
 
 
 if($db){
 	/*echo "Database connection successfully completed.";
-	echo ("<br>"); */
+	echo ("<br>");*/
 	}
 
 else{
-	echo "Database connection Faild.";
-	echo ("<br>");
+	/*echo "Database connection Faild.";
+	echo ("<br>");*/
 }
 
-$date = date('Y-m-d');
-$Result = mysqli_query($db,"INSERT INTO news (title,descriptions,dates) VALUES('$a','$b','$date')");
+//$date = date('Y-m-d');
+$Result = mysqli_query($db,"INSERT INTO news_offer (posttype,title,postdescription,postimage) VALUES('$a','$b','$c','$path1')");
 
 if($Result){
 	echo "<script type='text/javascript'>
                 
-	swal({ title: 'News has been published!',text: '',icon: 'success'}).then(okay => {
+	swal({ title: 'The post has been published!',text: '',icon: 'success'}).then(okay => {
 	if (okay) {
     window.location.href = '../News & Feedback.php';}
 	});

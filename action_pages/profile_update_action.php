@@ -37,7 +37,7 @@ include_once("../includes/dbconnection.php");
 		//Profile pic upload
 		$file = $_FILES["profilepic"]["tmp_name"];
 		$profi = $nic;
-		$path1 = "../images/profilepicture/".$profi.".png";
+		$path1 = "profilepicture/".$profi.".png";
 		$r = move_uploaded_file($file, $path1);
 					
 		$userpassword = md5($password);
