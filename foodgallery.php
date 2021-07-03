@@ -8,9 +8,7 @@ if(!isset($_SESSION['email'])){
 <!--Session end-->
 
 <!--database connection-->
-<?php
-include_once("includes/dbconnection.php");
-?>
+<?php include_once("includes/dbconnection.php"); ?>
 
 
 <!DOCTYPE html>
@@ -24,6 +22,7 @@ include_once("includes/dbconnection.php");
   <title>Admin Dashboard</title>
 
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="assets/js/pace.min.js"></script>
   <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
   <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
@@ -75,7 +74,6 @@ include_once("includes/dbconnection.php");
         <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
       </a>
       </li>
-    
     </ul>
  </div></div>
  <!--End sidebar-wrapper-->
@@ -101,58 +99,40 @@ include_once("includes/header.php");
 </header>
 <!--End topbar header-->
 
-<div class="clearfix"></div>
-	
-  <div class="content-wrapper">
-    <div class="container-fluid">
-      
-      <div class="row mt-3">
-        <div class="col-lg-6">
-          <div class="card">
-         
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-			  <div class="table-responsive">
-              
-              <!--ADD NEW FOODS code start-->
-              	<div class="p-4">
-								<div class="p-2">
-									
-									<div class="card card-body" style="background-color: rgb(184, 185, 196);">
-									<h5 style="text-align: center;">ADD NEW FOODS</h5>
-									<div class="p-2"></div>
-									<div class="card card-body">
 
-										<div class="card-deck">
-										<div class="card bg-dark">
-										<div class="card-body text-center">
+<div class="content-wrapper">
+  <div class="container-fluid">
 
-											<form method="post">
+<!--ADD NEW FOODS item area start-->
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+			      <div class="table-responsive">
+									<h5 style="text-align: center;">ADD NEW FOOD</h5>
+
+										<form method="post">
 
 											<div class="p-2">
-                     
-                      <input type="text" name="fid" class="form-control" id="Enter FOOD ID" aria-describedby="emailHelp" placeholder="Enter FOOD ID"required>
+                      <input type="text" name="fid" class="form-control" id="Enter FOOD ID" placeholder="Enter FOOD ID"required>
 											</div>
    
 											<div class="p-2">
-                      <input type="text" name="ftype" class="form-control" id="Enter FOOD Type" aria-describedby="Enter FOOD Type" placeholder="Enter FOOD Type" required>
+                      <input type="text" name="ftype" class="form-control" id="Enter FOOD Type" placeholder="Enter FOOD Type" required>
 											</div>
 
 											<div class="p-2">
-                      
-                      <input type="text" name="fname" class="form-control" id="Enter FOOD Name" aria-describedby="Enter FOOD Name" placeholder="Enter FOOD Name" required>
+                      <input type="text" name="fname" class="form-control" id="Enter FOOD Name" placeholder="Enter FOOD Name" required>
 											</div>
+
                       <div class="p-2">
-                      
-                      <input type="text" name="fprice" class="form-control" id="Enter FOOD Name" aria-describedby="Enter FOOD Price"  placeholder="Enter FOOD price" required>
-											</div>
-
-											</div>
-											</div>
+                      <input type="text" name="fprice" class="form-control" id="Enter FOOD Name"  placeholder="Enter FOOD price" required>
 											</div>
 
 											<div class="p-2">
-											<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addpro"><b>ADD</b>
+											<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addpro">ADD</button>
+                      <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: left;">RESET</button>
+											</div>
 
 											<?php
 											if(isset($_POST["addpro"])){
@@ -166,9 +146,9 @@ include_once("includes/header.php");
 
 												echo "<script type='text/javascript'>
 		                
-												swal({ title: 'FOOD has been added!',text: '',icon: 'success',timer: 4000}).then(okay => {
+												swal({ title: 'Food has been added!',text: '',icon: 'success',timer: 4000}).then(okay => {
 												if (okay) {
-		    									window.location.href = 'admin.php';}
+		    									window.location.href = 'foodgallery.php';}
 												});
 		    									</script>";
 											}
@@ -176,84 +156,59 @@ include_once("includes/header.php");
 											else{
 												echo "<script type='text/javascript'>
 		                
-												swal({ title: 'FOOD added failed!',text: '',icon: 'error',timer: 3000}).then(okay => {
+												swal({ title: 'Food added failed!',text: '',icon: 'error',timer: 3000}).then(okay => {
 												if (okay) {
-		    									window.location.href = 'admin.php';}
+		    									window.location.href = 'foodgallery.php';}
 												});
 		    									</script>";
 												}
 											}
 											?>
-												</button>&nbsp;
-
-												<button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;"><b>RESET</b></button>
-
-												</div>
-												</form>
-
-											</div>
-										</div>
-                                        </div></div>
-                                        
-              <!--ADD NEW FOODS code end-->
-               
-            </div>
-            </div>
-          </div>
+												
+									  </form>
+						</div>
+					</div>
         </div>
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-			  <div class="table-responsive">
-              
-              
-              
-              
-           <!--DELETE EXISTING FOODS code start-->
-           <div class="p-2"></div>
-									<div class="card h-100">
-									<div class="card card-body" style="background-color: rgb(184, 185, 196);">
-									<h5 style="text-align: center;">DELETE EXISTING FOODS</h5>
-									<div class="p-2"></div>
-									<div class="card card-body">
+      </div>                 
+      <!--ADD NEW FOODS item area end-->
+      
 
-										<div class="card-deck">
-										<div class="card bg-dark">
-										<div class="card-body text-center">
+      <!--DELETE EXISTING FOODS code start-->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+			      <div class="table-responsive">
+							<h5 style="text-align: center;">DELETE EXISTING FOOD</h5>
 
-											<form method="post">
+								<form method="post">
+											
+                  <div class="p-2">
+										<select class="browser-default custom-select" name="fids">
+											<option selected>Select Food Name</option>
+											<option> 
 
-											<div class="p-2">
-												<select class="browser-default custom-select" name="fids" style="width: 250px;">
-													<option selected>Select FOOD Name</option>
-													<option> 
-
-													<!--ALL PROGRAMS VIEW php code START-->
-													<?php
-                          
-													$Result = mysqli_query($db,"SELECT * FROM foods");
-
-													while($row=mysqli_fetch_array($Result)){
-													echo "<li>".$row['name']."</li>";
-													echo "<option>";
-													
-													}
-													?>
-
-													</option>
-													</select>
-											</div>
-
-											</div>
-											</div>
-											</div>
-
-											<div class="p-2">
-											<button type="submit" class="btn btn-danger btn-sm" name="delid" style="width: 80px; float: right;"><b>DELETE</b>
+												<!--ALL food types view php code START-->
 												<?php
-												if(isset($_POST["delid"])){
+												$Result = mysqli_query($db,"SELECT * FROM foods");
 
+												while($row=mysqli_fetch_array($Result)){
+												echo "<li>".$row['name']."</li>";
+												echo "<option>";
+													
+												}
+												?>
+
+											</option>
+										</select>
+									</div>
+
+									<div class="p-2">
+										<button type="submit" class="btn btn-danger btn-sm" name="delid" style="width: 80px; float: right;">DELETE</button>
+                    <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: left;"><b>RESET</b></button>
+                  </div>
+
+											<?php
+												if(isset($_POST["delid"])){
 													$prodataa = $_POST["fids"];
 												
 													$Result = mysqli_query($db,"DELETE FROM foods WHERE name='$prodataa'");
@@ -262,9 +217,9 @@ include_once("includes/header.php");
 
 														echo "<script type='text/javascript'>
 															                
-														swal({ title: 'Selected program successfully deleted!',text: '',icon: 'success',timer: 3000}).then(okay => {
+														swal({ title: 'Selected food successfully deleted!',text: '',icon: 'success',timer: 3000}).then(okay => {
 														if (okay) {
-														window.location.href = 'admin.php';}
+														window.location.href = 'foodgallery.php';}
 														});
 														</script>";
 														}
@@ -272,48 +227,31 @@ include_once("includes/header.php");
 														else{
 														echo "<script type='text/javascript'>
 															                
-														swal({ title: 'program delete was failed!',text: '',icon: 'error',timer: 4000}).then(okay => {
+														swal({ title: 'Selected food delete was failed!',text: '',icon: 'error',timer: 4000}).then(okay => {
 														if (okay) {
-														window.location.href = 'admin.php';}
+														window.location.href = 'foodgallery.php';}
 														});
 														</script>";
 														}
 													}
 
-													?>
-											
-												</button>&nbsp;
-
-												<button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;"><b>RESET</b></button>
-
-												</div>
-												</form>
-
-											</div>
-										</div>
-									
-           
-           <!--DELETE EXISTING FOODS end--> 
-              
-              
-              
-              
-            </div>
-            </div>
-          </div>
+											?>
+								</form>
+						</div>
+					</div>
         </div>
-          </div><!--End Row-->
+      </div></div><br><br><br>
+      <!--DELETE EXISTING FOODS code end-->
 
-   
+      <!--DEVELS Food Menu area start-->
       <div class="row">
-      <hr>
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-            
-              <h5 class="card-title">DEVELS</h5>
-			       <div class="table-responsive">
-               <table class="table table-striped">
+              <div class="table-responsive">
+                <h5 class="card-title">DEVELS</h5>
+
+                <table class="table table-striped">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
@@ -322,6 +260,7 @@ include_once("includes/header.php");
                       <th scope="col">Handle</th>
                     </tr>
                   </thead>
+
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
@@ -329,167 +268,172 @@ include_once("includes/header.php");
                       <td>Otto</td>
                       <td>@mdo</td>
                     </tr>
+
                     <tr>
                       <th scope="row">2</th>
                       <td>Jacob</td>
                       <td>Thornton</td>
                       <td>@fat</td>
                     </tr>
+
                     <tr>
                       <th scope="row">3</th>
                       <td>Larry</td>
                       <td>the Bird</td>
                       <td>@twitter</td>
                     </tr>
-                  </tbody>
-                </table>
-            </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">DESET</h5>
-			  <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">tbn</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div><!--End Row-->
 
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">JUSE</h5>
-			  <div class="table-responsive">
-               <table class="table table-sm">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">ICE CREEMS</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">BUNS</h5>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
         </div>
-      </div><!--End Row-->
+        <!--DEVELS Food Menu area start-->
+
+        <!--DEVELS Food Menu area start-->
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <h5 class="card-title">DEVELS</h5>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">First</th>
+                      <th scope="col">Last</th>
+                      <th scope="col">Handle</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div></div><br><br><br>
+        <!--DEVELS Food Menu area start-->
+
+        <!--DEVELS Food Menu area start-->
+        <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <h5 class="card-title">DEVELS</h5>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">First</th>
+                      <th scope="col">Last</th>
+                      <th scope="col">Handle</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--DEVELS Food Menu area start-->
+
+        <!--DEVELS Food Menu area start-->
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <h5 class="card-title">DEVELS</h5>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">First</th>
+                      <th scope="col">Last</th>
+                      <th scope="col">Handle</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <!--DEVELS Food Menu area start-->
+
 	  
 	  <!--start overlay-->
 		  <div class="overlay toggle-menu"></div>
