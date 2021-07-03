@@ -245,188 +245,176 @@ include_once("includes/header.php");
 
       <!--DEVELS Food Menu area start-->
       <div class="row">
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="table-responsive">
-                <h5 class="card-title">DEVELS</h5>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <h5 class="card-title">RICE</h5>
 
-                <table class="table table-striped">
+               <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
+                      <th scope="col">FOOD Name</th>
+                      <th scope="col">FOOD ID</th>
+                      <th scope="col">PRICE</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
+                    
+                      <?php
+                        $Result = mysqli_query($db,"select*from foods where ftype='RIce'");
+                        while($row=mysqli_fetch_array($Result)){
+                        $fname = $row["name"];
+                        $foodid = $row["foodid"];
+                        $fprice = $row["price"]; 
+                      ?> 
+
+                        <td><?php echo " $fname";?> </td>
+                        <td><?php echo " $foodid";?> </td>
+                        <td><?php echo "Rs $fprice/=";?> </td>
+      
                     </tr>
 
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
+                    <?php 
+                    }
+                    ?> 
 
                   </tbody>
                 </table>
-              </div>
+
             </div>
           </div>
         </div>
-        <!--DEVELS Food Menu area start-->
+      </div>
 
-        <!--DEVELS Food Menu area start-->
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="table-responsive">
-                <h5 class="card-title">DEVELS</h5>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <h5 class="card-title">KOTHTHU</h5>
 
-                <table class="table table-striped">
+                <table class="table table-hover">
                   <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
+                      <tr>
+                        <th scope="col">FOOD Name</th>
+                        <th scope="col">FOOD ID</th>
+                        <th scope="col">PRICE</th>
+                      </tr>
                   </thead>
 
                   <tbody>
                     <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
+                      <?php
+                        $Result = mysqli_query($db,"select*from foods where ftype='koththu'");
+                        while($row=mysqli_fetch_array($Result)){
+                        $fname = $row["name"];
+                        $foodid = $row["foodid"];
+                        $fprice = $row["price"];  
+                      ?> 
+    
+                      <td><?php echo " $fname";?> </td>
+                      <td><?php echo " $foodid";?> </td>
+                      <td><?php echo "Rs $fprice/=";?> </td>
                     </tr>
 
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-
+                      <?php 
+                      }
+                      ?> 
                   </tbody>
                 </table>
-              </div>
-            </div>
-          </div>
-        </div></div><br><br><br>
-        <!--DEVELS Food Menu area start-->
 
-        <!--DEVELS Food Menu area start-->
-        <div class="row">
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="table-responsive">
-                <h5 class="card-title">DEVELS</h5>
-
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-
-                  </tbody>
-                </table>
-              </div>
             </div>
           </div>
         </div>
-        <!--DEVELS Food Menu area start-->
+      </div>
+    <div><br><br><br>
+    <!--End Row-->
 
-        <!--DEVELS Food Menu area start-->
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <h5 class="card-title">NOODLES</h5>
+
+              <table class="table table-sm">
+                <thead>
+                    <tr>
+                      <th scope="col">FOOD Name</th>
+                      <th scope="col">FOOD ID</th>
+                      <th scope="col">PRICE</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <?php
+                      $Result = mysqli_query($db,"select*from foods where ftype='noodles'");
+                      while($row=mysqli_fetch_array($Result)){
+                      $fname = $row["name"];
+                      $foodid = $row["foodid"];
+                      $fprice = $row["price"];    
+                    ?> 
+
+                          
+                      <td><?php echo " $fname";?> </td>
+                      <td><?php echo " $foodid";?> </td>
+                      <td><?php echo "Rs $fprice/=";?> </td>
+      
+                  </tr>
+
+                    <?php 
+                    }
+                    ?> 
+
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
               <div class="table-responsive">
-                <h5 class="card-title">DEVELS</h5>
+                <h5 class="card-title">SOUP</h5>
 
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
-                  </thead>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">FOOD Name</th>
+                        <th scope="col">FOOD ID</th>
+                        <th scope="col">PRICE</th>
+                    
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                      <tr>
+                        <?php
+                         $Result = mysqli_query($db,"select*from foods where ftype='soup'");
+                         while($row=mysqli_fetch_array($Result)){
+                         $fname = $row["name"];
+                         $foodid = $row["foodid"];
+                         $fprice = $row["price"];  
+                        ?> 
 
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-
-                  </tbody>
-                </table>
+                         
+                        <td><?php echo " $fname";?> </td>
+                        <td><?php echo " $foodid";?> </td>
+                        <td><?php echo "Rs $fprice/=";?> </td>
+                      </tr>
+                      
+                      <?php 
+                      }
+                      ?> 
+                    </tbody>
+                  </table>
               </div>
             </div>
           </div>
