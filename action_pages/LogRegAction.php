@@ -64,6 +64,8 @@
 			$password = md5($password);
 			$Result = mysqli_query($db,"SELECT * FROM users WHERE email='$email' AND password='$password'");
 
+			$c = false;
+
 			while($row = mysqli_fetch_array($Result)){
 			$c = true;
 			$utype = $row["usertype"];
@@ -72,13 +74,13 @@
 			
 			//page on which the user is sent to after logging in start
 			if($c){
-				if ($utype=='1') {
+				if ($utype =='1') {
             	header('location: ../admindashbord.php');
         		}
-        		elseif ($utype=='2') {
+        		elseif ($utype =='2') {
             	header('location: ../employeedashbord.php');
         		}
-        		elseif ($utype=='0'){
+        		elseif ($utype =='0'){
 				header('location: ../UserHomePage.php');}
 			}
 			//page on which the user is sent to after logging in end

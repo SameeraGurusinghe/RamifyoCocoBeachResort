@@ -147,9 +147,9 @@ include_once("includes/header.php");
     <div class="card">
       <div class="card-body">
         <div class="table-responsive">
-        <h4 style="text-align: center;"><b>CUSTOMER FEEDBACE</b></h4>
+        <h4 style="text-align: center;"><b>CUSTOMER FEEDBACK</b></h4>
               
-          <table class="table table-bordered bg-light">
+          <table class="table table-sm">
             <thead>
               <tr>
                 <th scope="col">DATE</th>
@@ -160,6 +160,7 @@ include_once("includes/header.php");
             </thead>
 
             <tbody>
+            <tr>
 
               <?php
                 $Result = mysqli_query($db,"select*from customer_feedback");
@@ -170,11 +171,11 @@ include_once("includes/header.php");
                 $s = $row["date_time"];
               ?> 
 
-                <th><?php echo "$s";?></th>
-                    <td><?php echo "$p";?> </td>
-                    <td><?php echo "$q";?> </td>
-                    <td><?php echo "$r";?> </td>
-                </tr>
+                <td><?php echo "$s";?></td>
+                <td><?php echo "$p";?> </td>
+                <td><?php echo "$q";?> </td>
+                <td><?php echo "$r";?> </td>
+              </tr>
 
               <?php 
               }

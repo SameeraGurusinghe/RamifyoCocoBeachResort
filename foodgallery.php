@@ -38,12 +38,6 @@ if(!isset($_SESSION['email'])){
 <!-- start loader -->
    <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner" ><div class="loader"></div></div></div></div>
 <!-- end loader -->
-
-<!-- Start wrapper-->
-<div id="wrapper">
-
-<!-- Start wrapper-->
-<div id="wrapper">
  
 <!-- Start wrapper-->
 <div id="wrapper">
@@ -113,12 +107,17 @@ include_once("includes/header.php");
 
 										<form method="post">
 
-											<div class="p-2">
-                      <input type="text" name="fid" class="form-control" id="Enter FOOD ID" placeholder="Enter FOOD ID"required>
-											</div>
-   
-											<div class="p-2">
-                      <input type="text" name="ftype" class="form-control" id="Enter FOOD Type" placeholder="Enter FOOD Type" required>
+                      <div class="p-2">
+                        <select name="ftype" class="form-control" required>
+                          <option selected>Select a food type</option>
+                          <option value="koththu">Koththu</option>
+                          <option value="noodles">Noodles</option>
+                          <option value="rice">Rice</option>
+                          <option value="soup">Soup</option>
+                          <option value="curry">Curry</option>
+                          <option value="drink">Drink</option>
+                          <option value="dessert">Dessert</option>                      
+                        </select>
 											</div>
 
 											<div class="p-2">
@@ -131,22 +130,21 @@ include_once("includes/header.php");
 
 											<div class="p-2">
 											<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addpro">ADD</button>
-                      <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: left;">RESET</button>
+                      <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;">RESET</button>
 											</div>
 
 											<?php
 											if(isset($_POST["addpro"])){
-											$resid = $_POST["fid"];
 											$restype = $_POST["ftype"];
 											$resname = $_POST["fname"];
                       $resprice = $_POST["fprice"];
 
-											$Result = mysqli_query($db,"INSERT INTO foods (name,price,ftype,foodid) VALUES('$resname','$resprice','$restype','$resid')");
+											$Result = mysqli_query($db,"INSERT INTO foods (name,price,ftype) VALUES('$resname','$resprice','$restype')");
 											if($Result){
 
 												echo "<script type='text/javascript'>
 		                
-												swal({ title: 'Food has been added!',text: '',icon: 'success',timer: 4000}).then(okay => {
+												swal({ title: 'SUCCESS',text: 'Food has been added!',icon: 'success',timer: 000}).then(okay => {
 												if (okay) {
 		    									window.location.href = 'foodgallery.php';}
 												});
@@ -156,7 +154,7 @@ include_once("includes/header.php");
 											else{
 												echo "<script type='text/javascript'>
 		                
-												swal({ title: 'Food added failed!',text: '',icon: 'error',timer: 3000}).then(okay => {
+												swal({ title: 'ERROR',text: 'Food added failed!',icon: 'error',timer: 4000}).then(okay => {
 												if (okay) {
 		    									window.location.href = 'foodgallery.php';}
 												});
@@ -173,7 +171,7 @@ include_once("includes/header.php");
       <!--ADD NEW FOODS item area end-->
       
 
-      <!--DELETE EXISTING FOODS code start-->
+      <!--DELETE EXISTING FOODS area start-->
       <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
@@ -204,7 +202,7 @@ include_once("includes/header.php");
 
 									<div class="p-2">
 										<button type="submit" class="btn btn-danger btn-sm" name="delid" style="width: 80px; float: right;">DELETE</button>
-                    <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: left;"><b>RESET</b></button>
+                    <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;"><b>RESET</b></button>
                   </div>
 
 											<?php
@@ -217,7 +215,7 @@ include_once("includes/header.php");
 
 														echo "<script type='text/javascript'>
 															                
-														swal({ title: 'Selected food successfully deleted!',text: '',icon: 'success',timer: 3000}).then(okay => {
+														swal({ title: 'SUCCESS',text: 'Selected food successfully deleted!',icon: 'success',timer: 3000}).then(okay => {
 														if (okay) {
 														window.location.href = 'foodgallery.php';}
 														});
@@ -227,7 +225,7 @@ include_once("includes/header.php");
 														else{
 														echo "<script type='text/javascript'>
 															                
-														swal({ title: 'Selected food delete was failed!',text: '',icon: 'error',timer: 4000}).then(okay => {
+														swal({ title: 'SUCCESS',text: 'Selected food delete was failed!',icon: 'error',timer: 4000}).then(okay => {
 														if (okay) {
 														window.location.href = 'foodgallery.php';}
 														});
@@ -240,188 +238,12 @@ include_once("includes/header.php");
 						</div>
 					</div>
         </div>
-      </div></div><br><br><br>
-      <!--DELETE EXISTING FOODS code end-->
+      </div></div><br><br>
+      <!--DELETE EXISTING FOODS area end-->
 
-      <!--DEVELS Food Menu area start-->
-      <div class="row">
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <div class="table-responsive">
-              <h5 class="card-title">RICE</h5>
-
-               <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">FOOD Name</th>
-                      <th scope="col">FOOD ID</th>
-                      <th scope="col">PRICE</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                    
-                      <?php
-                        $Result = mysqli_query($db,"select*from foods where ftype='RIce'");
-                        while($row=mysqli_fetch_array($Result)){
-                        $fname = $row["name"];
-                        $foodid = $row["foodid"];
-                        $fprice = $row["price"]; 
-                      ?> 
-
-                        <td><?php echo " $fname";?> </td>
-                        <td><?php echo " $foodid";?> </td>
-                        <td><?php echo "Rs $fprice/=";?> </td>
-      
-                    </tr>
-
-                    <?php 
-                    }
-                    ?> 
-
-                  </tbody>
-                </table>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <div class="table-responsive">
-              <h5 class="card-title">KOTHTHU</h5>
-
-                <table class="table table-hover">
-                  <thead>
-                      <tr>
-                        <th scope="col">FOOD Name</th>
-                        <th scope="col">FOOD ID</th>
-                        <th scope="col">PRICE</th>
-                      </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <?php
-                        $Result = mysqli_query($db,"select*from foods where ftype='koththu'");
-                        while($row=mysqli_fetch_array($Result)){
-                        $fname = $row["name"];
-                        $foodid = $row["foodid"];
-                        $fprice = $row["price"];  
-                      ?> 
-    
-                      <td><?php echo " $fname";?> </td>
-                      <td><?php echo " $foodid";?> </td>
-                      <td><?php echo "Rs $fprice/=";?> </td>
-                    </tr>
-
-                      <?php 
-                      }
-                      ?> 
-                  </tbody>
-                </table>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    <div><br><br><br>
-    <!--End Row-->
-
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <div class="table-responsive">
-              <h5 class="card-title">NOODLES</h5>
-
-              <table class="table table-sm">
-                <thead>
-                    <tr>
-                      <th scope="col">FOOD Name</th>
-                      <th scope="col">FOOD ID</th>
-                      <th scope="col">PRICE</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <?php
-                      $Result = mysqli_query($db,"select*from foods where ftype='noodles'");
-                      while($row=mysqli_fetch_array($Result)){
-                      $fname = $row["name"];
-                      $foodid = $row["foodid"];
-                      $fprice = $row["price"];    
-                    ?> 
-
-                          
-                      <td><?php echo " $fname";?> </td>
-                      <td><?php echo " $foodid";?> </td>
-                      <td><?php echo "Rs $fprice/=";?> </td>
-      
-                  </tr>
-
-                    <?php 
-                    }
-                    ?> 
-
-                </tbody>
-              </table>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="table-responsive">
-                <h5 class="card-title">SOUP</h5>
-
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">FOOD Name</th>
-                        <th scope="col">FOOD ID</th>
-                        <th scope="col">PRICE</th>
-                    
-                      </tr>
-                    </thead>
-                    
-                    <tbody>
-                      <tr>
-                        <?php
-                         $Result = mysqli_query($db,"select*from foods where ftype='soup'");
-                         while($row=mysqli_fetch_array($Result)){
-                         $fname = $row["name"];
-                         $foodid = $row["foodid"];
-                         $fprice = $row["price"];  
-                        ?> 
-
-                         
-                        <td><?php echo " $fname";?> </td>
-                        <td><?php echo " $foodid";?> </td>
-                        <td><?php echo "Rs $fprice/=";?> </td>
-                      </tr>
-                      
-                      <?php 
-                      }
-                      ?> 
-                    </tbody>
-                  </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <!--DEVELS Food Menu area start-->
-
+    <!--Food tables file include.... area start-->
+    <?php include_once("includes/foodtables.php"); ?>
+    <!--Food tables file include.... area end-->
 	  
 	  <!--start overlay-->
 		  <div class="overlay toggle-menu"></div>
@@ -435,7 +257,7 @@ include_once("includes/header.php");
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
     <!--End Back To Top Button-->
    
-  </div>
+  </div></div>
   <!--End wrapper-->
 
   <script src="assets/js/jquery.min.js"></script>

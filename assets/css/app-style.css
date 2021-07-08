@@ -518,12 +518,12 @@ hr {
 }
 
 .container-fluid{
-    padding: 80px;
+    padding: 30px;
 }
 
 .card{
-   padding: 80px;
-   margin-top: -50px;
+   padding: 20px;
+   margin-top: -10px;
    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
    border: none;
    background-color: rgba(26, 24, 24, 0.452);
