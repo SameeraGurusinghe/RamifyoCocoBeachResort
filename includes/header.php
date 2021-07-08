@@ -75,7 +75,7 @@ include_once("includes/dbconnection.php");
 	</div>
 	</li>
 
-	<li><a href="#"><i class="fas fa-tags">&nbsp;&nbsp;Booking</i></a></li>
+	<li><a href="booking.php"><i class="fas fa-tags">&nbsp;&nbsp;Booking</i></a></li>
 	<li><a href="contactUs.php"><i class="fas fa-phone-alt">&nbsp;&nbsp;Contact</i></a></li>
 	<li><a href="news.php"><i class="fas fa-newspaper-o">&nbsp;&nbsp;News</i></a></li>
 
