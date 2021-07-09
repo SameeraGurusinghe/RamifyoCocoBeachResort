@@ -105,7 +105,7 @@ include_once("includes/header.php");
 			      <div class="table-responsive">
 									<h5 style="text-align: center;">ADD NEW FOOD</h5>
 
-										<form method="post">
+                  <form action="controller.php" method="POST">
 
                       <div class="p-2">
                         <select name="ftype" class="form-control" required>
@@ -129,12 +129,12 @@ include_once("includes/header.php");
 											</div>
 
 											<div class="p-2">
-											<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addpro">ADD</button>
+											<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addfood">ADD</button>
                       <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;">RESET</button>
 											</div>
 
 											<?php
-											if(isset($_POST["addpro"])){
+										/*	if(isset($_POST["addpro"])){
 											$restype = $_POST["ftype"];
 											$resname = $_POST["fname"];
                       $resprice = $_POST["fprice"];
@@ -160,7 +160,7 @@ include_once("includes/header.php");
 												});
 		    									</script>";
 												}
-											}
+											}*/
 											?>
 												
 									  </form>
