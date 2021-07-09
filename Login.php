@@ -14,14 +14,30 @@ function validateForm() {
   var n = document.forms["myForm"]["nic"].value;
   var p = document.forms["myForm"]["phoneno"].value;
   var e = document.forms["myForm"]["email"].value;
-  var p1 = document.forms["myForm"]["password_1"].value;
-  var p2 = document.forms["myForm"]["password_2"].value;
+  var p = document.forms["myForm"]["password"].value;
+
+  var nicl = n.length;
+  var nicOld = n.substr(9,15);
+  var nicOldInt = n.substr(0,9);
+
   if (f == "") {
     alert("Full name must be filled out");
     return false;
   }
   else if (n == "") {
-    alert("Government-issued ID Number must be filled out");
+    alert("NIC Number must be filled out");
+    return false;
+  }
+  else if(nicl!=10){
+    alert("NIC number is incorrect");
+    return false;
+  }
+  else if (nicOld!="v" && nicOld!="V") {
+    alert("character ' v / V ' is not include NIC number that You have entered");
+    return false;
+  }
+  else if(isNaN(nicOldInt)){
+    alert("First 9 characters must be numbers");
     return false;
   }
   else if (e == "") {
@@ -131,20 +147,19 @@ include_once("includes/header.php");
 			<button type="button" class="toggle-btn" onclick="register()">Register</button>
 		</div>
 
-	<form action="action_pages/LogRegAction.php" method="POST" id="login" class="input-group">
+	<form action="controller.php" method="POST" id="login" class="input-group">
 		<input type="text" class="input-field" name="email" placeholder="Email" required>
 		<input type="password" class="input-field" name="password" placeholder="Password" required><br><br>
 		<button type="submit" class="submit-btn" name="login_user">Log In</button><br>
 		<p class="forgot-pass"><a href="ForgotPassword.php">Forgot Password?</a></p>
 	</form>
 
-	<form action="action_pages/LogRegAction.php" method="POST" id="register" class="input-group" name="myForm" onsubmit="return validateForm()">
+	<form action="controller.php" method="POST" id="register" class="input-group" name="myForm" onsubmit="return validateForm()">
 		<input type="text" class="input-field" name="fullname" placeholder="Full Name">
-		<input type="text" class="input-field" name="nic" placeholder="Government-issued ID Number">
+		<input type="text" class="input-field" name="nic" placeholder="NIC Number">
     <input type="number" class="input-field" name="phoneno" placeholder="Phone Number">
 		<input type="email" class="input-field" id="email" name="email" placeholder="Email" onBlur="checkAvailability()">
-		<input type="password" class="input-field" id="password_1" name="password_1" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-		<input type="password" class="input-field" id="password_2" name="password_2" placeholder="Conform Password">
+		<input type="password" class="input-field" id="password" name="password" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 		<input type="checkbox" required>&nbsp;&nbsp;&nbsp;<lable style="font-size: 12px;">I agree to terms & conditions</lable>
 		<button type="submit" class="submit-btn" name="reg_user">Register</button><br>
 		
@@ -170,7 +185,7 @@ include_once("includes/header.php");
 
 <!--Script for password validation start-->
 <script>
-var myInput = document.getElementById("password_1");
+var myInput = document.getElementById("password");
 var letter = document.getElementById("letter");
 var capital = document.getElementById("capital");
 var number = document.getElementById("number");

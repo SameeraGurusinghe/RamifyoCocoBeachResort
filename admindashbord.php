@@ -91,12 +91,17 @@ if(!isset($_SESSION['email'])){
 <div class="content-wrapper">
 <div class="container-fluid">
 
-    <!--Room tables file include.... area start-->
-    <?php include_once("includes/roomavailability.php"); ?>
-    <!--Room tables file include.... area end-->
-    
-    
-    
+<!--Room availability area start-->
+<div class="row">
+	<div class="card">
+
+        <!--Room tables file include.... area start-->
+        <?php include_once("includes/roomavailability.php"); ?>
+        <!--Room tables file include.... area end-->
+
+  </div>
+</div><br><br><br>
+<!--Room availability area end-->
     
 <!--Oreder conform area start-->
 <div class="row">
