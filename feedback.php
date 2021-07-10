@@ -51,18 +51,18 @@ include_once("includes/header.php");
         <div class="col-sm-7 text-center">
             <h3>Leave You feedback or Inquire Here</h3>
 
-            <form action="action_pages/CusFeedbackAction.php" method="post" class="form-out-border">
+            <form action="controller.php" method="POST">
 
             <div class="feedback-send-us">
-                <label class="lable-deco">Your Name</label><br><input type="text" class="form-control" name="fname" placeholder="Enter Your Name" required>
+                <label class="lable-deco">Your Name</label><br><input type="text" class="form-control" name="feedname" placeholder="Enter Your Name" required>
             </div><br>
 
             <div class="feedback-send-us">
-                <label class="lable-deco">Your E-mail</label><br><input type="email" class="form-control" name="emailid" placeholder="Enter Your E-mail" value="<?php echo $_SESSION['email']; ?>" required>
+                <label class="lable-deco">Your E-mail</label><br><input type="email" class="form-control" name="feddemailid" placeholder="Enter Your E-mail" value="<?php echo $_SESSION['email']; ?>" required>
             </div><br>
 
             <div class="feedback-send-us">
-                <label class="lable-deco">Your Feedback or Inquire</label><br><textarea class="form-control" name="description" placeholder="Enter Your Feedback or Inquire" required></textarea>
+                <label class="lable-deco">Your Feedback or Inquire</label><br><textarea class="form-control" name="feeddescription" placeholder="Enter Your Feedback or Inquire" required></textarea>
             </div><br>
 
             <div class="feedback-send-us">
