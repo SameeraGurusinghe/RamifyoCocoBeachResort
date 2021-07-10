@@ -92,24 +92,19 @@ if(isset($_POST["addfood"])){
     $fprice=$_POST["fprice"];
     $fid=0;
     
-    
     $arr=array($fid,$fname,$fprice,$ftype);
 
-
     if($obj->save("foods",$arr)){
-        echo "<script type='text/javascript'>
-		                
-        swal({ title: 'SUCCESS',text: 'Food has been added!',icon: 'success',timer: 000}).then(okay => {
+        echo "<script type='text/javascript'>              
+        swal({ title: 'SUCCESS',text: 'Food has been added!',icon: 'success'}).then(okay => {
         if (okay) {
         window.location.href = 'foodgallery.php';}
         });
         </script>";
-    
     }
     else{
-        echo "<script type='text/javascript'>
-		                
-		swal({ title: 'ERROR',text: 'Food added failed!',icon: 'error',timer: 4000}).then(okay => {
+        echo "<script type='text/javascript'>              
+		swal({ title: 'ERROR',text: 'Food added failed!',icon: 'error'}).then(okay => {
 		if (okay) {
 		window.location.href = 'foodgallery.php';}
 		});
@@ -118,7 +113,6 @@ if(isset($_POST["addfood"])){
 
 }
 //Food adding function end
-
 
 
 //News adding function start
@@ -133,25 +127,19 @@ if(isset($_POST["addnews"])){
     date_default_timezone_set('Asia/Colombo');
     $newsadddate = date('y-m-d h.i.s AM');
     
-    
-    
     $arr=array($newsid,$posttype,$tit,$annou,$postimage,$newsadddate);
 
-
     if($obj->save("news_offer",$arr)){
-        echo "<script type='text/javascript'>
-		                
-        swal({ title: 'SUCCESS',text: 'News has been added!',icon: 'success',timer: 000}).then(okay => {
+        echo "<script type='text/javascript'>               
+        swal({ title: 'SUCCESS',text: 'News has been added!',icon: 'success'}).then(okay => {
         if (okay) {
         window.location.href = 'News & Feedback.php';}
         });
         </script>";
-    
     }
     else{
-        echo "<script type='text/javascript'>
-		                
-		swal({ title: 'ERROR',text: 'News added failed!',icon: 'error',timer: 4000}).then(okay => {
+        echo "<script type='text/javascript'>               
+		swal({ title: 'ERROR',text: 'News added failed!',icon: 'error'}).then(okay => {
 		if (okay) {
 		window.location.href = 'News & Feedback.php';}
 		});
@@ -160,7 +148,6 @@ if(isset($_POST["addnews"])){
 
 }
 //News adding function end
-
 
 
 

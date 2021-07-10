@@ -53,6 +53,7 @@ include_once("includes/header.php");
               }
                 $Result = mysqli_query($db,"SELECT * FROM users WHERE email='$ee'");
                   while($row=mysqli_fetch_array($Result)){
+
                     $fullname = $row["fullname"];
                     $nic = $row["nic"];
                     $phoneno = $row["phoneno"];
@@ -72,7 +73,7 @@ include_once("includes/header.php");
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Email</label>
                     <div class="col-lg-9 text-center">
-                      <input class="form-control"  type="text" value="<?php echo "$email"; ?>" disabled>
+                      <input class="form-control"  type="text" readonly value="<?php echo "$email"; ?>" name="email">
                     </div>
                 </div>
 
@@ -104,7 +105,7 @@ include_once("includes/header.php");
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">NIC</label>
                     <div class="col-lg-9">
-                      <input class="form-control" type="text" value="<?php echo "$nic"; ?>" name="nic">
+                      <input class="form-control" type="text" readonly value="<?php echo "$nic"; ?>" name="nic">
                     </div>
                 </div>
                        
@@ -118,7 +119,7 @@ include_once("includes/header.php");
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Password</label>
                     <div class="col-lg-9">
-                      <input class="form-control" type="password" value="" name="password">
+                      <input class="form-control" type="password" name="password" required>
                     </div>
                 </div>
 

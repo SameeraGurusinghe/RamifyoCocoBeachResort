@@ -45,7 +45,7 @@ include_once("../includes/dbconnection.php");
             if($Result){
 
 				echo "<script type='text/javascript'>
-						swal({ title: 'profile details has been updated!',text: '',icon: 'success',timer: 3000}).then(okay => {
+						swal({ title: 'profile details has been updated!',text: '',icon: 'success'}).then(okay => {
 							if (okay) {
     							window.location.href = '../profile.php';}
 							});
@@ -54,7 +54,7 @@ include_once("../includes/dbconnection.php");
 									
 			else{
 				echo "<script type='text/javascript'>
-						swal({ title: 'profile details update was failed!',text: '',icon: 'error',timer: 3000}).then(okay => {
+						swal({ title: 'profile details update was failed!',text: '',icon: 'error'}).then(okay => {
 							if (okay) {
     						window.location.href = '../profile.php';}
 							});

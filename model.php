@@ -11,7 +11,8 @@ class model extends db{
     
         if($res){
             return true;
-        }else{
+        }
+        else{
             return false;
         }
     }
@@ -48,6 +49,7 @@ class model extends db{
         return false;
         }
     }
+
 }
 
 $obj=new model;
