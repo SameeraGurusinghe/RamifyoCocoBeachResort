@@ -162,6 +162,44 @@ if(isset($_POST["addnews"])){
 //News adding function end
 
 
+//Feedback adding function start
+
+
+if(isset($_POST["sendfeedback"])){
+    
+        $feedid=0;
+        $feedname=$_POST["feedname"];
+        $feddemailid=$_POST["feddemailid"];
+        $feeddescription=$_POST["feeddescription"];
+        date_default_timezone_set('Asia/Colombo');
+        $feedadddate = date('y-m-d h.i.s AM');
+        
+        
+        $arr=array($feedid,$feedname,$feddemailid,$feeddescription,$feedadddate);
+    
+    
+        if($obj->save("customer_feedback",$arr)){
+            echo "<script type='text/javascript'>
+                            
+            swal({ title: 'SUCCESS',text: 'Feedback has been added!',icon: 'success',timer: 000}).then(okay => {
+            if (okay) {
+            window.location.href = 'UserHomePage.php';}
+            });
+            </script>";
+        
+        }
+        else{
+            echo "<script type='text/javascript'>
+                            
+            swal({ title: 'ERROR',text: 'Feedback added failed!',icon: 'error',timer: 4000}).then(okay => {
+            if (okay) {
+            window.location.href = 'UserHomePage.php';}
+            });
+            </script>";
+            }
+    
+    }
+    //Feedback adding function end
 
 
 ?>
