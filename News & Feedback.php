@@ -104,7 +104,7 @@ include_once("includes/header.php");
         <div class="card-body">
           <h4 style="text-align: center;"><b>POST A NEWS OR OFFER</b></h4>
 				
-            <form action="admin_php/admin_announcement_action.php" method="post" enctype="multipart/form-data">
+          <form action="controller.php" method="POST">
               
               <div class="p-2">           
                 <select class="form-control" name="posttype" required>
@@ -128,7 +128,7 @@ include_once("includes/header.php");
               </div>
 									
 							<div class="p-2">
-								<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;">PUBLISH</button>
+								<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addnews">PUBLISH</button>
 								<button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;">CLEAR</button>									    
               </div>
                         
