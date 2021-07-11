@@ -81,7 +81,8 @@ include_once("includes/dbconnection.php");
 
 	<!--== When customer logged in, new "Feedback" button display and "LOG IN" button automatically change to "LOG OUT" button start ==-->
 	<?php if (isset($_SESSION['email'])) {
-		$useremail = $_SESSION['email'];
+
+	$useremail = $_SESSION['email'];
 	$Result = mysqli_query($db,"SELECT * FROM users WHERE email='$useremail' ");
 	while($row = mysqli_fetch_array($Result)){
 	$utype = $row["usertype"];
@@ -89,7 +90,11 @@ include_once("includes/dbconnection.php");
 	$id = $row['nic'];
 	$proimg = $row["propicture"];
 	}
+
+	//Display Feedback button if usertype is 0
+	if ($utype == '0') {
 	echo "<li><a href='feedback.php'><i class='fas fa-comments'>&nbsp;&nbsp;Feedback</i></a></li>";
+	}
 
 	echo "<li><a onclick='openWin()'><i class='fas fa-question-circle'>&nbsp;&nbsp;Chat</i></a></li>";
 
@@ -102,8 +107,8 @@ include_once("includes/dbconnection.php");
 	echo "<img class='user-image' src='action_pages/$proimg' alt='No profile picture'>";
 	echo "<li><a href='profile.php'><i class='fas fa-pencil-square-o'>&nbsp;&nbsp;Edit Profile</i></a></li>";
 
-	/****** Display button for access to the dashboard if usertype is 1 or 2 end ******/
-
+	
+	/****** Display button for access to the dashboard if usertype is 1 or 2 start ******/
 		if ($utype == '1') {
 		echo "<li><a href='admindashbord.php'><i class='fas fa-cogs'>&nbsp;&nbsp;Dashboard</i></a></li>";
 		}

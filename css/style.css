@@ -595,6 +595,14 @@ body{
 }
 /* Food Menu page CSS end */
 
+/* Room Availability check */
+.ee{
+	/*background-color: #b61919;*/
+	border: 2px solid;
+	border-bottom: 60px;
+	border-color: #b61919;
+}
+/* Room Availability check */
 
 /******footer image resolution start******/
 .hometheme{
