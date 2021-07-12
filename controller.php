@@ -97,7 +97,7 @@ if(isset($_POST["addfood"])){
 	//Profile pic upload
 	$file = $_FILES["fpicture"]["tmp_name"];
 	$fimg = $fname;
-	$path1 = "images/food/".$fimg.".png";
+	$path1 = "images/food/".$fimg.".jpg";
 	$r = move_uploaded_file($file, $path1);
     
     $arr=array($fid,$fname,$fprice,$ftype,$mealplantype,$fdescription,$path1);

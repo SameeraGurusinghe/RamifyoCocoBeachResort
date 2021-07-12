@@ -126,6 +126,7 @@ include_once("includes/header.php");
                           <option selected>Select meal plan type</option>
                           <option value="breakfast">Breakfast</option>
                           <option value="all">Both Lunch & Dinner</option>
+                          <option value="dinner">Dinner</option>
                           <option value="curry">Curry</option>
                           <option value="drink">Drink</option>
                           <option value="dessert">Dessert</option>                    
