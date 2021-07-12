@@ -6,6 +6,11 @@ if(!isset($_SESSION['email'])){
 ?>
 <!--Session end-->
 
+<!--database connection-->
+<?php
+include_once("includes/dbconnection.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +39,7 @@ include_once("includes/header.php");
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
                         <h6>Sea Food Restaurant</h6>
-                        <h2>Special Meals & Prices</h2>
+                        <h2 id="uppercase">Meals & Prices</h2>
                     </div>
                 </div>
             </div>
@@ -48,240 +53,217 @@ include_once("includes/header.php");
                                           <li><a href='#tabs-1'><img src="images/foodmenu/tab-icon-01.png" alt="">Breakfast</a></li>
                                           <li><a href='#tabs-2'><img src="images/foodmenu/tab-icon-02.png" alt="">Lunch</a></a></li>
                                           <li><a href='#tabs-3'><img src="images/foodmenu/tab-icon-03.png" alt="">Dinner</a></a></li>
+                                          <li><a href='#tabs-4'><img src="images/foodmenu/tab-icon-03.png" alt="">Dessert</a></a></li>
+                                          <li><a href='#tabs-5'><img src="images/foodmenu/tab-icon-03.png" alt="">Drink</a></a></li>
                                         </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <section class='tabs-content'>
+
+                                <!--Main Breakfast area start (Article tabs 01)-->
                                 <article id='tabs-1'>
+                                    <h2>Available breakfast meals are showing here..</h2>
                                     <div class="row">
+
+                                        <!--Breakfast area left side start-->
                                         <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="left-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-01.png" alt="">
-                                                            <h4>Fresh Chicken Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$10.50</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-02.png" alt="">
-                                                            <h4>Orange Juice</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$8.50</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-03.png" alt="">
-                                                            <h4>Fruit Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$9.90</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
+                                                <?php
+                                                    $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='breakfast'");
+                                                    while($row=mysqli_fetch_array($Result)){
+
+                                                        $fname = $row["name"];
+                                                        $fprice = $row["price"];
+                                                        $fdescription = $row["fdescription"];
+                                                        $fimage = $row["fimage"];
+
+                                                        echo "<div class='col-lg-12'>";
+                                                        echo "<div class='tab-item'>";
+                                                            echo "<img src='$fimage'>";
+                                                            echo "<h4>$fname</h4>";
+                                                            echo "<p>$fdescription</p>";
+                                                                echo "<div class='price'>";
+                                                                    echo "<h6>LKR $fprice</h6>";
+                                                                echo "</div>";
+                                                        echo "</div>";
+                                                        echo "</div>";
+                                                
+                                                    }
+                                                ?>
+
                                                 </div>
                                             </div>
                                         </div>
+                                        <!--Breakfast area left side end-->
+
+
+                                        <!--Breakfast area right side start-->
                                         <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="right-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-04.png" alt="">
-                                                            <h4>Eggs Omelette</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$6.50</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-05.png" alt="">
-                                                            <h4>Dollma Pire</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$5.00</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-06.png" alt="">
-                                                            <h4>Omelette & Cheese</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$4.10</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
+                                                <?php
+                                                    $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='curry'");
+                                                    while($row=mysqli_fetch_array($Result)){
+
+                                                        $fname = $row["name"];
+                                                        $fprice = $row["price"];
+                                                        $fdescription = $row["fdescription"];
+                                                        $fimage = $row["fimage"];
+
+                                                        echo "<div class='col-lg-12'>";
+                                                        echo "<div class='tab-item'>";
+                                                            echo "<img src='$fimage'>";
+                                                            echo "<h4>$fname</h4>";
+                                                            echo "<p>$fdescription</p>";
+                                                                echo "<div class='price'>";
+                                                                    echo "<h6>LKR $fprice</h6>";
+                                                                echo "</div>";
+                                                        echo "</div>";
+                                                        echo "</div>";
+                                                
+                                                    }
+                                                ?>
                                                 </div>
                                             </div>
                                         </div>
+                                        <!--Breakfast area right side end-->
                                     </div>
-                                </article>  
+                                </article>
+                                <!--Main Breakfast area end (Article tabs 01)-->
+
+
+                                <!--Main Lunch area start (Article tabs 02)-->
                                 <article id='tabs-2'>
+                                    <h2>Available Lunch meals are showing here..</h2>
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="left-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-04.png" alt="">
-                                                            <h4>Eggs Omelette</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$14</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-05.png" alt="">
-                                                            <h4>Dollma Pire</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$18</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-06.png" alt="">
-                                                            <h4>Omelette & Cheese</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$22</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="right-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-01.png" alt="">
-                                                            <h4>Fresh Chicken Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$10</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-02.png" alt="">
-                                                            <h4>Orange Juice</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$20</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-03.png" alt="">
-                                                            <h4>Fruit Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$30</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                                <?php
+                                                    $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='all'");
+                                                    while($row=mysqli_fetch_array($Result)){
+
+                                                        $fname = $row["name"];
+                                                        $fprice = $row["price"];
+                                                        $fdescription = $row["fdescription"];
+                                                        $fimage = $row["fimage"];
+
+                                                        echo "<div class='col-lg-12'>";
+                                                        echo "<div class='tab-item'>";
+                                                            echo "<img src='$fimage'>";
+                                                            echo "<h4>$fname</h4>";
+                                                            echo "<p>$fdescription</p>";
+                                                                echo "<div class='price'>";
+                                                                    echo "<h6>LKR $fprice</h6>";
+                                                                echo "</div>";
+                                                        echo "</div>";
+                                                        echo "</div>";
+                                                
+                                                    }
+                                                ?>
                                     </div>
-                                </article>  
+                                </article>
+                                <!--Main Lunch area end (Article tabs 02)-->
+                                
+
+                                <!--Main Dinner area start (Article tabs 03)-->
                                 <article id='tabs-3'>
+                                    <h2>Available Dinner meals are showing here..</h2>
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="left-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-05.png" alt="">
-                                                            <h4>Eggs Omelette</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$14</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-03.png" alt="">
-                                                            <h4>Orange Juice</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$18</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-02.png" alt="">
-                                                            <h4>Fruit Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$10</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="right-list">
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-06.png" alt="">
-                                                            <h4>Fresh Chicken Salad</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$8.50</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-01.png" alt="">
-                                                            <h4>Dollma Pire</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$9</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="images/foodmenu/tab-item-04.png" alt="">
-                                                            <h4>Omelette & Cheese</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
-                                                            <div class="price">
-                                                                <h6>$11</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                                <?php
+                                                    $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='all'");
+                                                    while($row=mysqli_fetch_array($Result)){
+
+                                                        $fname = $row["name"];
+                                                        $fprice = $row["price"];
+                                                        $fdescription = $row["fdescription"];
+                                                        $fimage = $row["fimage"];
+
+                                                        echo "<div class='col-lg-12'>";
+                                                        echo "<div class='tab-item'>";
+                                                            echo "<img src='$fimage'>";
+                                                            echo "<h4>$fname</h4>";
+                                                            echo "<p>$fdescription</p>";
+                                                                echo "<div class='price'>";
+                                                                    echo "<h6>LKR $fprice</h6>";
+                                                                echo "</div>";
+                                                        echo "</div>";
+                                                        echo "</div>";
+                                                
+                                                    }
+                                                ?>
                                     </div>
-                                </article>   
+                                </article>
+                                <!--Main Dinner area end (Article tabs 03)-->
+
+
+                                <!--Main Dessert area start (Article tabs 04)-->
+                                <article id='tabs-4'>
+                                    <h2>Available Dessert are showing here..</h2>
+                                    <div class="row">
+
+                                                <?php
+                                                    $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='dessert'");
+                                                    while($row=mysqli_fetch_array($Result)){
+
+                                                        $fname = $row["name"];
+                                                        $fprice = $row["price"];
+                                                        $fdescription = $row["fdescription"];
+                                                        $fimage = $row["fimage"];
+
+                                                        echo "<div class='col-lg-12'>";
+                                                        echo "<div class='tab-item'>";
+                                                            echo "<img src='$fimage'>";
+                                                            echo "<h4>$fname</h4>";
+                                                            echo "<p>$fdescription</p>";
+                                                                echo "<div class='price'>";
+                                                                    echo "<h6>LKR $fprice</h6>";
+                                                                echo "</div>";
+                                                        echo "</div>";
+                                                        echo "</div>";
+                                                
+                                                    }
+                                                ?>
+                                    </div>
+                                </article>
+                                <!--Main Dessert area end (Article tabs 04)-->
+
+
+                                <!--Main Drink area start (Article tabs 05)-->
+                                <article id='tabs-5'>
+                                    <h2>Available Drinks are showing here..</h2>
+                                    <div class="row">
+
+                                                <?php
+                                                    $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='drink'");
+                                                    while($row=mysqli_fetch_array($Result)){
+
+                                                        $fname = $row["name"];
+                                                        $fprice = $row["price"];
+                                                        $fdescription = $row["fdescription"];
+                                                        $fimage = $row["fimage"];
+
+                                                        echo "<div class='col-lg-12'>";
+                                                        echo "<div class='tab-item'>";
+                                                            echo "<img src='$fimage'>";
+                                                            echo "<h4>$fname</h4>";
+                                                            echo "<p>$fdescription</p>";
+                                                                echo "<div class='price'>";
+                                                                    echo "<h6>LKR $fprice</h6>";
+                                                                echo "</div>";
+                                                        echo "</div>";
+                                                        echo "</div>";
+                                                
+                                                    }
+                                                ?>
+                                    </div>
+                                </article>
+                                <!--Main Drink area end (Article tabs 05)-->
+     
                             </section>
                         </div>
                     </div>

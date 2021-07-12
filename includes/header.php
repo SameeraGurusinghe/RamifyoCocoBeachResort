@@ -58,6 +58,8 @@ include_once("includes/dbconnection.php");
 						<li><a href="foodmenu.php#tabs-1">Breakfast</a></li>
 						<li><a href="foodmenu.php#tabs-2">Lunch</a></li>
 						<li><a href="foodmenu.php#tabs-3">Dinner</a></li>
+						<li><a href="foodmenu.php#tabs-4">Dessert</a></li>
+						<li><a href="foodmenu.php#tabs-5">Drink</a></li>
 				</ul>
 				</div>
 				</li>

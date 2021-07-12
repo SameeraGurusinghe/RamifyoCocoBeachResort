@@ -105,7 +105,7 @@ include_once("includes/header.php");
 			      <div class="table-responsive">
 									<h5 style="text-align: center;">ADD NEW FOOD</h5>
 
-                  <form action="controller.php" method="POST">
+                  <form action="controller.php" method="POST" enctype="multipart/form-data">
 
                       <div class="p-2">
                         <select name="ftype" class="form-control" required>
@@ -116,16 +116,36 @@ include_once("includes/header.php");
                           <option value="soup">Soup</option>
                           <option value="curry">Curry</option>
                           <option value="drink">Drink</option>
-                          <option value="dessert">Dessert</option>                      
+                          <option value="dessert">Dessert</option>
+                          <option value="various">Various</option>                    
+                        </select>
+											</div>
+
+                      <div class="p-2">
+                      <select name="mealplantype" class="form-control" required>
+                          <option selected>Select meal plan type</option>
+                          <option value="breakfast">Breakfast</option>
+                          <option value="all">Both Lunch & Dinner</option>
+                          <option value="curry">Curry</option>
+                          <option value="drink">Drink</option>
+                          <option value="dessert">Dessert</option>                    
                         </select>
 											</div>
 
 											<div class="p-2">
-                      <input type="text" name="fname" class="form-control" id="Enter FOOD Name" placeholder="Enter FOOD Name" required>
+                      <input type="text" name="fname" class="form-control" placeholder="Enter food name" required>
 											</div>
 
                       <div class="p-2">
-                      <input type="text" name="fprice" class="form-control" id="Enter FOOD Name"  placeholder="Enter FOOD price" required>
+                      <input type="text" name="fprice" class="form-control"  placeholder="Enter food price" required>
+											</div>
+
+                      <div class="p-2">
+                      <textarea type="text" name="fdescription" class="form-control"  placeholder="Enter description for the food" required></textarea>
+											</div>
+
+                      <div class="p-2">
+                      <input type="file" name="fpicture" class="form-control">
 											</div>
 
 											<div class="p-2">

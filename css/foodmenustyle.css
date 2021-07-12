@@ -112,16 +112,21 @@
   position: absolute;
   top: 15px;
   right: 0;
-  width: 70px;
+  width: 100px;
   height: 70px;
   background-color: #008c96;
   display: inline-block;
   text-align: center;
   line-height: 70px;
   border-radius: 3px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: #000;
+}
+
+.tabs-content h2{
+  text-transform: uppercase;
+  text-align: center;
 }
 /* Offers CSS End*/
 

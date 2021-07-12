@@ -88,11 +88,19 @@ if (isset($_POST['login_user'])) {
 if(isset($_POST["addfood"])){
 
     $ftype=$_POST["ftype"];
+    $mealplantype=$_POST["mealplantype"];
     $fname=$_POST["fname"];
     $fprice=$_POST["fprice"];
+    $fdescription=$_POST["fdescription"];
     $fid=0;
+
+	//Profile pic upload
+	$file = $_FILES["fpicture"]["tmp_name"];
+	$fimg = $fname;
+	$path1 = "images/food/".$fimg.".png";
+	$r = move_uploaded_file($file, $path1);
     
-    $arr=array($fid,$fname,$fprice,$ftype);
+    $arr=array($fid,$fname,$fprice,$ftype,$mealplantype,$fdescription,$path1);
 
     if($obj->save("foods",$arr)){
         echo "<script type='text/javascript'>              
