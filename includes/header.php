@@ -115,7 +115,10 @@ include_once("includes/dbconnection.php");
 		echo "<li><a href='admindashbord.php'><i class='fas fa-cogs'>&nbsp;&nbsp;Dashboard</i></a></li>";
 		}
 		elseif($utype == '2'){
-		echo "<li><a href='admindashbord.php'><i class='fas fa-cogs'>&nbsp;&nbsp;Dashboard</i></a></li>";
+		echo "<li><a href='employeedashbord.php'><i class='fas fa-cogs'>&nbsp;&nbsp;Dashboard</i></a></li>";
+		}
+		elseif($utype == '0'){
+		echo "<li><a href='UserHomePage.php'><i class='fas fa-cogs'>&nbsp;&nbsp;My Account</i></a></li>";
 		}
 	/****** Display button for access to the dashboard if usertype is 1 or 2 end ******/
 	
