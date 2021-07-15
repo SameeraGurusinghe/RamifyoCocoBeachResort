@@ -64,6 +64,12 @@ if(!isset($_SESSION['email'])){
       </li>
 
       <li>
+          <a href="contactupdate.php">
+          <i class="zmdi zmdi-calendar-check"></i> <span>Contact Info</span>
+          </a>
+      </li>
+
+      <li>
       <a href="calendar.html">
         <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
       </a>

@@ -76,6 +76,7 @@ include_once("includes/header.php");
                                                     $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='breakfast'");
                                                     while($row=mysqli_fetch_array($Result)){
 
+                                                        $id = $row['foodid'];
                                                         $fname = $row["name"];
                                                         $fprice = $row["price"];
                                                         $fdescription = $row["fdescription"];
@@ -89,6 +90,14 @@ include_once("includes/header.php");
                                                                 echo "<div class='price'>";
                                                                     echo "<h6>LKR $fprice</h6>";
                                                                 echo "</div>";
+                                                    ?>
+
+                                                        <form method="GET">
+                                                        <input type="hidden" value="<?php echo $id; ?>">
+                                                        <button type="submit" class="orderBtn" name="foodid">Order</button>
+                                                        </form>
+                                                    <?php
+                                                                
                                                         echo "</div>";
                                                         echo "</div>";
                                                 
@@ -110,6 +119,7 @@ include_once("includes/header.php");
                                                     $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='curry'");
                                                     while($row=mysqli_fetch_array($Result)){
 
+                                                        $id = $row['foodid'];
                                                         $fname = $row["name"];
                                                         $fprice = $row["price"];
                                                         $fdescription = $row["fdescription"];
@@ -123,6 +133,14 @@ include_once("includes/header.php");
                                                                 echo "<div class='price'>";
                                                                     echo "<h6>LKR $fprice</h6>";
                                                                 echo "</div>";
+                                                        ?>
+
+                                                        <form method="GET">
+                                                        <input type="hidden" value="<?php echo $id; ?>">
+                                                        <button type="submit" class="orderBtn" name="foodid">Order</button>
+                                                        </form>
+
+                                                        <?php
                                                         echo "</div>";
                                                         echo "</div>";
                                                 
@@ -146,6 +164,7 @@ include_once("includes/header.php");
                                                     $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='all'");
                                                     while($row=mysqli_fetch_array($Result)){
 
+                                                        $id = $row['foodid'];
                                                         $fname = $row["name"];
                                                         $fprice = $row["price"];
                                                         $fdescription = $row["fdescription"];
@@ -153,12 +172,19 @@ include_once("includes/header.php");
 
                                                         echo "<div class='col-lg-12'>";
                                                         echo "<div class='tab-item'>";
-                                                            echo "<img src='$fimage'>";
-                                                            echo "<h4>$fname</h4>";
-                                                            echo "<p>$fdescription</p>";
-                                                                echo "<div class='price'>";
-                                                                    echo "<h6>LKR $fprice</h6>";
-                                                                echo "</div>";
+                                                        echo "<img src='$fimage'>";
+                                                        echo "<h4>$fname</h4>";
+                                                        echo "<p>$fdescription</p>";
+                                                        echo "<div class='price'>";
+                                                        echo "<h6>LKR $fprice</h6>";
+                                                        echo "</div>";
+                                                ?>
+
+                                                        <form method="GET">
+                                                        <input type="hidden" value="<?php echo $id; ?>">
+                                                        <button type="submit" class="orderBtn" name="foodid">Order</button>
+                                                        </form>
+                                                <?php
                                                         echo "</div>";
                                                         echo "</div>";
                                                 
@@ -175,9 +201,10 @@ include_once("includes/header.php");
                                     <div class="row">
 
                                                 <?php
-                                                    $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='all'");
+                                                    $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='all' OR mealplantype='dinner'");
                                                     while($row=mysqli_fetch_array($Result)){
 
+                                                        $id = $row['foodid'];
                                                         $fname = $row["name"];
                                                         $fprice = $row["price"];
                                                         $fdescription = $row["fdescription"];
@@ -191,6 +218,13 @@ include_once("includes/header.php");
                                                                 echo "<div class='price'>";
                                                                     echo "<h6>LKR $fprice</h6>";
                                                                 echo "</div>";
+                                                ?>
+
+                                                        <form method="GET">
+                                                        <input type="hidden" value="<?php echo $id; ?>">
+                                                        <button type="submit" class="orderBtn" name="foodid">Order</button>
+                                                        </form>
+                                                <?php
                                                         echo "</div>";
                                                         echo "</div>";
                                                 
@@ -210,6 +244,7 @@ include_once("includes/header.php");
                                                     $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='dessert'");
                                                     while($row=mysqli_fetch_array($Result)){
 
+                                                        $id = $row['foodid'];
                                                         $fname = $row["name"];
                                                         $fprice = $row["price"];
                                                         $fdescription = $row["fdescription"];
@@ -223,6 +258,13 @@ include_once("includes/header.php");
                                                                 echo "<div class='price'>";
                                                                     echo "<h6>LKR $fprice</h6>";
                                                                 echo "</div>";
+                                                ?>
+
+                                                    <form method="GET">
+                                                    <input type="hidden" value="<?php echo $id; ?>">
+                                                    <button type="submit" class="orderBtn" name="foodid">Order</button>
+                                                    </form>
+                                                <?php
                                                         echo "</div>";
                                                         echo "</div>";
                                                 
@@ -242,6 +284,7 @@ include_once("includes/header.php");
                                                     $Result = mysqli_query($db,"SELECT * FROM foods WHERE mealplantype='drink'");
                                                     while($row=mysqli_fetch_array($Result)){
 
+                                                        $id = $row['foodid'];
                                                         $fname = $row["name"];
                                                         $fprice = $row["price"];
                                                         $fdescription = $row["fdescription"];
@@ -255,6 +298,13 @@ include_once("includes/header.php");
                                                                 echo "<div class='price'>";
                                                                     echo "<h6>LKR $fprice</h6>";
                                                                 echo "</div>";
+                                                ?>
+
+                                                    <form method="GET">
+                                                    <input type="hidden" value="<?php echo $id; ?>">
+                                                    <button type="submit" class="orderBtn" name="foodid">Order</button>
+                                                    </form>
+                                                <?php
                                                         echo "</div>";
                                                         echo "</div>";
                                                 

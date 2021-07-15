@@ -53,7 +53,7 @@ if(!isset($_SESSION['email'])){
 
       <li>
         <a href="foodgallery.php">
-        <i class="maki fast-food"></i> <span>Food Gallery</span>
+        <i class="zmdi zmdi-view-dashboard"></i> <span>Food Gallery</span>
         </a>
       </li>
     
@@ -61,6 +61,12 @@ if(!isset($_SESSION['email'])){
         <a href="News & Feedback.php">
         <i class="zmdi zmdi-calendar-check"></i> <span>News & Feedback</span>
         </a>
+      </li>
+
+      <li>
+          <a href="contactupdate.php">
+          <i class="zmdi zmdi-calendar-check"></i> <span>Contact Info</span>
+          </a>
       </li>
 
       <li>
