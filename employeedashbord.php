@@ -6,7 +6,8 @@ if(!isset($_SESSION['email'])){
 }
 ?>
 <!--Session end-->
-
+<!--database connection-->
+<?php include_once("includes/dbconnection.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +15,17 @@ if(!isset($_SESSION['email'])){
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/index.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial" rel="stylesheet" />
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <meta name="description" content=""/>
   <meta name="author" content=""/>
   <title>Employee Dashboard</title>
@@ -81,8 +93,114 @@ if(!isset($_SESSION['email'])){
   <div class="container-fluid">
 
 <!--employee content code design start-->
-***********************************
+<!--*****************-->
+<div class="col d-flex justify-content-center">
+<div class="col-md-8">
+  <br>
+<h3 style="text-align: center;"><b>CHECK CUSTOMER BILL </b></h3>
+<hr>
+
+	<div class="card-Secondary" style="align: center;">
+		<div class="card bg-dark">
+			<div class="card-body text-center">
+			
+			<form method="post" enctype="multipart/form-data">	
+				<div class="form-group">
+					<div class="col-md-12">
+						<input type="text" class="form-control" name="un" placeholder="Enter Ccstomer Email.." style="text-align: center;" required><br>
+						
+					</div>
+				</div>
+
+					<div class="p-2">
+						<button type="reset" class="btn btn-warning btn-sm" style="width: 110px; float: center;"><b>CLEAR</b></button>
+						<button type="submit" class="btn btn-success btn-sm" name="checkstatus" style="width:  110px; float: center;"><b>PROCEED</b></button>
+					</div>
+			</form>
+			</div></div></div> <br></div>
+    </div>
+
+
+
+
+            
+
 <!--employee content code design end-->
+<br>
+<div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <h5 class="card-title text-center">Summery of Serviceses</h5>
+
+              <table class="table table-sm">
+                <thead>
+                    <tr>
+                      <th scope="col">FOOD Name</th>
+                      <th scope="col">price of Food </th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Total Price of Food Charge </th>
+                      <th scope="col">Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+
+                    <?php
+$Totalbill=0;
+           if(isset($_POST["checkstatus"])){
+           $mail = $_POST["un"];
+
+                    
+                    $tobill=0;
+                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$mail'");
+                      while($row=mysqli_fetch_array($Result)){
+                      $fname = $row["foodname"];
+                      $fprice = $row["price"];
+                      $foodamount = $row["amount"];
+                      $fooddate = $row["date"];  
+                    ?> 
+
+                     
+                      <td><?php echo " $fname";?> </td>
+                      <td><?php echo " $fprice";?> </td>
+                      <td><?php echo " $foodamount";?> </td>
+                      <td>
+                          <?php 
+                      
+                      $tobill=$fprice*$foodamount;
+                      $Totalbill=$Totalbill+$tobill;
+
+
+                      echo "Rs $tobill/=";?> </td>
+
+
+                      <td><?php echo "$fooddate";?> </td>
+      
+                  </tr>
+
+                    <?php 
+                    }
+                  }
+                    ?> 
+                    
+                </tbody>
+              
+              </table>
+              <hr>
+              <h5 class="card-title text-center">  Active Total Charges <?php  echo "Rs $Totalbill /=";?></h5>
+             
+             <hr>
+            </div></div>
+          </div>
+        </div>
+      </div>
+      <!--Noodles menu area end-->    
+      </div>
+    
+      </div>
 
 	
 	
