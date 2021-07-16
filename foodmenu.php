@@ -17,9 +17,21 @@ include_once("includes/dbconnection.php");
 	<title>Main Food Menu</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/foodmenustyle.css">
+
+<script>
+function clicked(e)
+{
+    if(!confirm('Please conform your food order.\nOnce ordered, you will not be able to change this order')) {
+        e.preventDefault();
+    }
+}
+</script>
+
 </head>
 
 <body>
@@ -64,7 +76,7 @@ include_once("includes/header.php");
 
                                 <!--Main Breakfast area start (Article tabs 01)-->
                                 <article id='tabs-1'>
-                                    <h2>Available breakfast meals are showing here..</h2>
+                                    <h2>Available breakfast meals are showing here..</h2><br>
                                     <div class="row">
 
                                         <!--Breakfast area left side start-->
@@ -90,19 +102,32 @@ include_once("includes/header.php");
                                                                 echo "<div class='price'>";
                                                                     echo "<h6>LKR $fprice</h6>";
                                                                 echo "</div>";
-                                                    ?>
+                                                    
+                                                        echo "<form action='action_pages/orderaction.php' method='post'>";
+                                                        if(isset($_SESSION['email'])){
+                                                            $ee = $_SESSION['email'];
+                                                        echo "<input type='hidden' name='emailid' value='$ee'>";
+                                                        }
+                                                        echo "<input type='hidden' name='fid' value='$id'>";
+                                                        echo "<input type='hidden' name='fname' value='$fname'>";
+                                                        echo "<input type='hidden' name='fprice' value='$fprice'>";
+                                                        if(isset($_SESSION['email'])){
+                                                        echo "Enter amount: <input type='number' class='col-sm-1' name='mealcount' value='1'>";
+                                                        echo "<br>";
+                                                        echo "<button type='submit' onclick='clicked(event)' class='btn btn-success' style='float: right;'>Place a Order</button>";
+                                                        }
+                                                        if(!isset($_SESSION['email'])){
+                                                        echo "<div class='pleaselog'>";
+                                                            echo "<h6>To order meals you must <a href='Login.php'>Log In</a> to your account.</h6>";
+                                                        echo "</div>";
+                                                        }
+                                                        echo "</form>";
 
-                                                        <form method="GET">
-                                                        <input type="hidden" value="<?php echo $id; ?>">
-                                                        <button type="submit" class="orderBtn" name="foodid">Order</button>
-                                                        </form>
-                                                    <?php
-                                                                
                                                         echo "</div>";
                                                         echo "</div>";
-                                                
+                                                        echo "<hr>";
                                                     }
-                                                ?>
+                                                    ?>
 
                                                 </div>
                                             </div>
@@ -133,19 +158,24 @@ include_once("includes/header.php");
                                                                 echo "<div class='price'>";
                                                                     echo "<h6>LKR $fprice</h6>";
                                                                 echo "</div>";
+
+                                                        echo "<form action='action_pages/orderaction.php' method='post'>";
                                                         ?>
-
-                                                        <form method="GET">
-                                                        <input type="hidden" value="<?php echo $id; ?>">
-                                                        <button type="submit" class="orderBtn" name="foodid">Order</button>
-                                                        </form>
-
+                                                        <input type="hidden" name="emailid" value="<?php echo $_SESSION['email']; ?>">
                                                         <?php
+                                                        echo "<input type='hidden' name='fid' value='$id'>";
+                                                        echo "<input type='hidden' name='fname' value='$fname'>";
+                                                        echo "<input type='hidden' name='fprice' value='$fprice'>";
+                                                        echo "Enter amount: <input type='number' class='col-sm-1' name='mealcount' value='1'>";
+                                                        echo "<br>";
+                                                        echo "<button type='submit' onclick='clicked(event)' class='btn btn-success' style='float: right;'>Place a Order</button>";
+                                                        echo "</form>";
+
                                                         echo "</div>";
                                                         echo "</div>";
-                                                
+                                                        echo "<hr>";
                                                     }
-                                                ?>
+                                                    ?>                                                             
                                                 </div>
                                             </div>
                                         </div>
@@ -172,24 +202,31 @@ include_once("includes/header.php");
 
                                                         echo "<div class='col-lg-12'>";
                                                         echo "<div class='tab-item'>";
-                                                        echo "<img src='$fimage'>";
-                                                        echo "<h4>$fname</h4>";
-                                                        echo "<p>$fdescription</p>";
-                                                        echo "<div class='price'>";
-                                                        echo "<h6>LKR $fprice</h6>";
-                                                        echo "</div>";
-                                                ?>
+                                                            echo "<img src='$fimage'>";
+                                                            echo "<h4>$fname</h4>";
+                                                            echo "<p>$fdescription</p>";
+                                                                echo "<div class='price'>";
+                                                                    echo "<h6>LKR $fprice</h6>";
+                                                                echo "</div>";
 
-                                                        <form method="GET">
-                                                        <input type="hidden" value="<?php echo $id; ?>">
-                                                        <button type="submit" class="orderBtn" name="foodid">Order</button>
-                                                        </form>
-                                                <?php
+                                                        echo "<form action='action_pages/orderaction.php' method='post'>";
+                                                        ?>
+                                                        <input type="hidden" name="emailid" value="<?php echo $_SESSION['email']; ?>">
+                                                        <?php
+                                                        echo "<input type='hidden' name='fid' value='$id'>";
+                                                        echo "<input type='hidden' name='fname' value='$fname'>";
+                                                        echo "<input type='hidden' name='fprice' value='$fprice'>";
+                                                        echo "Enter amount: <input type='number' class='col-sm-1' name='mealcount' value='1'>";
+                                                        echo "<br>";
+
+                                                        echo "<button type='submit' onclick='clicked(event)' class='btn btn-success' style='float: right;'>Place a Order</button>";
+                                                        echo "</form>";
+
                                                         echo "</div>";
                                                         echo "</div>";
-                                                
+                                                        echo "<hr>";
                                                     }
-                                                ?>
+                                                    ?>
                                     </div>
                                 </article>
                                 <!--Main Lunch area end (Article tabs 02)-->
@@ -218,18 +255,24 @@ include_once("includes/header.php");
                                                                 echo "<div class='price'>";
                                                                     echo "<h6>LKR $fprice</h6>";
                                                                 echo "</div>";
-                                                ?>
 
-                                                        <form method="GET">
-                                                        <input type="hidden" value="<?php echo $id; ?>">
-                                                        <button type="submit" class="orderBtn" name="foodid">Order</button>
-                                                        </form>
-                                                <?php
+                                                        echo "<form action='action_pages/orderaction.php' method='post'>";
+                                                        ?>
+                                                        <input type="hidden" name="emailid" value="<?php echo $_SESSION['email']; ?>">
+                                                        <?php
+                                                        echo "<input type='hidden' name='fid' value='$id'>";
+                                                        echo "<input type='hidden' name='fname' value='$fname'>";
+                                                        echo "<input type='hidden' name='fprice' value='$fprice'>";
+                                                        echo "Enter amount: <input type='number' class='col-sm-1' name='mealcount' value='1'>";
+                                                        echo "<br>";
+                                                        echo "<button type='submit' onclick='clicked(event)' class='btn btn-success' style='float: right;'>Place a Order</button>";
+                                                        echo "</form>";
+
                                                         echo "</div>";
                                                         echo "</div>";
-                                                
+                                                        echo "<hr>";
                                                     }
-                                                ?>
+                                                    ?>
                                     </div>
                                 </article>
                                 <!--Main Dinner area end (Article tabs 03)-->
@@ -258,18 +301,24 @@ include_once("includes/header.php");
                                                                 echo "<div class='price'>";
                                                                     echo "<h6>LKR $fprice</h6>";
                                                                 echo "</div>";
-                                                ?>
 
-                                                    <form method="GET">
-                                                    <input type="hidden" value="<?php echo $id; ?>">
-                                                    <button type="submit" class="orderBtn" name="foodid">Order</button>
-                                                    </form>
-                                                <?php
+                                                        echo "<form action='action_pages/orderaction.php' method='post'>";
+                                                        ?>
+                                                        <input type="hidden" name="emailid" value="<?php echo $_SESSION['email']; ?>">
+                                                        <?php
+                                                        echo "<input type='hidden' name='fid' value='$id'>";
+                                                        echo "<input type='hidden' name='fname' value='$fname'>";
+                                                        echo "<input type='hidden' name='fprice' value='$fprice'>";
+                                                        echo "Enter amount: <input type='number' class='col-sm-1' name='mealcount' value='1'>";
+                                                        echo "<br>";
+                                                        echo "<button type='submit' onclick='clicked(event)' class='btn btn-success' style='float: right;'>Place a Order</button>";
+                                                        echo "</form>";
+
                                                         echo "</div>";
                                                         echo "</div>";
-                                                
+                                                        echo "<hr>";
                                                     }
-                                                ?>
+                                                    ?>
                                     </div>
                                 </article>
                                 <!--Main Dessert area end (Article tabs 04)-->
@@ -298,18 +347,24 @@ include_once("includes/header.php");
                                                                 echo "<div class='price'>";
                                                                     echo "<h6>LKR $fprice</h6>";
                                                                 echo "</div>";
-                                                ?>
+                                                                
+                                                        echo "<form action='action_pages/orderaction.php' method='post'>";
+                                                        ?>
+                                                        <input type="hidden" name="emailid" value="<?php echo $_SESSION['email']; ?>">
+                                                        <?php
+                                                        echo "<input type='hidden' name='fid' value='$id'>";
+                                                        echo "<input type='hidden' name='fname' value='$fname'>";
+                                                        echo "<input type='hidden' name='fprice' value='$fprice'>";
+                                                        echo "Enter amount: <input type='number' class='col-sm-1' name='mealcount' value='1'>";
+                                                        echo "<br>";
+                                                        echo "<button type='submit' onclick='clicked(event)' class='btn btn-success' style='float: right;'>Place a Order</button>";
+                                                        echo "</form>";
 
-                                                    <form method="GET">
-                                                    <input type="hidden" value="<?php echo $id; ?>">
-                                                    <button type="submit" class="orderBtn" name="foodid">Order</button>
-                                                    </form>
-                                                <?php
                                                         echo "</div>";
                                                         echo "</div>";
-                                                
+                                                        echo "<hr>";
                                                     }
-                                                ?>
+                                                    ?>
                                     </div>
                                 </article>
                                 <!--Main Drink area end (Article tabs 05)-->

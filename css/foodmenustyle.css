@@ -128,6 +128,12 @@
   text-transform: uppercase;
   text-align: center;
 }
+
+#offers .tabs-content .pleaselog h6{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  color: rgb(236, 40, 14);
+}
 /* Offers CSS End*/
 
 

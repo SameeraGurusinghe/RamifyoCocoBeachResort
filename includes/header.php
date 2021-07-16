@@ -2,16 +2,11 @@
 date_default_timezone_set('Asia/Colombo');
 include_once("includes/dbconnection.php");
 ?>
-  	
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+
 
 <!--**********script for chat box strat***********-->
   <script type="text/javascript">
@@ -20,10 +15,6 @@ include_once("includes/dbconnection.php");
       }
   </script>
 <!--***********script for chat box end***********-->
-
-</head>
-
-<body>
 
 <div class="menu-bar">
 
@@ -37,7 +28,7 @@ include_once("includes/dbconnection.php");
 
 <!--== Ramifyo header button design start ==-->
 <ul>
-	<li class="*active"><a href="Home.php"><i class="fas fa-home">&nbsp;&nbsp;Home</i></a></li>
+	<li><a href="Home.php"><i class="fas fa-home">&nbsp;&nbsp;Home</i></a></li>
 	<li><a href="#"><i class="fas fa-info">&nbsp;&nbsp;About Us</i></a>
 	<div class="sub-menu-1">
 		<ul>
@@ -138,8 +129,8 @@ include_once("includes/dbconnection.php");
 <!--== Ramifyo header button design end ==-->
 </div>
 
-<!-- The Modal -->
-<div id="RamifyoModalBox" class="modal">
+<!-- The cocoModal -->
+<div id="RamifyoModalBox" class="cocomodal">
 
 <!--header include start-->
 <?php
@@ -148,29 +139,29 @@ include_once("includes/ourstorybox.php");
 <!--header include end-->
 
 <script>
-// Get the modal
-var modal = document.getElementById("RamifyoModalBox");
+// Get the cocomodal
+var cocomodal = document.getElementById("RamifyoModalBox");
 
-// Get the button that opens the modal
+// Get the button that opens the cocomodal
 var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
+// Get the <span> element that closes the cocomodal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
+// When the user clicks the button, open the cocomodal 
 btn.onclick = function() {
-  modal.style.display = "block";
+  cocomodal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
+// When the user clicks on <span> (x), close the cocomodal
 span.onclick = function() {
-  modal.style.display = "none";
+  cocomodal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
+// When the user clicks anywhere outside of the cocomodal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == cocomodal) {
+    cocomodal.style.display = "none";
   }
 }
 </script>
