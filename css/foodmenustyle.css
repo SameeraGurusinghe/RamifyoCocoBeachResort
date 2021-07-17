@@ -129,11 +129,26 @@
   text-align: center;
 }
 
+/*food menu style start*/
 #offers .tabs-content .pleaselog h6{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-weight: bold;
+  font-size: 14px;
   color: rgb(236, 40, 14);
 }
+#offers .tabs-content .pleaselog h6 i{
+  color: #000;
+}
+
+#offers .tabs-content .buttonart button{
+  box-shadow: 0 0 15px 15px #09cf1360;
+  background: linear-gradient(to right, #18b339,#1c660d);
+}
+#offers .tabs-content p {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 100;
+}
+/*food menu style end*/
+
 /* Offers CSS End*/
 
 

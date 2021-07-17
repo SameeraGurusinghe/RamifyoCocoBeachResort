@@ -1,12 +1,12 @@
 
-*{
+/**{
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
 body{
 	background-size: cover;
-}
+}*/
 
 /******Header start******/
 #ramifyotitle{
@@ -172,6 +172,12 @@ body{
 .forgot-pass{
 	text-align: center;
 	font-size: 13px;
+}
+.term{
+	font-size: 13px;
+}
+.term a{
+	color: rgb(8, 47, 221);
 }
 #login{
 	left: 80px;

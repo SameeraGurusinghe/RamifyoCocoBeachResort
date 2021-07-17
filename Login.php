@@ -160,7 +160,7 @@ include_once("includes/header.php");
     <input type="number" class="input-field" name="phoneno" placeholder="Phone Number">
 		<input type="email" class="input-field" id="email" name="email" placeholder="Email" onBlur="checkAvailability()">
 		<input type="password" class="input-field" id="password" name="password" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-		<input type="checkbox" required>&nbsp;&nbsp;&nbsp;<lable style="font-size: 12px;">I agree to terms & conditions</lable>
+		<p class='term'><input type="checkbox" required>&nbsp;&nbsp;&nbsp;I agree to <a href="termsandcondition.php" target="_blank">terms & conditions</a></p>
 		<button type="submit" class="submit-btn" name="reg_user">Register</button><br>
 		
 		<!--Display user availability message start-->
