@@ -76,12 +76,17 @@ include_once("includes/header.php");
                         <?php
                         if(!isset($_SESSION['email'])){
                         echo "<div class='alert alert-info text-center' role='alert'>";
-                        echo "<h5>It seems you aren't log in...</h5>";
-                        echo "<h6>Notice: To order meals you must <a href='Login.php'>Log In</a> to your account.</h6>";
-                        echo "<p>Meal Order button will be desabled untill you log into your account.</p>";
+                        echo "<h6>Notice: You are not log In. To order meals you must <a href='Login.php'>Log In</a> to your account.</h6>";
                         echo "</div>";
                         }
+                        if(isset($_SESSION['email'])){
+                            include_once("rating/index.php");
+                            echo "<div class='alert alert-info text-center' role='alert'>";
+                            echo "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>Rate Meals</button>";
+                            echo "</div>";
+                            }
                         ?>
+                            
                             <section class='tabs-content'>
 
                                 <!--Main Breakfast area start (Article tabs 01)-->
@@ -210,6 +215,7 @@ include_once("includes/header.php");
 include_once("includes/footer.php");
 ?>
 <!--footer end-->
-	
+
+
 </body>
 </html>

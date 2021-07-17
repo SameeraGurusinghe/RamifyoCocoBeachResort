@@ -1,11 +1,11 @@
 /* Offers CSS Start*/
 
 #offers {
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
 #offers .section-heading {
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 
 #offers .section-heading h6 {
@@ -69,7 +69,7 @@
 }
 
 #offers .tabs-content {
-  margin-top: 60px;
+  margin-top: 10px;
   text-align: left;
   display: inline-block;
   transition: all 0.3s;
