@@ -26,7 +26,7 @@ include_once("includes/dbconnection.php");
 <script>
 function clicked(e)
 {
-    if(!confirm('Please conform your food order.\nOnce ordered, you will not be able to change this order')) {
+    if(!confirm('Please confirm your food order.\nOnce ordered, you will not be able to change this order')) {
         e.preventDefault();
     }
 }

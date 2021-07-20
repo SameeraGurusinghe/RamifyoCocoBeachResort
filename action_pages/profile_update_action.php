@@ -21,9 +21,11 @@ if(!isset($_SESSION['email'])){
 
 <?php
 include_once("../includes/dbconnection.php");
-	    if (isset($_SESSION['email'])) {
-			$useremail = $_SESSION['email'];
-		}
+
+if (isset($_SESSION['email'])) {
+	$useremail = $_SESSION['email'];
+}
+	if (isset($_POST['profileup'])) {
 
         $fullname = $_POST["fullname"];
         $street = $_POST["street"];
@@ -60,5 +62,7 @@ include_once("../includes/dbconnection.php");
 							});
     						</script>";
 							}
+						
+	}
 									
 ?>

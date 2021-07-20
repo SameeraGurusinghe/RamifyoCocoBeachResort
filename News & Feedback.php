@@ -134,9 +134,12 @@ include_once("includes/header.php");
               </div>
 									
 							<div class="p-2">
-								<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addnews">PUBLISH</button>
+                <!--<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addnews">PUBLISH</button>-->
+								<button type="button" class="btn btn-success btn-sm" style="width: 80px; float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdropForNewsFeedback">PUBLISH</button>
 								<button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;">CLEAR</button>									    
               </div>
+
+              <?php include_once("infobox/newsfeedbackupdateinfobox.php"); ?>
                         
             </form>
 
@@ -214,7 +217,7 @@ include_once("includes/header.php");
 
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/plugins/simplebar/js/simplebar.js"></script>
   <script src="assets/js/sidebar-menu.js"></script>
   <script src="assets/js/app-script.js"></script>

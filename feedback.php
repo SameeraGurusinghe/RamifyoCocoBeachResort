@@ -14,7 +14,7 @@ if(!isset($_SESSION['email'])){
         <title>Feedback & Inquire</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
 		<link href="css/style.css" type="text/css" rel="stylesheet">
     </head>
 
@@ -49,7 +49,7 @@ include_once("includes/header.php");
         </div>
 
         <div class="col-sm-7 text-center">
-            <h3>Leave You feedback or Inquire Here</h3>
+            <h3>Leave You Feedback or Inquire Here</h3>
 
             <form action="controller.php" method="POST">
 
@@ -66,8 +66,8 @@ include_once("includes/header.php");
             </div><br>
 
             <div class="feedback-send-us">
-                <button type="reset" class="feedback-clear">Clear</button>
-                <button type="submit" class="feedback-submit" name="sendfeedback">Submit</button>
+                <button type="reset" class="btn btn-warning btn-sm" style="width:70px;">CLEAR</button>
+                <button type="submit" class="btn btn-success btn-sm" style="width:70px;" name="sendfeedback">SUBMIT</button>
             </div>
 
             </form><br>

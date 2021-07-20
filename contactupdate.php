@@ -128,37 +128,40 @@ include_once("includes/header.php");
                           <div class="col-lg-10 text-center">
                             <input class="form-control"  type="text" value="<?php echo "$phoneno"; ?>" name="phoneno">
                           </div>
-                      </div>
+                      </div><br>
 
                       <div class="form-group row">
                         <label class="col-lg-2 col-form-label form-control-label">Email</label>
                           <div class="col-lg-10 text-center">
                             <input class="form-control"  type="text" value="<?php echo "$email"; ?>" name="email">
                           </div>
-                      </div>
+                      </div><br>
 
                       <div class="form-group row">
                         <label class="col-lg-2 col-form-label form-control-label">Address</label>
                           <div class="col-lg-10 text-center">
                             <input class="form-control"  type="text" value="<?php echo "$address"; ?>" name="address">
                           </div>
-                      </div>
+                      </div><br>
 
                       <div class="form-group row">
                         <label class="col-lg-2 col-form-label form-control-label">Website</label>
                           <div class="col-lg-10 text-center">
                             <input class="form-control"  type="text" value="<?php echo "$website"; ?>" name="website">
                           </div>
-                      </div>
+                      </div><br>
 
 											<div class="p-2">
-											<button type="submit" name="contact_update" class="btn btn-success btn-sm" style="width: 80px; float: right;">UPDATE</button>
+                      <!--<button type="submit" name="contact_update" class="btn btn-success btn-sm" style="width: 80px; float: right;">UPDATE</button>-->
+											<button type="button" class="btn btn-success btn-sm" style="width: 80px; float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdropForContact">UPDATE</button>
                       <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;">RESET</button>
 											</div>
                       
                       <?php 
-                        }
+                      }
                       ?>
+
+                      <?php include_once("infobox/contactupdateinfobox.php"); ?>
 
 									</form>
 						</div>
@@ -184,7 +187,7 @@ include_once("includes/header.php");
 
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/plugins/simplebar/js/simplebar.js"></script>
   <script src="assets/js/sidebar-menu.js"></script>
   <script src="assets/js/app-script.js"></script>

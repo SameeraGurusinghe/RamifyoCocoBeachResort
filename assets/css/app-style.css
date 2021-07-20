@@ -432,7 +432,7 @@ hr {
   
 }
 
-/* SearachBar */
+/* SearachBar
 .search-bar{
 	margin-left: 20px;
 	position: relative;
@@ -452,7 +452,7 @@ hr {
 .search-bar input::placeholder {
     color: #fff !important;
     font-size: 13px;
-    opacity: .5 !important; /* Firefox */
+    opacity: .5 !important;
 }
 
 
@@ -468,7 +468,7 @@ hr {
     right: 15px;
     color: #fff;
 	 font-size: 16px;
-}
+}*/
 .product-img {
     height: 32px;
 }

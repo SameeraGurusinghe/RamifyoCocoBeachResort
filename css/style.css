@@ -559,24 +559,6 @@ body{
 	width: 450px;
 	margin-bottom: 20px;
 }
-
-.feedback-clear{
-	color: #000;
-	background-color: #e99502;
-	width: 60px;
-	height: 30px;
-	border-radius: 10%;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.feedback-submit{
-	color: #000;
-	background-color: #038717;
-	width: 60px;
-	height: 30px;
-	border-radius: 10%;
-}
 /* Feedback page CSS end */
 
 /* News page CSS start */

@@ -68,73 +68,75 @@ include_once("includes/header.php");
                     <div class="col-lg-9 text-center">
                       <input class="form-control"  type="text" value="<?php echo "$fullname"; ?>" name="fullname">
                     </div>
-                </div>
+                </div><br>
 
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Email</label>
                     <div class="col-lg-9 text-center">
                       <input class="form-control"  type="text" readonly value="<?php echo "$email"; ?>" name="email">
                     </div>
-                </div>
+                </div><br>
 
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Change profile</label>
                     <div class="col-lg-9">
                       <input class="form-control" type="file" value="" name="profilepic">
                     </div>
-                </div>
+                </div><br>
                         
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Address</label>
                     <div class="col-lg-9">
                       <input class="form-control" type="text" value="<?php echo "$streete"; ?>" placeholder="Street" name="street">
                     </div>
-                </div>
+                </div><br>
 
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label"></label>
                     <div class="col-lg-6">
                       <input class="form-control" type="text" value="<?php echo "$city"; ?>" placeholder="City" name="city">
                     </div>
-                <div class="col-lg-3">
-
+                    <div class="col-lg-3">
                       <input class="form-control" type="text" value="<?php echo "$state"; ?>" placeholder="State" name="state">
                     </div>
-                </div>
+                </div><br>
 
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">NIC</label>
                     <div class="col-lg-9">
                       <input class="form-control" type="text" readonly value="<?php echo "$nic"; ?>" name="nic">
                     </div>
-                </div>
+                </div><br>
                        
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Phone Number</label>
                     <div class="col-lg-9">
                       <input class="form-control" type="text" value="<?php echo "$phoneno"; ?>" name="tp">
                     </div>
-                </div>
+                </div><br>
 
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Password</label>
                     <div class="col-lg-9">
                       <input class="form-control" type="password" name="password" required>
                     </div>
-                </div>
+                </div><br>
 
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label"></label>
-                    <div class="col-lg-9">   
-                      <button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;"><b>UPDATE</b></button>&nbsp;
+                    <div class="col-lg-9">
+                      <!--<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;"><b>UPDATE</b></button>&nbsp;-->
+                      <button type="button" class="btn btn-success btn-sm" style="width: 80px; float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdropForProfile"><b>UPDATE</b></button>&nbsp;
 									    <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;"><b>CLEAR</b></button>
                     </div>
                 </div>
-
+                
                 <?php 
-                        }
-                  ?> 
+                }
+                ?> 
 
+                <?php include_once("infobox/profileupdateinfobox.php"); ?>
+                
               </form>
 
             </div>
@@ -152,7 +154,7 @@ include_once("includes/header.php");
 
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/plugins/simplebar/js/simplebar.js"></script>
   <script src="assets/js/sidebar-menu.js"></script>
   <script src="assets/js/app-script.js"></script>

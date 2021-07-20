@@ -156,39 +156,11 @@ include_once("includes/header.php");
 											</div>
 
 											<div class="p-2">
-											<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addfood">ADD</button>
+                      <!--<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addfood">ADD</button>-->
+											<button type="button" class="btn btn-success btn-sm" style="width: 80px; float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdropForAdd">ADD</button>
                       <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;">RESET</button>
 											</div>
-
-											<?php
-										/*	if(isset($_POST["addpro"])){
-											$restype = $_POST["ftype"];
-											$resname = $_POST["fname"];
-                      $resprice = $_POST["fprice"];
-
-											$Result = mysqli_query($db,"INSERT INTO foods (name,price,ftype) VALUES('$resname','$resprice','$restype')");
-											if($Result){
-
-												echo "<script type='text/javascript'>
-		                
-												swal({ title: 'SUCCESS',text: 'Food has been added!',icon: 'success',timer: 000}).then(okay => {
-												if (okay) {
-		    									window.location.href = 'foodgallery.php';}
-												});
-		    									</script>";
-											}
-											
-											else{
-												echo "<script type='text/javascript'>
-		                
-												swal({ title: 'ERROR',text: 'Food added failed!',icon: 'error',timer: 4000}).then(okay => {
-												if (okay) {
-		    									window.location.href = 'foodgallery.php';}
-												});
-		    									</script>";
-												}
-											}*/
-											?>
+                      <?php include("infobox/addfoodinfobox.php"); ?>
 												
 									  </form>
 						</div>
@@ -208,7 +180,7 @@ include_once("includes/header.php");
 								<form method="post">
 											
                   <div class="p-2">
-										<select class="browser-default custom-select" name="fids">
+										<select class="form-control" name="fids">
 											<option selected>Select Food Name</option>
 											<option> 
 
@@ -228,9 +200,11 @@ include_once("includes/header.php");
 									</div>
 
 									<div class="p-2">
-										<button type="submit" class="btn btn-danger btn-sm" name="delid" style="width: 80px; float: right;">DELETE</button>
+                  <!--<button type="submit" class="btn btn-danger btn-sm" name="delid" style="width: 80px; float: right;">DELETE</button>-->
+										<button type="button" class="btn btn-danger btn-sm" style="width: 80px; float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdropForDelete">DELETE</button>
                     <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;"><b>RESET</b></button>
                   </div>
+                  <?php include("infobox/deletefoodinfobox.php"); ?>
 
 											<?php
 												if(isset($_POST["delid"])){
@@ -242,7 +216,7 @@ include_once("includes/header.php");
 
 														echo "<script type='text/javascript'>
 															                
-														swal({ title: 'SUCCESS',text: 'Selected food successfully deleted!',icon: 'success',timer: 3000}).then(okay => {
+														swal({ title: 'SUCCESS',text: 'Selected food successfully deleted!',icon: 'success'}).then(okay => {
 														if (okay) {
 														window.location.href = 'foodgallery.php';}
 														});
@@ -252,7 +226,7 @@ include_once("includes/header.php");
 														else{
 														echo "<script type='text/javascript'>
 															                
-														swal({ title: 'SUCCESS',text: 'Selected food delete was failed!',icon: 'error',timer: 4000}).then(okay => {
+														swal({ title: 'SUCCESS',text: 'Selected food delete was failed!',icon: 'error'}).then(okay => {
 														if (okay) {
 														window.location.href = 'foodgallery.php';}
 														});
@@ -289,7 +263,7 @@ include_once("includes/header.php");
 
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/plugins/simplebar/js/simplebar.js"></script>
   <script src="assets/js/sidebar-menu.js"></script>
   <script src="assets/js/app-script.js"></script>
