@@ -127,12 +127,13 @@ if(!isset($_SESSION['email'])){
 
 <!--employee content code design end-->
 <br>
+<!--food bill calculate area start--> 
 <div class="row">
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
             <div class="table-responsive">
-              <h5 class="card-title text-center">Summery of Serviceses</h5>
+              <h5 class="card-title text-center">Summery of Food Serviceses</h5>
 
               <table class="table table-sm">
                 <thead>
@@ -153,14 +154,17 @@ $Totalbill=0;
            if(isset($_POST["checkstatus"])){
            $mail = $_POST["un"];
 
-                    
+                    $orderstatus=1;
                     $tobill=0;
-                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$mail'");
+                    $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$mail' AND orderstatus='$orderstatus'");
+                      //$Result = mysqli_query($db,"select foodorders.foodname,foodorders.price,foodorders.amount,foodorders.date,payment.amount FROM foodorders,payment where foodorders.$mail=payment.$mail");
+                    
                       while($row=mysqli_fetch_array($Result)){
                       $fname = $row["foodname"];
                       $fprice = $row["price"];
                       $foodamount = $row["amount"];
                       $fooddate = $row["date"];  
+                      //$AdvanceforRoom = $row["amount"];
                     ?> 
 
                      
@@ -189,10 +193,41 @@ $Totalbill=0;
                 </tbody>
               
               </table>
+              <!--food bill calculate area end--> 
               <hr>
-              <h5 class="card-title text-center">  Active Total Charges <?php  echo "Rs $Totalbill /=";?></h5>
-             
-             <hr>
+              <h5 class="card-title text-center">  Active Total Charges for Food 
+                                            <button type="button" class="btn btn-dark btn-sm"><?php  echo "Rs $Totalbill/=";?></button> </h5>
+<!--total bill calculate area start--> 
+           <table class="table table-sm">
+           <thead>
+
+                    <tr> 
+                      <th scope="col">Total Charge for Food </th>
+                      <th scope="col">Total charge for Room </th>
+                      <th scope="col">Total bill</th>
+                      <th scope="col">Advance for Room</th>
+                      <th scope="col">Balance Due </th>
+                      
+                    </tr>
+          </thead>
+
+
+          <tbody>
+
+                 <tr>
+                      <td><?php $TotalChargeforFood=$Totalbill; echo " $TotalChargeforFood";?> </td>
+                      <td><?php $TotalchargeforRoom=1500; echo " $TotalchargeforRoom";?> </td>
+                      <td><?php $FinalTotalbill=$TotalChargeforFood+$TotalchargeforRoom; echo " $FinalTotalbill";?> </td>
+                      <td><?php $AdvanceforRoom=0; echo " $AdvanceforRoom";?> </td>
+                      <td><?php $BalanceDue=$FinalTotalbill-$AdvanceforRoom; echo " $BalanceDue";?> </td>     
+                </tr>
+                
+
+                    
+</tbody>
+                </table>
+              <!--total bill calculate area end--> 
+              <hr>
             </div></div>
           </div>
         </div>

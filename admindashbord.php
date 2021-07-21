@@ -119,6 +119,7 @@ if(!isset($_SESSION['email'])){
           <table class="table align-items-center table-flush table-borderless">
             <thead>
               <tr>
+                <th>CUSTOMER NAME</th>
                 <th>FOOD NAME</th>
                 <th>FOOD ID</th>
                 <th>ORDER ID</th>
@@ -129,15 +130,20 @@ if(!isset($_SESSION['email'])){
               </tr>
 
                 <?php
-                $Result = mysqli_query($db,"SELECT * FROM foodorders");
+                
+                $Result = mysqli_query($db,"SELECT * FROM foodorders order by foodorderid DESC LIMIT 20;");
                 while($row=mysqli_fetch_array($Result)){
 
+                  $cusname = $row["customerid"];
                   $foodname = $row["foodname"];
                   $foodid = $row["foodid"];
                   $orderid = $row["foodorderid"];
                   $amount= $row["amount"];
                   $price = $row["price"];
                   $date = $row["date"];
+                  $status = $row["orderstatus"];
+                  
+                  
                                     
                 ?>
 
@@ -145,14 +151,46 @@ if(!isset($_SESSION['email'])){
 
             <tbody>
               <tr>
+                <td><?php echo "$cusname" ?></td>
                 <td><?php echo "$foodname" ?></td>
                 <td><?php echo "$foodid" ?></td>
                 <td><?php echo "$orderid" ?></td>
                 <td><?php echo "$amount" ?></td>
                 <td> Rs <?php echo "$price" ?>/=</td>
                 <td><?php echo "$date" ?></td>
-                <td><button type="button" class="btn btn-warning">CONFORM ORDER</button></td>
-              </tr>
+                
+               
+                
+                
+                
+                <td>
+                
+    <?php 
+             $oredrvelue=1;
+        echo "<form action='action_pages/orderaconformction.php' method='post'>";
+        echo "<input type='hidden' name='emailid' value='$cusname'>";
+        echo "<input type='hidden' name='orderid' value='$orderid'>";
+        echo "<input type='hidden' name='ordervalue' value='$oredrvelue'>";
+        
+       if($status==0){
+        echo "<div class='buttonart'>";
+        echo "<button type='submit' onclick='clicked(event)' class='btn btn-success' style='float: right;'>Conform a Order</button>";
+        echo "</div>";
+        }
+        
+        
+        elseif($status==1){
+        
+        echo "<div class='buttonart'>";
+        echo "<button class='btn btn-warning' style='float: right;'>Conform a Order</button>";
+        echo "</div>";
+        
+        }
+        echo "</form>";
+                
+                
+    ?>          </td>
+            </tr>
 
               <?php }
               ?>

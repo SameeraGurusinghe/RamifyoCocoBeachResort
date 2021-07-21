@@ -68,7 +68,7 @@ $useremail = $_SESSION['email'];
 
  <!--Noodles menu area start-->
  <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-8">
         <div class="card">
           <div class="card-body">
             <div class="table-responsive">
@@ -77,11 +77,11 @@ $useremail = $_SESSION['email'];
               <table class="table table-sm">
                 <thead>
                     <tr>
-                      <th scope="col">FOOD Name</th>
-                      <th scope="col">price of Food </th>
-                      <th scope="col">Amount</th>
-                      <th scope="col">Total Price of Food Charge </th>
-                      <th scope="col">Date</th>
+                      <th scope="col"><h6>FOOD Name</h6></th>
+                      <th scope="col"><h6>price of Food</h6> </th>
+                      <th scope="col"><h6>Amount</h6></th>
+                      <th scope="col"><h6>Total Price of Food Charge </h6></th>
+                      <th scope="col"><h6>Date</h6></th>
                     </tr>
                 </thead>
 
@@ -91,7 +91,8 @@ $useremail = $_SESSION['email'];
 
                     $Totalbill=0;
                     $tobill=0;
-                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail'");
+                    $orderstatus=1;
+                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail 'AND orderstatus='$orderstatus'");
                       while($row=mysqli_fetch_array($Result)){
                       $fname = $row["foodname"];
                       $fprice = $row["price"];
@@ -115,23 +116,94 @@ $useremail = $_SESSION['email'];
 
                       <td><?php echo "$fooddate";?> </td>
       
-                  </tr>
+                     </tr>
 
                     <?php 
                     }
                     ?> 
                     
-                </tbody>
+                  </tbody>
               
-              </table>
+                </table>
+               <hr>
+                  <h5 class="card-title text-center">  Active Total Charges for Food 
+        <button type="button" class="btn btn-dark btn-sm"><?php  echo "Rs $Totalbill/=";?></button> </h5>
+<!--total bill calculate area start--> 
+           <table class="table table-sm">
+           <thead>
+
+                    <tr> 
+                      <th scope="col"><h6>Total Charge for Food</h6> </th>
+                      <th scope="col"><h6>Total charge for Room </h6></th>
+                      <th scope="col"><h6>Total bill</h6></th>
+                      <th scope="col"><h6>Advance for Room</h6></th>
+                      <th scope="col"><h6>Balance Due </h6></th>
+                      
+                    </tr>
+          </thead>
+
+
+          <tbody>
+
+                 <tr>
+                      <td><?php $TotalChargeforFood=$Totalbill; echo " $TotalChargeforFood";?> </td>
+                      <td><?php $TotalchargeforRoom=1500; echo " $TotalchargeforRoom";?> </td>
+                      <td><?php $FinalTotalbill=$TotalChargeforFood+$TotalchargeforRoom; echo " $FinalTotalbill";?> </td>
+                      <td><?php $AdvanceforRoom=0; echo " $AdvanceforRoom";?> </td>
+                      <td><?php $BalanceDue=$FinalTotalbill-$AdvanceforRoom; echo " $BalanceDue";?> </td>     
+                </tr>
+                
+
+                    
+</tbody>
+                </table>
+              <!--total bill calculate area end--> 
               <hr>
-              <h5 class="card-title text-center">  Active Total Charges <?php  echo "Rs $Totalbill/=";?></h5>
-             <hr>
             </div>
           </div>
         </div>
       </div>
-      <!--Noodles menu area end-->    
+      <!--bill end-->  
+      <!--Order Status start-->  
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <h5 class="card-title text-center">Order Status</h5>
+              
+              
+                
+                                  <?php
+
+                    
+                    $orderstatus='';
+                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail' order by foodorderid DESC LIMIT 10;");
+                      while($row=mysqli_fetch_array($Result)){
+                      $fname = $row["foodname"];
+                      $orderstatus=$row["orderstatus"];
+                      
+                      if ($orderstatus==0){
+                          
+                         echo "Your $fname Order is uneder Review "; 
+                         echo "<hr>";
+                      }
+                      
+                       elseif ($orderstatus==1){
+                          
+                         echo "Your $fname  Order is Conformed "; 
+                         echo "<hr>";
+                      }
+                      
+                      }
+                    ?> 
+
+              
+              
+              </div>
+          </div>
+        </div>
+      </div>
+      <!--Order Status end-->  
       </div>
     
       </div>
@@ -139,10 +211,10 @@ $useremail = $_SESSION['email'];
       </div>
 
 
-</body>
+    </body>
 
 
-<!--footer start-->
+  <!--footer start-->
 <?php
 include_once("includes/footer.php");
 ?>
