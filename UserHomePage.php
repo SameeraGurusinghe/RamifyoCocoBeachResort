@@ -14,24 +14,15 @@ if(!isset($_SESSION['email'])){
 	<title>My Account</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <meta name="description" content=""/>
   <meta name="author" content=""/>
- 
-
-  <link href="assets/css/pace.min.css" rel="stylesheet"/>
-  <script src="assets/js/pace.min.js"></script>
-  <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
-  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
   <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="assets/css/animate.css" rel="stylesheet" type="text/css"/>
-  <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
-  <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
   <link href="assets/css/app-style.css" rel="stylesheet"/>
+
 </head>
 
 <body>
@@ -44,24 +35,6 @@ $useremail = $_SESSION['email'];
 ?>
 <!--header end-->
 
-
-
-    <!--****Javascript****-->
-    <script src="assets/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/js/jquery-migrate.min.js"></script>
-    <script src="assets/js/apopper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/plugins/gijgo.js"></script>
-    <script src="assets/js/plugins/vegas.min.js"></script>
-    <script src="assets/js/plugins/isotope.min.js"></script>
-    <script src="assets/js/plugins/owl.carousel.min.js"></script>
-    <script src="assets/js/plugins/waypoints.min.js"></script>
-    <script src="assets/js/plugins/counterup.min.js"></script>
-    <script src="assets/js/plugins/mb.YTPlayer.js"></script>
-    <script src="assets/js/plugins/magnific-popup.min.js"></script>
-    <script src="assets/js/plugins/slicknav.min.js"></script>
-    <script src="assets/js/main.js"></script>
-
     
   <div class="container-fluid">
 
@@ -72,16 +45,16 @@ $useremail = $_SESSION['email'];
         <div class="card">
           <div class="card-body">
             <div class="table-responsive">
-              <h5 class="card-title text-center">Summery of Serviceses</h5>
+              <h5 class="card-title text-center">Summary of Services</h5>
 
               <table class="table table-sm">
                 <thead>
                     <tr>
-                      <th scope="col"><h6>FOOD Name</h6></th>
-                      <th scope="col"><h6>price of Food</h6> </th>
-                      <th scope="col"><h6>Amount</h6></th>
-                      <th scope="col"><h6>Total Price of Food Charge </h6></th>
-                      <th scope="col"><h6>Date</h6></th>
+                      <th scope="col"><h6 title="Food Name">FOOD Name</h6></th>
+                      <th scope="col"><h6 title="Unit price">Unit Price</h6> </th>
+                      <th scope="col"><h6 title="Meal amount that you request">Amount</h6></th>
+                      <th scope="col"><h6 title="Total charge = Unit price * Amount you request">Total Charge</h6></th>
+                      <th scope="col"><h6 title="Date and time you place the order">Date</h6></th>
                     </tr>
                 </thead>
 
@@ -126,18 +99,18 @@ $useremail = $_SESSION['email'];
               
                 </table>
                <hr>
-                  <h5 class="card-title text-center">  Active Total Charges for Food 
+                  <h5 class="card-title text-center">Active Total Charges for Food 
         <button type="button" class="btn btn-dark btn-sm"><?php  echo "Rs $Totalbill/=";?></button> </h5>
 <!--total bill calculate area start--> 
            <table class="table table-sm">
            <thead>
 
                     <tr> 
-                      <th scope="col"><h6>Total Charge for Food</h6> </th>
-                      <th scope="col"><h6>Total charge for Room </h6></th>
-                      <th scope="col"><h6>Total bill</h6></th>
-                      <th scope="col"><h6>Advance for Room</h6></th>
-                      <th scope="col"><h6>Balance Due </h6></th>
+                      <th scope="col"><h6 title="Your total meal consumption charge">Food Charge</h6> </th>
+                      <th scope="col"><h6 title="Your total room charge">Room Charge</h6></th>
+                      <th scope="col"><h6 title="Total Bill = Meal charge + Room charge">Total bill</h6></th>
+                      <th scope="col"><h6 title="Amount that you paid when you booking the our hotel room.">Advance for Room</h6></th>
+                      <th scope="col"><h6 title="Your have to pay below amount.">Balance Due</h6></th>
                       
                     </tr>
           </thead>
@@ -167,7 +140,7 @@ $useremail = $_SESSION['email'];
       <!--Order Status start-->  
       <div class="col-lg-4">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body bg-dark">
             <div class="table-responsive">
               <h5 class="card-title text-center">Order Status</h5>
               
@@ -177,20 +150,20 @@ $useremail = $_SESSION['email'];
 
                     
                     $orderstatus='';
-                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail' order by foodorderid DESC LIMIT 10;");
+                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail' order by date DESC LIMIT 10;");
                       while($row=mysqli_fetch_array($Result)){
                       $fname = $row["foodname"];
                       $orderstatus=$row["orderstatus"];
                       
                       if ($orderstatus==0){
                           
-                         echo "Your $fname Order is uneder Review "; 
+                         echo "<p class='text-warning' title='Your order is under review status. We will send you a confirmation email once order confirm.'>Your '$fname' Order is uneder Review</p>"; 
                          echo "<hr>";
                       }
                       
                        elseif ($orderstatus==1){
                           
-                         echo "Your $fname  Order is Conformed "; 
+                         echo "<p class='text-success' title='Order confirmed. As soon as possible we will delivery your meal order.'>Your '$fname' Order is on the way.</p>"; 
                          echo "<hr>";
                       }
                       

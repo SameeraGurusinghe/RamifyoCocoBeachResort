@@ -173,18 +173,11 @@ if(!isset($_SESSION['email'])){
         echo "<input type='hidden' name='ordervalue' value='$oredrvelue'>";
         
        if($status==0){
-        echo "<div class='buttonart'>";
-        echo "<button type='submit' onclick='clicked(event)' class='btn btn-success' style='float: right;'>Conform a Order</button>";
-        echo "</div>";
+        echo "<button type='submit' class='btn btn-success' style='float: right;'>Conform a Order</button>";
         }
         
-        
         elseif($status==1){
-        
-        echo "<div class='buttonart'>";
-        echo "<button class='btn btn-warning' style='float: right;'>Conform a Order</button>";
-        echo "</div>";
-        
+        echo "<button class='btn btn-warning' style='float: right;' disabled>Order confirmed</button>";
         }
         echo "</form>";
                 

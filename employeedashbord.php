@@ -97,7 +97,7 @@ if(!isset($_SESSION['email'])){
 <div class="col d-flex justify-content-center">
 <div class="col-md-8">
   <br>
-<h3 style="text-align: center;"><b>CHECK CUSTOMER BILL </b></h3>
+<h3 style="text-align: center;"><b>CHECK CUSTOMER BILL</b></h3>
 <hr>
 
 	<div class="card-Secondary" style="align: center;">
@@ -107,7 +107,7 @@ if(!isset($_SESSION['email'])){
 			<form method="post" enctype="multipart/form-data">	
 				<div class="form-group">
 					<div class="col-md-12">
-						<input type="text" class="form-control" name="un" placeholder="Enter Ccstomer Email.." style="text-align: center;" required><br>
+						<input type="text" class="form-control" name="un" placeholder="Enter Customer Email.." style="text-align: center;" required><br>
 						
 					</div>
 				</div>
@@ -133,7 +133,7 @@ if(!isset($_SESSION['email'])){
         <div class="card">
           <div class="card-body">
             <div class="table-responsive">
-              <h5 class="card-title text-center">Summery of Food Serviceses</h5>
+              <h5 class="card-title text-center">Summary of Food Services</h5>
 
               <table class="table table-sm">
                 <thead>
