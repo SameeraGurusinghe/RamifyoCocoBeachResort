@@ -4,8 +4,6 @@ session_start();
 if(!isset($_SESSION['email'])){
 }
 
-
-
 if(isset($_GET['out'])){    
      
     //Simple exit message
@@ -13,7 +11,7 @@ if(isset($_GET['out'])){
     file_put_contents("log.html", $logout_message, FILE_APPEND | LOCK_EX);
      
     //session_destroy();
-    header("Location: ../../UserHomePage.php"); //Redirect the user
+    header("Location: ../UserHomePage.php"); //Redirect the user
 }
 
 ?>
@@ -22,10 +20,9 @@ if(isset($_GET['out'])){
 <html lang="en">
     <head>
         <meta charset="utf-8" />
- 
         <title>Ramifyo Live Chat Service</title>
-        <meta name="description" content="Ramifyo Live Chat Service" />
-        <link rel="stylesheet" href="style.css" />
+        <meta name="description" content="Ramifyo Live Chat Service">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <?php

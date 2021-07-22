@@ -11,7 +11,7 @@ include_once("includes/dbconnection.php");
 <!--**********script for chat box strat***********-->
   <script type="text/javascript">
 		function openWin(){
-      window.open("livechat/employee/chatindex.php", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=300,left=500,width=500,height=500");
+      window.open("livechat/chatindex.php", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=300,left=500,width=500,height=500");
       }
   </script>
 <!--***********script for chat box end***********-->
