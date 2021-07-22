@@ -75,7 +75,7 @@ $useremail = $_SESSION['email'];
 
                      
                       <td><?php echo " $fname";?> </td>
-                      <td><?php echo " $fprice";?> </td>
+                      <td><?php echo "Rs.$fprice/=";?> </td>
                       <td><?php echo " $foodamount";?> </td>
                       <td>
                           <?php 
@@ -84,7 +84,7 @@ $useremail = $_SESSION['email'];
                       $Totalbill=$Totalbill+$tobill;
 
 
-                      echo "Rs $tobill/=";?> </td>
+                      echo "Rs.$tobill/=";?> </td>
 
 
                       <td><?php echo "$fooddate";?> </td>
@@ -119,11 +119,11 @@ $useremail = $_SESSION['email'];
           <tbody>
 
                  <tr>
-                      <td><?php $TotalChargeforFood=$Totalbill; echo " $TotalChargeforFood";?> </td>
-                      <td><?php $TotalchargeforRoom=1500; echo " $TotalchargeforRoom";?> </td>
-                      <td><?php $FinalTotalbill=$TotalChargeforFood+$TotalchargeforRoom; echo " $FinalTotalbill";?> </td>
-                      <td><?php $AdvanceforRoom=0; echo " $AdvanceforRoom";?> </td>
-                      <td><?php $BalanceDue=$FinalTotalbill-$AdvanceforRoom; echo " $BalanceDue";?> </td>     
+                      <td><?php $TotalChargeforFood=$Totalbill; echo "Rs.$TotalChargeforFood/=";?> </td>
+                      <td><?php $TotalchargeforRoom=1500; echo "Rs.$TotalchargeforRoom/=";?> </td>
+                      <td><?php $FinalTotalbill=$TotalChargeforFood+$TotalchargeforRoom; echo "Rs.$FinalTotalbill/=";?> </td>
+                      <td><?php $AdvanceforRoom=0; echo "Rs.$AdvanceforRoom/=";?> </td>
+                      <td><?php $BalanceDue=$FinalTotalbill-$AdvanceforRoom; echo "Rs.$BalanceDue/=";?> </td>     
                 </tr>
                 
 
