@@ -9,11 +9,10 @@
 <?php
 include_once("../includes/dbconnection.php");
 
-if(isset($_POST['foodstatus'])) {
+//if(isset($_POST['foodstatus'])) {
     $fid = $_POST['fid'];
-    $foodstatus = $_POST['foodstatus'];
+    $foodstatus = $_POST['fstatus'];
 
-echo $foodstatus;
 /*if($db){
 	echo "Database connection successfully completed.";
 	echo ("<br>"); 
@@ -47,6 +46,6 @@ else{
     </script>";
 
 }
-}
+//}
 
 ?>

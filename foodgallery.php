@@ -309,15 +309,17 @@ include_once("includes/header.php");
                     $fid = $row['foodid'];
                     $foodstatus = $row["foodstatus"];
               ?>
-											<div class="p-2">
-                      <input type="hidden" name="fid" value="<?php echo "$fid"; ?>" class="form-control">
-                      <input type="hidden" name="foodstatus" value="<?php echo "$foodstatus"; ?>" class="form-control">
-											</div>
+											<!--<div class="p-2">
+                      <input type="text" name="fid" value="<?php ?>">
+                      <input type="text" name="foodstatus" value="<?php ?>">
+											</div>-->
 
                       <?php if($foodstatus == 0){
                       echo "<span style='float: left;'>This meal currently available.<br>Do you need to change it as an unavailable status ?</span>";
                       echo "<span style='float: left;color:black;'><b>$foodname</b></span>";
                       echo "<div class='p-2'>";
+                      echo "<input type='hidden' name='fid' value='$fid'>";
+                      echo "<input type='hidden' name='fstatus' value='1'>";
                       echo "<button type='button' style='float: right;' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#staticBackdropForAvailability'>Make an Unavailable</button>";
 											echo "</div>";
                       } 
@@ -326,6 +328,8 @@ include_once("includes/header.php");
                       echo "<span style='float: left;'>This meal currently unavailable.<br>Do you need to change it as an available status ?</span>";
                       echo "<span style='float: left; color:black;'><b>$foodname</b></span>";
                       echo "<div class='p-2'>";
+                      echo "<input type='hidden' name='fid' value='$fid'>";
+                      echo "<input type='hidden' name='fstatus' value='0'>";
                       echo "<button type='button' style='float: right;' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#staticBackdropForAvailability'>Make an Available</button>";
                       echo "</div>";
                       }
