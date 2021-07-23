@@ -21,6 +21,7 @@ include_once("includes/dbconnection.php");
   <meta name="description" content=""/>
   <meta name="author" content=""/>
   <title>Profile update</title>
+  <link rel="shortcut icon" type="image/x-icon" href="images/hotel.png"/>
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="assets/js/pace.min.js"></script>
   <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>

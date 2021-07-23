@@ -20,7 +20,7 @@ if(!isset($_SESSION['email'])){
   <meta name="description" content=""/>
   <meta name="author" content=""/>
   <title>Admin - Update Contact Info</title>
-
+  <link rel="shortcut icon" type="image/x-icon" href="images/hotel.png"/>
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="assets/js/pace.min.js"></script>

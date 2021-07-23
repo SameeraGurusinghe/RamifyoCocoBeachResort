@@ -20,7 +20,7 @@ if(!isset($_SESSION['email'])){
   <meta name="description" content=""/>
   <meta name="author" content=""/>
   <title>Admin Dashboard</title>
-
+  <link rel="shortcut icon" type="image/x-icon" href="images/hotel.png"/>
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="assets/js/pace.min.js"></script>
   <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>

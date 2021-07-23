@@ -18,6 +18,7 @@ if(!isset($_SESSION['email'])){
   <title>Calendar</title>
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="assets/js/pace.min.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="images/hotel.png"/>
   <link href="assets/plugins/fullcalendar/css/fullcalendar.min.css" rel='stylesheet'/>
   <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
   <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>

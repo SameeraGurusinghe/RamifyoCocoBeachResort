@@ -6,7 +6,7 @@
             <div class="table-responsive">
               <h5 class="card-title text-center">RICE</h5>
 
-               <table class="table table-sm">
+                <table class="table table-sm bg-dark">
                   <thead>
                     <tr>
                       <th scope="col">FOOD Name</th>
@@ -17,28 +17,13 @@
 
                   <tbody>
                     <tr>
-                    
                       <?php
-                        $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='rice'");
-                        while($row=mysqli_fetch_array($Result)){
-                        $fname = $row["name"];
-                        $foodid = $row["foodid"];
-                        $fprice = $row["price"]; 
-                      ?> 
-
-                        <td><?php echo " $fname";?> </td>
-                        <td><?php echo " $foodid";?> </td>
-                        <td><?php echo "Rs $fprice/=";?> </td>
-      
-                    </tr>
-
-                    <?php 
-                    }
-                    ?> 
-
+                      $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='rice'");
+                      //essential data coming from foodtabledate.php include file
+                      include("includes/foodtabledata.php");
+                      ?>
                   </tbody>
                 </table>
-
             </div>
           </div>
         </div>
@@ -52,7 +37,7 @@
             <div class="table-responsive">
               <h5 class="card-title text-center">KOTHTHU</h5>
 
-                <table class="table table-sm">
+                <table class="table table-sm bg-dark">
                   <thead>
                       <tr>
                         <th scope="col">FOOD Name</th>
@@ -64,20 +49,9 @@
                   <tbody>
                     <tr>
                       <?php
-                        $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='koththu'");
-                        while($row=mysqli_fetch_array($Result)){
-                        $fname = $row["name"];
-                        $foodid = $row["foodid"];
-                        $fprice = $row["price"];  
-                      ?> 
-    
-                      <td><?php echo " $fname";?> </td>
-                      <td><?php echo " $foodid";?> </td>
-                      <td><?php echo "Rs $fprice/=";?> </td>
-                    </tr>
-
-                      <?php 
-                      }
+                      $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='koththu'");
+                      //essential data coming from foodtabledate.php include file
+                      include("includes/foodtabledata.php");
                       ?> 
                   </tbody>
                 </table>
@@ -97,7 +71,7 @@
             <div class="table-responsive">
               <h5 class="card-title text-center">NOODLES</h5>
 
-              <table class="table table-sm">
+              <table class="table table-sm bg-dark">
                 <thead>
                     <tr>
                       <th scope="col">FOOD Name</th>
@@ -110,23 +84,9 @@
                   <tr>
                     <?php
                       $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='noodles'");
-                      while($row=mysqli_fetch_array($Result)){
-                      $fname = $row["name"];
-                      $foodid = $row["foodid"];
-                      $fprice = $row["price"];    
+                      //essential data coming from foodtabledate.php include file
+                      include("includes/foodtabledata.php");
                     ?> 
-
-                          
-                      <td><?php echo " $fname";?> </td>
-                      <td><?php echo " $foodid";?> </td>
-                      <td><?php echo "Rs $fprice/=";?> </td>
-      
-                  </tr>
-
-                    <?php 
-                    }
-                    ?> 
-
                 </tbody>
               </table>
 
@@ -143,7 +103,7 @@
               <div class="table-responsive">
                 <h5 class="card-title text-center">SOUP</h5>
 
-                  <table class="table table-sm">
+                  <table class="table table-sm bg-dark">
                     <thead>
                       <tr>
                         <th scope="col">FOOD Name</th>
@@ -156,22 +116,10 @@
                     <tbody>
                       <tr>
                         <?php
-                         $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='soup'");
-                         while($row=mysqli_fetch_array($Result)){
-                         $fname = $row["name"];
-                         $foodid = $row["foodid"];
-                         $fprice = $row["price"];  
+                          $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='soup'");
+                          //essential data coming from foodtabledate.php include file
+                          include("includes/foodtabledata.php");
                         ?> 
-
-                         
-                        <td><?php echo " $fname";?> </td>
-                        <td><?php echo " $foodid";?> </td>
-                        <td><?php echo "Rs $fprice/=";?> </td>
-                      </tr>
-                      
-                      <?php 
-                      }
-                      ?> 
                     </tbody>
                   </table>
               </div>
@@ -181,7 +129,7 @@
       </div><br><br>
       <!--Soup Food Menu area end-->
 
-    <!--Noodles menu area start-->
+    <!--Curry menu area start-->
     <div class="row">
       <div class="col-lg-6">
         <div class="card">
@@ -189,7 +137,7 @@
             <div class="table-responsive">
               <h5 class="card-title text-center">CURRY</h5>
 
-              <table class="table table-sm">
+              <table class="table table-sm bg-dark">
                 <thead>
                     <tr>
                       <th scope="col">FOOD Name</th>
@@ -202,23 +150,9 @@
                   <tr>
                     <?php
                       $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='curry'");
-                      while($row=mysqli_fetch_array($Result)){
-                      $fname = $row["name"];
-                      $foodid = $row["foodid"];
-                      $fprice = $row["price"];    
-                    ?> 
-
-                          
-                      <td><?php echo " $fname";?> </td>
-                      <td><?php echo " $foodid";?> </td>
-                      <td><?php echo "Rs $fprice/=";?> </td>
-      
-                  </tr>
-
-                    <?php 
-                    }
-                    ?> 
-
+                      //essential data coming from foodtabledate.php include file
+                      include("includes/foodtabledata.php");
+                    ?>
                 </tbody>
               </table>
 
@@ -226,16 +160,16 @@
           </div>
         </div>
       </div>
-      <!--Noodles menu area end-->
+      <!--Curry menu area end-->
 
-        <!--Soup menu area start-->
+        <!--Crink menu area start-->
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
               <div class="table-responsive">
                 <h5 class="card-title text-center">DRINK</h5>
 
-                  <table class="table table-sm">
+                  <table class="table table-sm bg-dark">
                     <thead>
                       <tr>
                         <th scope="col">FOOD Name</th>
@@ -248,22 +182,10 @@
                     <tbody>
                       <tr>
                         <?php
-                         $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='drink'");
-                         while($row=mysqli_fetch_array($Result)){
-                         $fname = $row["name"];
-                         $foodid = $row["foodid"];
-                         $fprice = $row["price"];  
+                          $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='drink'");
+                          //essential data coming from foodtabledate.php include file
+                          include("includes/foodtabledata.php");
                         ?> 
-
-                         
-                        <td><?php echo " $fname";?> </td>
-                        <td><?php echo " $foodid";?> </td>
-                        <td><?php echo "Rs $fprice/=";?> </td>
-                      </tr>
-                      
-                      <?php 
-                      }
-                      ?> 
                     </tbody>
                   </table>
               </div>
@@ -271,10 +193,10 @@
           </div>
         </div>
       </div><br><br>
-      <!--Soup Food Menu area end-->
+      <!--Drink Menu area end-->
 
 
-    <!--Noodles menu area start-->
+    <!--Dessert menu area start-->
     <div class="row">
       <div class="col-lg-6">
         <div class="card">
@@ -282,7 +204,7 @@
             <div class="table-responsive">
               <h5 class="card-title text-center">DESSERT</h5>
 
-              <table class="table table-sm">
+              <table class="table table-sm bg-dark">
                 <thead>
                     <tr>
                       <th scope="col">FOOD Name</th>
@@ -295,23 +217,41 @@
                   <tr>
                     <?php
                       $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='dessert'");
-                      while($row=mysqli_fetch_array($Result)){
-                      $fname = $row["name"];
-                      $foodid = $row["foodid"];
-                      $fprice = $row["price"];    
+                      //essential data coming from foodtabledate.php include file
+                      include("includes/foodtabledata.php");
                     ?> 
+                </tbody>
+              </table>
 
-                          
-                      <td><?php echo " $fname";?> </td>
-                      <td><?php echo " $foodid";?> </td>
-                      <td><?php echo "Rs $fprice/=";?> </td>
-      
-                  </tr>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Dessert menu area end-->
 
-                    <?php 
-                    }
+    <!--Various menu area start-->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <h5 class="card-title text-center">Various</h5>
+
+              <table class="table table-sm bg-dark">
+                <thead>
+                    <tr>
+                      <th scope="col">FOOD Name</th>
+                      <th scope="col">FOOD ID</th>
+                      <th scope="col">PRICE</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <?php
+                      $Result = mysqli_query($db,"SELECT * FROM foods WHERE ftype='various'");
+                      //essential data coming from foodtabledate.php include file
+                      include("includes/foodtabledata.php");
                     ?> 
-
                 </tbody>
               </table>
 
@@ -319,4 +259,4 @@
           </div>
         </div>
       </div></div>
-      <!--Noodles menu area end-->
+      <!--Various menu area end-->

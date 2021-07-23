@@ -20,7 +20,7 @@ if(!isset($_SESSION['email'])){
   <meta name="description" content=""/>
   <meta name="author" content=""/>
   <title>Admin Dashboard</title>
-
+  <link rel="shortcut icon" type="image/x-icon" href="images/hotel.png"/>
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="assets/js/pace.min.js"></script>
@@ -201,12 +201,12 @@ include_once("includes/header.php");
 
               <form action="action_pages/foodupdateaction.php" method="post" enctype="multipart/form-data">
               
-              <?php
-              if(isset($_POST['checkfood'])) {
-              $foodname = $_POST['foodname'];
-              
-              $Result = mysqli_query($db,"SELECT * FROM foods WHERE name='$foodname'");
-                while($row=mysqli_fetch_array($Result)){
+                <?php
+                if(isset($_POST['checkfood'])) {
+                $foodname = $_POST['foodname'];
+                
+                $Result = mysqli_query($db,"SELECT * FROM foods WHERE name='$foodname'");
+                  while($row=mysqli_fetch_array($Result)){
 
                     $fid = $row['foodid'];
                     $name = $row["name"];
@@ -215,7 +215,7 @@ include_once("includes/header.php");
                     $mealplantype = $row["mealplantype"];
                     $fdescription = $row["fdescription"];
                     $fimage = $row["fimage"];
-              ?>
+                ?>
 											<div class="p-2">
                       <input type="hidden" name="fid" value="<?php echo "$fid"; ?>" class="form-control">
 											</div>
@@ -300,19 +300,15 @@ include_once("includes/header.php");
               <form action="action_pages/availabilityupdateaction.php" method="post">
               
               <?php
-              if(isset($_POST['checkavailabilityfood'])) {
-              $foodname = $_POST['avafoodname'];
-              
-              $Result = mysqli_query($db,"SELECT * FROM foods WHERE name='$foodname'");
+                if(isset($_POST['checkavailabilityfood'])) {
+                $foodname = $_POST['avafoodname'];
+                
+                $Result = mysqli_query($db,"SELECT * FROM foods WHERE name='$foodname'");
                 while($row=mysqli_fetch_array($Result)){
 
-                    $fid = $row['foodid'];
-                    $foodstatus = $row["foodstatus"];
+                $fid = $row['foodid'];
+                $foodstatus = $row["foodstatus"];
               ?>
-											<!--<div class="p-2">
-                      <input type="text" name="fid" value="<?php ?>">
-                      <input type="text" name="foodstatus" value="<?php ?>">
-											</div>-->
 
                       <?php if($foodstatus == 0){
                       echo "<span style='float: left;'>This meal currently available.<br>Do you need to change it as an unavailable status ?</span>";
@@ -361,13 +357,13 @@ include_once("includes/header.php");
 											<option selected>Select Food Name</option>
 											<option> 
 												<?php
-												$Result = mysqli_query($db,"SELECT * FROM foods");
+                          $Result = mysqli_query($db,"SELECT * FROM foods");
 
-												while($row=mysqli_fetch_array($Result)){
-												echo "<li>".$row['name']."</li>";
-												echo "<option>";
+                          while($row=mysqli_fetch_array($Result)){
+                          echo "<li>".$row['name']."</li>";
+                          echo "<option>";
 													
-												}
+												  }
 												?>
 											</option>
 										</select>

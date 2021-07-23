@@ -21,6 +21,7 @@ if(isset($_GET['out'])){
     <head>
         <meta charset="utf-8" />
         <title>Ramifyo Live Chat Service</title>
+        <link rel="shortcut icon" type="image/x-icon" href="images/hotel.png"/>
         <meta name="description" content="Ramifyo Live Chat Service">
         <link rel="stylesheet" href="style.css">
     </head>

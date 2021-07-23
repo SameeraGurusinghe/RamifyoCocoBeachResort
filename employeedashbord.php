@@ -16,6 +16,7 @@ if(!isset($_SESSION['email'])){
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="images/hotel.png"/>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
   <link href="css/index.css" rel="stylesheet" type="text/css" media="all" />
 		<link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />

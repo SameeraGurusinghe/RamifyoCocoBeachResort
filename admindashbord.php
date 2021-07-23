@@ -20,7 +20,7 @@ if(!isset($_SESSION['email'])){
   <meta name="description" content=""/>
   <meta name="author" content=""/>
   <title>Admin Dashboard</title>
-
+  <link rel="shortcut icon" type="image/x-icon" href="images/hotel.png"/>
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="assets/js/pace.min.js"></script>
   <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
@@ -101,9 +101,9 @@ if(!isset($_SESSION['email'])){
 <div class="row">
 	<div class="card">
 
-        <!--Room tables file include.... area start-->
-        <?php include_once("includes/roomavailability.php"); ?>
-        <!--Room tables file include.... area end-->
+  <!--Room tables file include.... area start-->
+  <?php include_once("includes/roomavailability.php"); ?>
+  <!--Room tables file include.... area end-->
 
   </div>
 </div><br><br><br>
@@ -129,8 +129,7 @@ if(!isset($_SESSION['email'])){
                 <th>ORDER STATUS</th> 
               </tr>
 
-                <?php
-                
+              <?php
                 $Result = mysqli_query($db,"SELECT * FROM foodorders order by foodorderid DESC LIMIT 20;");
                 while($row=mysqli_fetch_array($Result)){
 
@@ -141,12 +140,8 @@ if(!isset($_SESSION['email'])){
                   $amount= $row["amount"];
                   $price = $row["price"];
                   $date = $row["date"];
-                  $status = $row["orderstatus"];
-                  
-                  
-                                    
-                ?>
-
+                  $status = $row["orderstatus"];                  
+              ?>
             </thead>
 
             <tbody>
@@ -158,37 +153,30 @@ if(!isset($_SESSION['email'])){
                 <td><?php echo "$amount" ?></td>
                 <td> Rs <?php echo "$price" ?>/=</td>
                 <td><?php echo "$date" ?></td>
-                
-               
-                
-                
-                
-                <td>
-                
-    <?php 
-             $oredrvelue=1;
-        echo "<form action='action_pages/orderaconformction.php' method='post'>";
-        echo "<input type='hidden' name='emailid' value='$cusname'>";
-        echo "<input type='hidden' name='orderid' value='$orderid'>";
-        echo "<input type='hidden' name='ordervalue' value='$oredrvelue'>";
-        
-       if($status==0){
-        echo "<button type='submit' class='btn btn-success' style='float: right;'>Conform a Order</button>";
-        }
-        
-        elseif($status==1){
-        echo "<button class='btn btn-warning' style='float: right;' disabled>Order confirmed</button>";
-        }
-        echo "</form>";
-                
-                
-    ?>          </td>
-            </tr>
-
-              <?php }
-              ?>
-            </tbody>
+                <td>        
             
+                <?php 
+                  $oredrvelue=1;
+                  echo "<form action='action_pages/orderaconformction.php' method='post'>";
+                  echo "<input type='hidden' name='emailid' value='$cusname'>";
+                  echo "<input type='hidden' name='orderid' value='$orderid'>";
+                  echo "<input type='hidden' name='ordervalue' value='$oredrvelue'>";
+                  
+                  if($status==0){
+                  echo "<button type='submit' class='btn btn-success' style='float: right;'>Conform a Order</button>";
+                  }
+                  
+                  elseif($status==1){
+                  echo "<button class='btn btn-warning' style='float: right;' disabled>Order confirmed</button>";
+                  }
+
+                  echo "</form>";          
+                ?>
+                </td>
+              </tr>
+
+              <?php } ?>
+            </tbody>
           </table> 	
           
         </div>
