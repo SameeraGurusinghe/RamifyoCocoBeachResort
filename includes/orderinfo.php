@@ -6,6 +6,7 @@ while($row=mysqli_fetch_array($Result)){
     $fprice = $row["price"];
     $fdescription = $row["fdescription"];
     $fimage = $row["fimage"];
+    $foodstatus = $row['foodstatus'];
 
     echo "<div class='col-lg-12'>";
     echo "<div class='tab-item'>";
@@ -17,19 +18,35 @@ while($row=mysqli_fetch_array($Result)){
             echo "</div>";
                                                     
     echo "<form action='action_pages/orderaction.php' method='post'>";
+
         if(isset($_SESSION['email'])){
             $ifuser = $_SESSION['email'];
         echo "<input type='hidden' name='emailid' value='$ifuser'>";
         }
+
+        //hidden user and food value
         echo "<input type='hidden' name='fid' value='$id'>";
         echo "<input type='hidden' name='fname' value='$fname'>";
         echo "<input type='hidden' name='fprice' value='$fprice'>";
+
         if(isset($_SESSION['email'])){
+
+        if ($foodstatus == 0){
         echo "<p>First enter amount you wish to order: <input type='number' class='col-sm-1' name='mealcount' value='1' min='1' max='10'></p>";
         echo "<br>";
-        echo "<div class='buttonart'>";
-            echo "<button type='submit' onclick='clicked(event)' class='btn btn-success' style='float: right;'>Place a Order</button>";
-        echo "</div>";
+
+        echo "<span class='buttonart'>";
+        echo "<button type='submit' onclick='clicked(event)' class='btn btn-success' style='float: right;' title='Please check whether your ORDER AMOUNT correct or not before make an order.'>Place a Order</button>";
+        echo "</span>";
+        }
+
+        else if ($foodstatus == 1){
+        echo "<br>";
+        echo "<span class='buttonart'>";
+        echo "<button type='button' class='btn btn-danger' style='float: right;' title='This meal currently not available. We will update status once the meal is coming to available status.'>We are sorry. This meal currently not available</button>";
+        echo "</span>";
+        }
+        
         }
         /*if(!isset($_SESSION['email'])){
         echo "<div class='pleaselogh'>";

@@ -79,12 +79,13 @@ include_once("includes/header.php");
                         echo "<h6>Notice: You are not log In. To order meals you must <a href='Login.php'>Log In</a> to your account.</h6>";
                         echo "</div>";
                         }
+                        
                         if(isset($_SESSION['email'])){
-                            include_once("rating/index.php");
-                            echo "<div class='alert alert-info text-center' role='alert'>";
-                            echo "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>Rate Meals</button>";
-                            echo "</div>";
-                            }
+                        include_once("rating/index.php");
+                        echo "<div class='alert alert-info text-center' role='alert'>";
+                        echo "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>Rate Meals</button>";
+                        echo "</div>";
+                        }
                         ?>
                             
                             <section class='tabs-content'>

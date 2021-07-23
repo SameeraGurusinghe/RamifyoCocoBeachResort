@@ -168,14 +168,187 @@ include_once("includes/header.php");
         </div>
       </div>                 
       <!--ADD NEW FOODS item area end-->
-      
 
-      <!--DELETE EXISTING FOODS area start-->
+<!--Update FOODS item area start-->
       <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
 			      <div class="table-responsive">
-							<h5 style="text-align: center;">DELETE EXISTING FOOD</h5>
+							<h5 style="text-align: center;">UPDATE FOOD DETAILS</h5>
+
+              <form method="post">	
+                <div class="form-group">
+                    <select class="form-control" name="foodname">
+											<option selected>Select Food Name</option>
+											<option> 
+												<?php
+												$Result = mysqli_query($db,"SELECT * FROM foods");
+
+												while($row=mysqli_fetch_array($Result)){
+												echo "<li>".$row['name']."</li>";
+												echo "<option>";	
+												}
+												?>
+											</option>
+										</select>
+                </div>
+
+                <div class="p-2 text-center">
+                  <button type="reset" class="btn btn-warning btn-sm" style="width: 110px;"><b>CLEAR</b></button>
+                  <button type="submit" class="btn btn-success btn-sm" name="checkfood" style="width:  110px;"><b>PROCEED</b></button>
+                </div>
+              </form>
+
+              <form action="action_pages/foodupdateaction.php" method="post" enctype="multipart/form-data">
+              
+              <?php
+              if(isset($_POST['checkfood'])) {
+              $foodname = $_POST['foodname'];
+              
+              $Result = mysqli_query($db,"SELECT * FROM foods WHERE name='$foodname'");
+                while($row=mysqli_fetch_array($Result)){
+
+                    $fid = $row['foodid'];
+                    $name = $row["name"];
+                    $price = $row["price"];
+                    $ftype = $row["ftype"];
+                    $mealplantype = $row["mealplantype"];
+                    $fdescription = $row["fdescription"];
+                    $fimage = $row["fimage"];
+              ?>
+											<div class="p-2">
+                      <input type="hidden" name="fid" value="<?php echo "$fid"; ?>" class="form-control">
+											</div>
+
+                      <div class="p-2">
+                      <input type="text" name="ftype" readonly value="<?php echo "$ftype"; ?>" class="form-control">
+											</div>
+
+                      <div class="p-2">
+                      <input type="text" name="mealplantype" readonly value="<?php echo "$mealplantype"; ?>" class="form-control">
+											</div>
+
+                      <div class="p-2">
+                      <input type="text" name="name" value="<?php echo "$name"; ?>" class="form-control">
+											</div>
+
+											<div class="p-2">
+                      <input type="text" name="price" value="<?php echo "$price"; ?>" class="form-control">
+											</div>
+
+                      <div class="p-2">
+                      <input type="text" name="fdescription" value="<?php echo "$fdescription"; ?>" class="form-control">
+											</div>
+
+                      <div class="p-2">
+                      <input type="hidden" name="fimage" value="<?php echo "$fimage"; ?>" class="form-control">
+											</div>
+                      
+                      <div class="p-2">
+                      <input type="file" value="<?php echo "$fimage"; ?>" class="form-control">
+											</div>
+
+                      <div class="p-2 text-center">
+                      <button type="reset" class="btn btn-warning btn-sm" style="width: 110px;"><b>CLEAR</b></button>
+                      <button type="button" class="btn btn-success btn-sm" style="width:  110px;" data-bs-toggle="modal" data-bs-target="#staticBackdropForUpdate"><b>UPDATE</b></button>
+                      </div>
+
+                      <?php include("infobox/updatefoodinfobox.php"); ?>
+
+                      <?php }} ?>
+                  </form>
+
+						</div>
+					</div>
+        </div>
+      </div>
+</div><br><br>          
+<!--Update FOODS item area end-->
+
+
+<!--Real time food availability area start-->
+<div class="row">
+<div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+			      <div class="table-responsive">
+							<h5 style="text-align: center;">CHANGE MEAL AVAILABILITY</h5>
+
+              <form method="post">	
+                <div class="form-group">
+                    <select class="form-control" name="avafoodname">
+											<option selected>Select Meal Name</option>
+											<option> 
+												<?php
+												$Result = mysqli_query($db,"SELECT * FROM foods");
+
+												while($row=mysqli_fetch_array($Result)){
+												echo "<li>".$row['name']."</li>";
+												echo "<option>";	
+												}
+												?>
+											</option>
+										</select>
+                </div>
+
+                <div class="p-2 text-center">
+                  <button type="reset" class="btn btn-warning btn-sm" style="width: 110px;"><b>CLEAR</b></button>
+                  <button type="submit" class="btn btn-success btn-sm" name="checkavailabilityfood" style="width:  110px;"><b>PROCEED</b></button>
+                </div>
+              </form>
+
+              <form action="action_pages/availabilityupdateaction.php" method="post">
+              
+              <?php
+              if(isset($_POST['checkavailabilityfood'])) {
+              $foodname = $_POST['avafoodname'];
+              
+              $Result = mysqli_query($db,"SELECT * FROM foods WHERE name='$foodname'");
+                while($row=mysqli_fetch_array($Result)){
+
+                    $fid = $row['foodid'];
+                    $foodstatus = $row["foodstatus"];
+              ?>
+											<div class="p-2">
+                      <input type="hidden" name="fid" value="<?php echo "$fid"; ?>" class="form-control">
+                      <input type="hidden" name="foodstatus" value="<?php echo "$foodstatus"; ?>" class="form-control">
+											</div>
+
+                      <?php if($foodstatus == 0){
+                      echo "<span style='float: left;'>This meal currently available.<br>Do you need to change it as an unavailable status ?</span>";
+                      echo "<span style='float: left;color:black;'><b>$foodname</b></span>";
+                      echo "<div class='p-2'>";
+                      echo "<button type='button' style='float: right;' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#staticBackdropForAvailability'>Make an Unavailable</button>";
+											echo "</div>";
+                      } 
+
+                      else if($foodstatus == 1){
+                      echo "<span style='float: left;'>This meal currently unavailable.<br>Do you need to change it as an available status ?</span>";
+                      echo "<span style='float: left; color:black;'><b>$foodname</b></span>";
+                      echo "<div class='p-2'>";
+                      echo "<button type='button' style='float: right;' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#staticBackdropForAvailability'>Make an Available</button>";
+                      echo "</div>";
+                      }
+                      ?>
+
+                      <?php include("infobox/availabilityfoodinfobox.php"); ?>
+
+                      <?php }} ?>
+                  </form>
+
+						</div>
+					</div>
+        </div>
+      </div><br><br>          
+<!--Real time food availability area end-->
+      
+
+<!--DELETE EXISTING FOODS area start-->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+			      <div class="table-responsive">
+							<h5 style="text-align: center;">DELETE</h5>
 
 								<form method="post">
 											
@@ -183,8 +356,6 @@ include_once("includes/header.php");
 										<select class="form-control" name="fids">
 											<option selected>Select Food Name</option>
 											<option> 
-
-												<!--ALL food types view php code START-->
 												<?php
 												$Result = mysqli_query($db,"SELECT * FROM foods");
 
@@ -194,7 +365,6 @@ include_once("includes/header.php");
 													
 												}
 												?>
-
 											</option>
 										</select>
 									</div>

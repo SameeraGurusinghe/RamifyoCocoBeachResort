@@ -93,6 +93,7 @@ if(isset($_POST["addfood"])){
     $fprice=$_POST["fprice"];
     $fdescription=$_POST["fdescription"];
     $fid=0;
+    $foodstatus=0;
 
 	//Profile pic upload
 	$file = $_FILES["fpicture"]["tmp_name"];
@@ -100,7 +101,7 @@ if(isset($_POST["addfood"])){
 	$path1 = "images/food/".$fimg.".jpg";
 	$r = move_uploaded_file($file, $path1);
     
-    $arr=array($fid,$fname,$fprice,$ftype,$mealplantype,$fdescription,$path1);
+    $arr=array($fid,$fname,$fprice,$ftype,$mealplantype,$fdescription,$path1,$foodstatus);
 
     if($obj->save("foods",$arr)){
         echo "<script type='text/javascript'>              
