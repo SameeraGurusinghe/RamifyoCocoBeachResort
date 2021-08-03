@@ -155,10 +155,9 @@ include_once("includes/header.php");
                       <input type="file" name="fpicture" class="form-control">
 											</div>
 
-											<div class="p-2">
-                      <!--<button type="submit" class="btn btn-success btn-sm" style="width: 80px; float: right;" name="addfood">ADD</button>-->
-											<button type="button" class="btn btn-success btn-sm" style="width: 80px; float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdropForAdd">ADD</button>
-                      <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;">RESET</button>
+											<div class="p-2 text-center">
+                      <button type="reset" class="btn btn-warning btn-sm" style="width: 80px;">RESET</button>
+                      <button type="button" class="btn btn-success btn-sm" style="width: 80px;" data-bs-toggle="modal" data-bs-target="#staticBackdropForAdd">ADD</button>
 											</div>
                       <?php include("infobox/addfoodinfobox.php"); ?>
 												
@@ -195,7 +194,7 @@ include_once("includes/header.php");
 
                 <div class="p-2 text-center">
                   <button type="reset" class="btn btn-warning btn-sm" style="width: 110px;"><b>CLEAR</b></button>
-                  <button type="submit" class="btn btn-success btn-sm" name="checkfood" style="width:  110px;"><b>PROCEED</b></button>
+                  <button type="submit" class="btn btn-success btn-sm" name="checkfood" style="width: 110px;"><b>PROCEED</b></button>
                 </div>
               </form>
 
@@ -250,7 +249,7 @@ include_once("includes/header.php");
 
                       <div class="p-2 text-center">
                       <button type="reset" class="btn btn-warning btn-sm" style="width: 110px;"><b>CLEAR</b></button>
-                      <button type="button" class="btn btn-success btn-sm" style="width:  110px;" data-bs-toggle="modal" data-bs-target="#staticBackdropForUpdate"><b>UPDATE</b></button>
+                      <button type="button" class="btn btn-success btn-sm" style="width: 110px;" data-bs-toggle="modal" data-bs-target="#staticBackdropForUpdate"><b>UPDATE</b></button>
                       </div>
 
                       <?php include("infobox/updatefoodinfobox.php"); ?>
@@ -293,7 +292,7 @@ include_once("includes/header.php");
 
                 <div class="p-2 text-center">
                   <button type="reset" class="btn btn-warning btn-sm" style="width: 110px;"><b>CLEAR</b></button>
-                  <button type="submit" class="btn btn-success btn-sm" name="checkavailabilityfood" style="width:  110px;"><b>PROCEED</b></button>
+                  <button type="submit" class="btn btn-success btn-sm" name="checkavailabilityfood" style="width: 110px;"><b>PROCEED</b></button>
                 </div>
               </form>
 
@@ -369,10 +368,9 @@ include_once("includes/header.php");
 										</select>
 									</div>
 
-									<div class="p-2">
-                  <!--<button type="submit" class="btn btn-danger btn-sm" name="delid" style="width: 80px; float: right;">DELETE</button>-->
-										<button type="button" class="btn btn-danger btn-sm" style="width: 80px; float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdropForDelete">DELETE</button>
-                    <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;"><b>RESET</b></button>
+									<div class="p-2 text-center">
+                    <button type="reset" class="btn btn-warning btn-sm" style="width: 80px;"><b>RESET</b></button>
+                    <button type="button" class="btn btn-danger btn-sm" style="width: 80px;" data-bs-toggle="modal" data-bs-target="#staticBackdropForDelete">DELETE</button>
                   </div>
                   <?php include("infobox/deletefoodinfobox.php"); ?>
 

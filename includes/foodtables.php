@@ -6,6 +6,7 @@
             <div class="table-responsive">
               <h5 class="card-title text-center">RICE</h5>
 
+              <div style="width:auto; height:200px; overflow:auto;">
                 <table class="table table-sm bg-dark">
                   <thead>
                     <tr>
@@ -24,6 +25,7 @@
                       ?>
                   </tbody>
                 </table>
+              </div>
             </div>
           </div>
         </div>
@@ -37,7 +39,8 @@
             <div class="table-responsive">
               <h5 class="card-title text-center">KOTHTHU</h5>
 
-                <table class="table table-sm bg-dark">
+              <div style="width:auto; height:200px; overflow:auto;">
+              <table class="table table-sm bg-dark">
                   <thead>
                       <tr>
                         <th scope="col">FOOD Name</th>
@@ -54,7 +57,8 @@
                       include("includes/foodtabledata.php");
                       ?> 
                   </tbody>
-                </table>
+              </table>
+              </div>
 
             </div>
           </div>
@@ -71,6 +75,7 @@
             <div class="table-responsive">
               <h5 class="card-title text-center">NOODLES</h5>
 
+              <div style="width:auto; height:200px; overflow:auto;">
               <table class="table table-sm bg-dark">
                 <thead>
                     <tr>
@@ -89,6 +94,7 @@
                     ?> 
                 </tbody>
               </table>
+              </div>
 
             </div>
           </div>
@@ -103,7 +109,8 @@
               <div class="table-responsive">
                 <h5 class="card-title text-center">SOUP</h5>
 
-                  <table class="table table-sm bg-dark">
+                <div style="width:auto; height:200px; overflow:auto;">
+                <table class="table table-sm bg-dark">
                     <thead>
                       <tr>
                         <th scope="col">FOOD Name</th>
@@ -121,7 +128,9 @@
                           include("includes/foodtabledata.php");
                         ?> 
                     </tbody>
-                  </table>
+                </table>
+                </div>
+
               </div>
             </div>
           </div>
@@ -137,6 +146,7 @@
             <div class="table-responsive">
               <h5 class="card-title text-center">CURRY</h5>
 
+              <div style="width:auto; height:200px; overflow:auto;">
               <table class="table table-sm bg-dark">
                 <thead>
                     <tr>
@@ -155,6 +165,7 @@
                     ?>
                 </tbody>
               </table>
+              </div>
 
             </div>
           </div>
@@ -169,7 +180,8 @@
               <div class="table-responsive">
                 <h5 class="card-title text-center">DRINK</h5>
 
-                  <table class="table table-sm bg-dark">
+                <div style="width:auto; height:200px; overflow:auto;">
+                <table class="table table-sm bg-dark">
                     <thead>
                       <tr>
                         <th scope="col">FOOD Name</th>
@@ -187,7 +199,9 @@
                           include("includes/foodtabledata.php");
                         ?> 
                     </tbody>
-                  </table>
+                </table>
+                </div>
+
               </div>
             </div>
           </div>
@@ -204,6 +218,7 @@
             <div class="table-responsive">
               <h5 class="card-title text-center">DESSERT</h5>
 
+              <div style="width:auto; height:200px; overflow:auto;">
               <table class="table table-sm bg-dark">
                 <thead>
                     <tr>
@@ -222,6 +237,7 @@
                     ?> 
                 </tbody>
               </table>
+              </div>
 
             </div>
           </div>
@@ -236,6 +252,7 @@
             <div class="table-responsive">
               <h5 class="card-title text-center">Various</h5>
 
+              <div style="width:auto; height:200px; overflow:auto;">
               <table class="table table-sm bg-dark">
                 <thead>
                     <tr>
@@ -254,6 +271,7 @@
                     ?> 
                 </tbody>
               </table>
+              </div>
 
             </div>
           </div>

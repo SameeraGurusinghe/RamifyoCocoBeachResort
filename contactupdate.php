@@ -47,31 +47,31 @@ if(!isset($_SESSION['email'])){
     <ul class="sidebar-menu do-nicescrol">
       <li>
         <a href="admindashbord.php">
-        <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
+        <i class="zmdi zmdi-view-dashboard"></i><span>Dashboard</span>
         </a>
       </li>
 
       <li>
         <a href="foodgallery.php">
-        <i class="zmdi zmdi-view-dashboard"></i> <span>Food Gallery</span>
+        <i class="zmdi zmdi-view-dashboard"></i><span>Food Gallery</span>
         </a>
       </li>
     
       <li>
         <a href="News & Feedback.php">
-        <i class="zmdi zmdi-calendar-check"></i> <span>News & Feedback</span>
+        <i class="zmdi zmdi-calendar-check"></i><span>News & Feedback</span>
         </a>
       </li>
 
       <li>
           <a href="contactupdate.php">
-          <i class="zmdi zmdi-calendar-check"></i> <span>Contact Info</span>
+          <i class="zmdi zmdi-calendar-check"></i><span>Contact Info</span>
           </a>
       </li>
 
       <li>
       <a href="calendar.html">
-        <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
+        <i class="zmdi zmdi-calendar-check"></i><span>Calendar</span>
       </a>
       </li>
     </ul>
@@ -123,38 +123,37 @@ include_once("includes/header.php");
                           $website = $row["website"];
                   ?>
 
-                      <div class="form-group row">
-                        <label class="col-lg-2 col-form-label form-control-label">Telephone</label>
-                          <div class="col-lg-10 text-center">
+                      <div class="form-group">
+                        <label class="col-lg-2">Telephone</label>
+                          <div class="col-lg-12 text-center">
                             <input class="form-control"  type="text" value="<?php echo "$phoneno"; ?>" name="phoneno">
                           </div>
                       </div><br>
 
-                      <div class="form-group row">
-                        <label class="col-lg-2 col-form-label form-control-label">Email</label>
-                          <div class="col-lg-10 text-center">
+                      <div class="form-group">
+                        <label class="col-lg-2">Email</label>
+                          <div class="col-lg-12 text-center">
                             <input class="form-control"  type="text" value="<?php echo "$email"; ?>" name="email">
                           </div>
                       </div><br>
 
-                      <div class="form-group row">
-                        <label class="col-lg-2 col-form-label form-control-label">Address</label>
-                          <div class="col-lg-10 text-center">
+                      <div class="form-group">
+                        <label class="col-lg-2">Address</label>
+                          <div class="col-lg-12 text-center">
                             <input class="form-control"  type="text" value="<?php echo "$address"; ?>" name="address">
                           </div>
                       </div><br>
 
-                      <div class="form-group row">
-                        <label class="col-lg-2 col-form-label form-control-label">Website</label>
-                          <div class="col-lg-10 text-center">
+                      <div class="form-group">
+                        <label class="col-lg-2">Website</label>
+                          <div class="col-lg-12 text-center">
                             <input class="form-control"  type="text" value="<?php echo "$website"; ?>" name="website">
                           </div>
                       </div><br>
 
-											<div class="p-2">
-                      <!--<button type="submit" name="contact_update" class="btn btn-success btn-sm" style="width: 80px; float: right;">UPDATE</button>-->
-											<button type="button" class="btn btn-success btn-sm" style="width: 80px; float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdropForContact">UPDATE</button>
-                      <button type="reset" class="btn btn-warning btn-sm" style="width: 80px; float: right;">RESET</button>
+											<div class="p-2 text-center">
+                      <button type="reset" class="btn btn-warning btn-sm" style="width: 80px;">RESET</button>
+                      <button type="button" class="btn btn-success btn-sm" style="width: 80px;" data-bs-toggle="modal" data-bs-target="#staticBackdropForContact">UPDATE</button>
 											</div>
                       
                       <?php 

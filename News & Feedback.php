@@ -158,12 +158,13 @@ include_once("includes/header.php");
         <div class="table-responsive">
         <h4 style="text-align: center;"><b>CUSTOMER FEEDBACK</b></h4>
               
-          <table class="table table-sm">
+        <div style="width:auto; height:300px; overflow:auto; background-color:#282c2b;">
+        <table class="table table-sm table-hover">
             <thead>
               <tr>
-                <th scope="col">DATE</th>
-                <th scope="col">NAME</th>
-                <th scope="col">EMAIL</th>
+                <th scope="col" style="width:40px;">Date</th>
+                <th scope="col" style="width:40px;">Name</th>
+                <th scope="col" style="width:40px;">Email</th>
                 <th scope="col">Discription</th>
               </tr>
             </thead>
@@ -172,7 +173,7 @@ include_once("includes/header.php");
             <tr>
 
               <?php
-                $Result = mysqli_query($db,"select*from customer_feedback");
+                $Result = mysqli_query($db,"SELECT * FROM customer_feedback order by date_time DESC;");
                 while($row=mysqli_fetch_array($Result)){
                 $p = $row["cusname"];
                 $q = $row["emailid"];
@@ -192,7 +193,8 @@ include_once("includes/header.php");
                   
             </tbody>
 
-          </table>
+        </table>
+        </div>
 
         </div>
       </div>

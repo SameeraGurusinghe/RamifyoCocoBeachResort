@@ -116,21 +116,20 @@ if(!isset($_SESSION['email'])){
 	      <div class="table-responsive">
           <h4 style="text-align: center;"><b>Orders</b></h4>
 
-          <table class="table align-items-center table-flush table-borderless">
+          <div style="height:350px; overflow:auto;">
+          <table class="table table-sm table-hover" style="background-color:#282c2b;">
             <thead>
               <tr>
                 <th>CUSTOMER NAME</th>
                 <th>FOOD NAME</th>
-                <th>FOOD ID</th>
                 <th>ORDER ID</th>
                 <th>AMOUNT</th>
-                <th>PRICE</th>
                 <th>DATE</th>
                 <th>ORDER STATUS</th> 
               </tr>
 
               <?php
-                $Result = mysqli_query($db,"SELECT * FROM foodorders order by foodorderid DESC LIMIT 20;");
+                $Result = mysqli_query($db,"SELECT * FROM foodorders order by date DESC;");
                 while($row=mysqli_fetch_array($Result)){
 
                   $cusname = $row["customerid"];
@@ -148,10 +147,8 @@ if(!isset($_SESSION['email'])){
               <tr>
                 <td><?php echo "$cusname" ?></td>
                 <td><?php echo "$foodname" ?></td>
-                <td><?php echo "$foodid" ?></td>
                 <td><?php echo "$orderid" ?></td>
                 <td><?php echo "$amount" ?></td>
-                <td> Rs <?php echo "$price" ?>/=</td>
                 <td><?php echo "$date" ?></td>
                 <td>        
             
@@ -177,7 +174,8 @@ if(!isset($_SESSION['email'])){
 
               <?php } ?>
             </tbody>
-          </table> 	
+          </table>
+          </div>
           
         </div>
 	    </div>

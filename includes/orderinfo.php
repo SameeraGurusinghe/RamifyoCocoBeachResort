@@ -43,7 +43,7 @@ while($row=mysqli_fetch_array($Result)){
         else if ($foodstatus == 1){
         echo "<br>";
         echo "<span class='buttonart'>";
-        echo "<button type='button' class='btn btn-danger' style='float: right;' title='This meal currently not available. We will update status once the meal is coming to available status.'>We are sorry. This meal currently not available</button>";
+        echo "<button type='button' class='btn btn-danger' style='float: right;' title='This meal currently unavailable. We will update status once the meal come to available status.'>We are sorry. This meal currently unavailable</button>";
         echo "</span>";
         }
         

@@ -53,8 +53,9 @@ echo "<div class='col'>";
 	echo "<img src='images/theme.png' class='hometheme'>";
       echo "<br><a href='https://www.facebook.com/Sea-Beach-Resort-Negombo-106715187809659/' class='fa fa-facebook'></a>";
       echo "<a href='#' class='fa fa-twitter'></a>";
-      echo "<a href='#' class='fa fa-youtube'></a>";
-      echo "<p>&copy; 2021 | Ramifyo Coco Beach Resort Private Limited. All Rights Reserved.</p></br>";
+      echo "<a href='#' class='fa fa-youtube'></a><br>";
+	  echo "<a href='termsandcondition.php' target='_blank' style='text-decoration:none;'>Terms & Conditions</a><br>";
+      echo "<p id='copyright'>&copy; <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script> Ramifyo Coco Beach Resort Private Limited. All Rights Reserved.</p></br>";
 echo "</div>";
 
 ?>

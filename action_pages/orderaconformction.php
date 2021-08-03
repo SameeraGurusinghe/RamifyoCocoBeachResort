@@ -2,7 +2,6 @@
 <html>
 <head>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<title></title>
 </head>
 <body>
 
@@ -10,7 +9,6 @@
 </html>
 
 <?php
-
 
 //Database Connection include start
 include_once("../includes/dbconnection.php");
@@ -21,20 +19,6 @@ $foodid = $_POST["orderid"];
 $status = $_POST["ordervalue"];
 
 echo $foodid;
-
-
-/*if($db){
-	echo "Database connection successfully completed.";
-	echo ("<br>"); 
-	}
-
-else{
-	echo "Database connection Faild.";
-	echo ("<br>");
-}*/
-
-
-
 
 $Result = mysqli_query($db,"UPDATE foodorders SET orderstatus='$status' WHERE customerid='$emailid' AND foodorderid ='$foodid'");
 if($Result){
@@ -56,7 +40,6 @@ else{
     window.location.href = '../admindashbord.php';}
 	});
     </script>";
-
 }
 
 ?>
