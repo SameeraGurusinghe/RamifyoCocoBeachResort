@@ -42,42 +42,41 @@ if(!isset($_SESSION['email'])){
 <!-- Start wrapper-->
 <div id="wrapper">
 
-<!--Start sidebar-wrapper-->
- <div id="sidebar-wrapper" data-simplebar-auto-hide="true">
-    <ul class="sidebar-menu do-nicescrol">
-      <li>
-        <a href="admindashbord.php">
-        <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="foodgallery.php">
-        <i class="zmdi zmdi-grid"></i> <span>Food Gallery</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="News & Feedback.php">
-        <i class="zmdi zmdi-calendar-check"></i> <span>News & Feedback</span>
-        </a>
-      </li>
-
-      <li>
-          <a href="contactupdate.php">
-          <i class="zmdi zmdi-calendar-check"></i> <span>Contact Info</span>
+  <!--Start sidebar-wrapper-->
+  <div id="sidebar-wrapper" data-simplebar-auto-hide="true">
+      <ul class="sidebar-menu">
+        <li>
+          <a href="admindashbord.php">
+          <i class="fa fa-th"></i><span>Dashboard</span>
           </a>
-      </li>
+        </li>
 
-      <li>
-      <a href="calendar.html">
-        <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
-      </a>
-      </li>
-    </ul>
- </div></div>
- <!--End sidebar-wrapper-->
+        <li>
+          <a href="foodgallery.php">
+          <i class="fa fa-cutlery"></i><span>Food Gallery</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="News & Feedback.php">
+          <i class="fa fa-newspaper-o"></i><span>News and Feedback</span>
+          </a>
+        </li>
 
+        <li>
+          <a href="contactupdate.php">
+          <i class="fa fa-address-card-o"></i><span>Contact Info</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="calendar.html">
+          <i class="fa fa-calendar-check-o"></i><span>Calendar</span>
+          </a>
+        </li>    
+      </ul>
+   </div>
+   <!--End sidebar-wrapper-->
 
 <!--header start-->
 <?php
@@ -274,7 +273,7 @@ include_once("includes/header.php");
 							<h5 style="text-align: center;">CHANGE MEAL AVAILABILITY</h5>
 
               <form method="post">	
-                <div class="form-group">
+                <div class="P-2">
                     <select class="form-control" name="avafoodname">
 											<option selected>Select Meal Name</option>
 											<option> 
@@ -347,10 +346,9 @@ include_once("includes/header.php");
         <div class="card">
           <div class="card-body">
 			      <div class="table-responsive">
-							<h5 style="text-align: center;">DELETE</h5>
+							<h5 style="text-align: center;">DELETE A FOOD</h5>
 
 								<form method="post">
-											
                   <div class="p-2">
 										<select class="form-control" name="fids">
 											<option selected>Select Food Name</option>

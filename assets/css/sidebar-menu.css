@@ -1,33 +1,3 @@
-.animate-menu-push {
-	left: 0;
-	position: relative;
-	transition: all 0.3s ease;
-}
-.animate-menu-push.animate-menu-push-right {
-	left: 200px;
-}
-.animate-menu-push.animate-menu-push-left {
-	left: -200px;
-}
-.animate-menu {
-	position: fixed;
-	top: 0;
-	width: 200px;
-	height: 100%;
-	transition: all 0.3s ease;
-}
-.animate-menu-left {
-	left: -200px;
-}
-.animate-menu-left.animate-menu-open {
-	left: 0;
-}
-.animate-menu-right {
-	right: -200px;
-}
-.animate-menu-right.animate-menu-open {
-	right: 0;
-}
 .sidebar-menu {
 	list-style: none;
 	margin: 0;
@@ -40,7 +10,7 @@
 	padding: 0;
 }
 .sidebar-menu>li>a {
-	padding: 13px 5px 13px 15px;
+	padding: 5px 5px 5px 5px;
 	display: block;
 	border-left: 3px solid transparent;
 	color: rgba(255, 255, 255, 0.65);

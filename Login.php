@@ -15,7 +15,8 @@ function validateForm() {
   var n = document.forms["myForm"]["nic"].value;
   var p = document.forms["myForm"]["phoneno"].value;
   var e = document.forms["myForm"]["email"].value;
-  var p = document.forms["myForm"]["password"].value;
+  var pass_1 = document.forms["myForm"]["password"].value;
+  var pass_2 = document.forms["myForm"]["password_2"].value;
 
   var nicl = n.length;
   var nicOld = n.substr(9,15);
@@ -47,6 +48,18 @@ function validateForm() {
   }
   else if (p == "") {
     alert("Phone Number must be filled out");
+    return false;
+  }
+  else if (pass_1 == "") {
+    alert("Password must be filled out");
+    return false;
+  }
+  else if (pass_2 == "") {
+    alert("Confirm password must be filled out");
+    return false;
+  }
+  else if (pass_1 !== pass_2) {
+    alert("Password and Confirm password should match!");
     return false;
   }
   
@@ -161,6 +174,7 @@ include_once("includes/header.php");
     <input type="number" class="input-field" name="phoneno" placeholder="Phone Number">
 		<input type="email" class="input-field" id="email" name="email" placeholder="Email" onBlur="checkAvailability()">
 		<input type="password" class="input-field" id="password" name="password" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+    <input type="password" class="input-field" id="password_2" name="password_2" placeholder="Conform Password">
 		<p class='term'><input type="checkbox" required>&nbsp;&nbsp;&nbsp;I agree to <a href="termsandcondition.php" target="_blank">terms & conditions</a></p>
 		<button type="submit" class="submit-btn" name="reg_user">Register</button><br>
 		

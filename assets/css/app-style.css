@@ -249,12 +249,12 @@ hr {
 #sidebar-wrapper {
   background-color: rgba(0,0,0,.1);
   position: fixed;
-  top: 150px;
+  top: 250px;
   left: 0px;
   z-index: 1000;
   overflow: hidden;
   width: 250px;
-  height: 260px;
+  height: 240px;
  -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;

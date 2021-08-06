@@ -42,41 +42,42 @@ if(!isset($_SESSION['email'])){
 <!-- Start wrapper-->
 <div id="wrapper">
 
-<!--Start sidebar-wrapper-->
- <div id="sidebar-wrapper" data-simplebar-auto-hide="true">
-    <ul class="sidebar-menu do-nicescrol">
-      <li>
-        <a href="admindashbord.php">
-        <i class="zmdi zmdi-view-dashboard"></i><span>Dashboard</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="foodgallery.php">
-        <i class="zmdi zmdi-view-dashboard"></i><span>Food Gallery</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="News & Feedback.php">
-        <i class="zmdi zmdi-calendar-check"></i><span>News & Feedback</span>
-        </a>
-      </li>
-
-      <li>
-          <a href="contactupdate.php">
-          <i class="zmdi zmdi-calendar-check"></i><span>Contact Info</span>
+  <!--Start sidebar-wrapper-->
+  <div id="sidebar-wrapper" data-simplebar-auto-hide="true">
+      <ul class="sidebar-menu">
+        <li>
+          <a href="admindashbord.php">
+          <i class="fa fa-th"></i><span>Dashboard</span>
           </a>
-      </li>
+        </li>
 
-      <li>
-      <a href="calendar.html">
-        <i class="zmdi zmdi-calendar-check"></i><span>Calendar</span>
-      </a>
-      </li>
-    </ul>
- </div></div>
- <!--End sidebar-wrapper-->
+        <li>
+          <a href="foodgallery.php">
+          <i class="fa fa-cutlery"></i><span>Food Gallery</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="News & Feedback.php">
+          <i class="fa fa-newspaper-o"></i><span>News and Feedback</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="contactupdate.php">
+          <i class="fa fa-address-card-o"></i><span>Contact Info</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="calendar.html">
+          <i class="fa fa-calendar-check-o"></i><span>Calendar</span>
+          </a>
+        </li>    
+      </ul>
+   </div>
+   <!--End sidebar-wrapper-->
+
 
 
 <!--header start-->

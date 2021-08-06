@@ -21,6 +21,7 @@ if(!isset($_SESSION['email'])){
   <meta name="author" content=""/>
   <title>Admin Dashboard</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/hotel.png"/>
+  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="assets/js/pace.min.js"></script>
   <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
@@ -40,37 +41,36 @@ if(!isset($_SESSION['email'])){
 
   <!--Start sidebar-wrapper-->
    <div id="sidebar-wrapper" data-simplebar-auto-hide="true">
-      <ul class="sidebar-menu do-nicescrol">
+      <ul class="sidebar-menu">
         <li>
           <a href="admindashbord.php">
-          <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
+          <i class="fa fa-th"></i><span>Dashboard</span>
           </a>
         </li>
 
         <li>
           <a href="foodgallery.php">
-          <i class="zmdi zmdi-grid"></i> <span>Food Gallery</span>
+          <i class="fa fa-cutlery"></i><span>Food Gallery</span>
           </a>
         </li>
       
         <li>
           <a href="News & Feedback.php">
-          <i class="zmdi zmdi-calendar-check"></i> <span>News & Feedback</span>
+          <i class="fa fa-newspaper-o"></i><span>News and Feedback</span>
           </a>
         </li>
 
         <li>
           <a href="contactupdate.php">
-          <i class="zmdi zmdi-calendar-check"></i> <span>Contact Info</span>
+          <i class="fa fa-address-card-o"></i><span>Contact Info</span>
           </a>
         </li>
 
         <li>
-        <a href="calendar.html">
-          <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
-        </a>
-        </li>
-             
+          <a href="calendar.html">
+          <i class="fa fa-calendar-check-o"></i><span>Calendar</span>
+          </a>
+        </li>    
       </ul>
    </div>
    <!--End sidebar-wrapper-->

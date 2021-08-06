@@ -26,7 +26,6 @@ if(!isset($_SESSION['email'])){
   <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
   <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
   <link href="assets/css/app-style.css" rel="stylesheet"/>
-  
 </head>
 
 <body class="bg-theme bg-theme1">
@@ -39,31 +38,29 @@ if(!isset($_SESSION['email'])){
 <div id="wrapper">
 
   <!--Start sidebar-wrapper-->
-   <div id="sidebar-wrapper" data-simplebar-auto-hide="true">
-     <ul class="sidebar-menu do-nicescrol">
+  <div id="sidebar-wrapper" data-simplebar-auto-hide="true">
+      <ul class="sidebar-menu">
         <li>
           <a href="employeedashbord.php">
-          <i class="zmdi zmdi-view-dashboard"></i><span>Dashboard</span>
+            <i class="fa fa-th"></i><span>Dashboard</span>
           </a>
         </li>
 
         <li>
           <a href="empfoodgallery.php">
-          <i class="zmdi zmdi-grid"></i><span>Food Gallery</span>
+            <i class="fa fa-cutlery"></i><span>Food Gallery</span>
           </a>
         </li>
       
         <li>
-        <a href="empcalendar.php">
-          <i class="zmdi zmdi-calendar-check"></i><span>Calendar</span>
-        </a>
+          <a href="empcalendar.php">
+            <i class="fa fa-calendar-check-o"></i><span>Calendar</span>
+          </a>
         </li>
-      
       </ul>
-   </div></div>
+   </div>
    <!--End sidebar-wrapper-->
-  
-  
+
   <!--header start-->
   <?php
   include_once("includes/header.php");

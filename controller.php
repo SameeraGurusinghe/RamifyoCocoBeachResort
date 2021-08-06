@@ -21,14 +21,19 @@ if(isset($_POST["reg_user"])){
     $phoneno=$_POST["phoneno"];
     $email=$_POST["email"];
     $password=$_POST["password"];
+    $password_2=$_POST["password_2"];
     $streete= '';
     $city= '';
     $state= '';
     $propicture= '';
-
+	
     date_default_timezone_set('Asia/Colombo');
     $regdate = date('y-m-d h.i.s AM');
-    $password = md5($password);
+
+	if ($password == $password_2) {
+    $password = md5($password);//password encryption to increase data security
+    
+    // if the form is error free, then register the user
     $arr=array($id,$usertype,$fullname,$nic,$phoneno,$email,$password,$streete,$city,$state,$propicture,$regdate);
     
     if($obj->save("users",$arr)){
@@ -38,6 +43,7 @@ if(isset($_POST["reg_user"])){
         window.location.href = 'Login.php';}
         });
         </script>";
+    }
     }
     else{
         echo "<script type='text/javascript'>           
