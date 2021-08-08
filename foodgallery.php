@@ -192,8 +192,8 @@ include_once("includes/header.php");
                 </div>
 
                 <div class="p-2 text-center">
-                  <button type="reset" class="btn btn-warning btn-sm" style="width: 110px;"><b>CLEAR</b></button>
-                  <button type="submit" class="btn btn-success btn-sm" name="checkfood" style="width: 110px;"><b>PROCEED</b></button>
+                  <button type="reset" class="btn btn-warning btn-sm"><b>CLEAR</b></button>
+                  <button type="submit" class="btn btn-success btn-sm" name="checkfood"><b>PROCEED</b></button>
                 </div>
               </form>
 
@@ -247,8 +247,8 @@ include_once("includes/header.php");
 											</div>
 
                       <div class="p-2 text-center">
-                      <button type="reset" class="btn btn-warning btn-sm" style="width: 110px;"><b>CLEAR</b></button>
-                      <button type="button" class="btn btn-success btn-sm" style="width: 110px;" data-bs-toggle="modal" data-bs-target="#staticBackdropForUpdate"><b>UPDATE</b></button>
+                      <button type="reset" class="btn btn-warning btn-sm"><b>CLEAR</b></button>
+                      <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdropForUpdate"><b>UPDATE</b></button>
                       </div>
 
                       <?php include("infobox/updatefoodinfobox.php"); ?>
@@ -290,8 +290,8 @@ include_once("includes/header.php");
                 </div>
 
                 <div class="p-2 text-center">
-                  <button type="reset" class="btn btn-warning btn-sm" style="width: 110px;"><b>CLEAR</b></button>
-                  <button type="submit" class="btn btn-success btn-sm" name="checkavailabilityfood" style="width: 110px;"><b>PROCEED</b></button>
+                  <button type="reset" class="btn btn-warning btn-sm"><b>CLEAR</b></button>
+                  <button type="submit" class="btn btn-success btn-sm" name="checkavailabilityfood"><b>PROCEED</b></button>
                 </div>
               </form>
 
@@ -367,8 +367,8 @@ include_once("includes/header.php");
 									</div>
 
 									<div class="p-2 text-center">
-                    <button type="reset" class="btn btn-warning btn-sm" style="width: 80px;"><b>RESET</b></button>
-                    <button type="button" class="btn btn-danger btn-sm" style="width: 80px;" data-bs-toggle="modal" data-bs-target="#staticBackdropForDelete">DELETE</button>
+                    <button type="reset" class="btn btn-warning btn-sm"><b>RESET</b></button>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdropForDelete">DELETE</button>
                   </div>
                   <?php include("infobox/deletefoodinfobox.php"); ?>
 

@@ -21,10 +21,12 @@ if(!isset($_SESSION['email'])){
   <link href="css/style.css" rel="stylesheet"/>
   <link href="assets/css/app-style.csss" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+
   <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css">
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 <script language="javascript">
     $(document).ready(function () {
@@ -56,37 +58,96 @@ if(!isset($_SESSION['email'])){
 
 <div class="row">
 
-<div class="col-sm-12 text-center">
+<div class="col-sm-1"></div>
+<div class="social col-sm-10 text-center">
     <h3>Check Availability</h3>
       
-    <div class="social text-center">
-        <i class="fa fa-calendar"></i>
-        <input id="txtdate1" type="text" name="checkin" placeholder="Check in">
+    <form method="post">
+      <div class="social text-center"><br>
+          <span><b>Check in</b></span>
+          <input type="date" name="checkin" placeholder="Check in">
 
-        <i class="fa fa-calendar"></i>
-        <input id="txtdate2" type="text" name="checkout" placeholder="Check out">
+          <span><b>Check out</b></span>
+          <input type="date" name="checkout" placeholder="Check out">
 
-        <select name="ftype" required>
-        <option selected>Members</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>                   
-        </select>
+          <select name="ftype" required>
+          <option selected>Adult(s)</option>
+            <option value="1">1</option>
+            <option value="2">2</option>                  
+          </select><br><br>
 
-        <button class="btn-secondary" style="width: 60px;">Check</button>
+          <button type="submit" name="check" class="btn btn-danger">Check Availability</button><br><br>
 
-    </div><br>
+      </div>
+    </form>
+    <br>
+
+    <div class="info text-center">
+    <h3>Available Rooms for your selected time period</h3>
+    
+    <div class="alert alert-info text-center" role="alert">
+    <h6>Note that, our all the rooms have same faclitities and safe.</h6>
+    </div>
+
+    <?php
+    if(isset($_POST['check'])) {
+      $date1 = $_POST["checkin"];
+      $date2 = $_POST["checkout"];
+      echo "<h6>Selected Date : From $date1 to $date2 </h6>";
+    }
+    ?>
+    </div>
+    <br>
+
+    <table class="table table-sm table-hover table-secondary">
+      <thead>
+      <tr>
+        <th scope="col">Room No</th>
+        <th scope="col">Room Facilities</th>
+        <th scope="col">Rate</th>
+        <th scope="col">Booking</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <?php
+          if(isset($_POST['check'])) {
+          $date1 = $_POST["checkin"];
+          $date2 = $_POST["checkout"];
+
+          $Result = mysqli_query($db,"SELECT * FROM room WHERE room_no NOT IN (SELECT DISTINCT room_no FROM reservation WHERE check_in <= '$date1' AND check_out >= '$date2')");
+
+          while($row=mysqli_fetch_array($Result)){
+          $id = $row["id"];
+          $roomno = $row["room_no"];
+          $type = $row["description"];
+          $rate = $row["rate"];
+        ?>
+
+          <td><?php echo $roomno ?></td>
+          <td><?php echo $type ?></td>
+          <td><?php echo $rate ?></td>
+          <td><button class="btn btn-success">Booking</button></td>
+      </tr>
+      <?php }} ?>
+
+    </tbody>
+    </table>
+    <br>
+
 </div>
-</div>
+<div class="col-sm-1"></div>
+</div><br>
   
-
+<!--
 		<div class="col-sm-6 bg-info">
-		<!--Room tables file include.... area start-->
-		<?php include_once("includes/roomavailability.php"); ?>
-		<!--Room tables file include.... area end-->
-		</div>
+		//Room tables file include.... area start-->
+		<?php //include_once("includes/roomavailability.php"); ?>
+		<!--Room tables file include.... area end
+		</div>-->
 
-
+<!--
 		<div class="col-sm-6 text-center bg-secondary">
 			<h3>Checkout</h3>
 			<div class="card">
@@ -141,7 +202,8 @@ if(!isset($_SESSION['email'])){
 
             </div>
         </div>
-	</div>
+	</div>-->
+
 </div>
 
 

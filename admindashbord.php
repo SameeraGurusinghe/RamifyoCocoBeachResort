@@ -102,8 +102,9 @@ if(!isset($_SESSION['email'])){
 	<div class="card">
 
   <!--Room tables file include.... area start-->
-  <?php include_once("includes/roomavailability.php"); ?>
+  <?php //*****************************include_once("includes/roomavailability.php");**************************** ?>
   <!--Room tables file include.... area end-->
+  room availability information box has been hidden due to some improment process...
 
   </div>
 </div><br><br><br>
