@@ -55,6 +55,12 @@ if(!isset($_SESSION['email'])){
           <i class="fa fa-cutlery"></i><span>Food Gallery</span>
           </a>
         </li>
+
+        <li>
+          <a href="roomgallery.php">
+          <i class="fa fa-braille"></i><span>Room Gallery</span>
+          </a>
+        </li>
       
         <li>
           <a href="News & Feedback.php">
