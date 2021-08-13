@@ -174,7 +174,7 @@ include_once("includes/header.php");
 			      <div class="table-responsive">
 							<h5 style="text-align: center;">UPDATE FOOD DETAILS</h5>
 
-              <form method="post">	
+              <form method="post">
                 <div class="form-group">
                     <select class="form-control" name="foodname">
 											<option selected>Select Food Name</option>

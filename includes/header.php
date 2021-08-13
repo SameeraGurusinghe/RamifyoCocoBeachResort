@@ -20,7 +20,7 @@ include_once("includes/dbconnection.php");
 
 <!--== Ramifyo title & time display start ==-->
 <div>
-	<a id="ramifyotitle" href="Home.php">Ramifyo Coco Beach Resort</a><br>
+	<a id="ramifyotitle" href="index.php">Ramifyo Coco Beach Resort</a><br>
 	<a id="timehandle"><?php echo "". date("l ") . date("| Y.m.d |");?><?php include_once("clock.php");?></a>
 </div>
 <!--== Ramifyo title & time display end ==-->
@@ -28,14 +28,14 @@ include_once("includes/dbconnection.php");
 
 <!--== Ramifyo header button design start ==-->
 <ul>
-	<li><a href="Home.php"><i class="fas fa-home">&nbsp;&nbsp;Home</i></a></li>
+	<li><a href="index.php"><i class="fas fa-home">&nbsp;&nbsp;Home</i></a></li>
 	<li><a href="#"><i class="fas fa-info">&nbsp;&nbsp;About Us</i></a>
 	<div class="sub-menu-1">
 		<ul>
 			<li><a id="myBtn">Our Story</a></li>
-			<li><a href="Home.php#about-area">Who We Are</a></li>
-			<li><a href="Home.php#why-choose-us">Why Choose Us</a></li>
-			<li><a href="Home.php#service-area">Related Services</a></li>
+			<li><a href="index.php#about-area">Who We Are</a></li>
+			<li><a href="index.php#why-choose-us">Why Choose Us</a></li>
+			<li><a href="index.php#service-area">Related Services</a></li>
 		</ul>	
 	</div>
 	</li>
@@ -55,14 +55,7 @@ include_once("includes/dbconnection.php");
 				</div>
 				</li>
 
-				<li class="hover-me"><a href="#">Rooms</a><i class="fas fa-angle-right"></i>
-				<div class="sub-menu-2">
-				<ul>
-						<li><a href="#">AC</a></li>
-						<li><a href="#">Non-AC</a></li>
-				</ul>
-				</div>
-				</li>
+				<li class="hover-me"><a href="rooms.php">Rooms</a></li>
 
 		</ul>	
 	</div>

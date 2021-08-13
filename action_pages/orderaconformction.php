@@ -18,8 +18,6 @@ $emailid = $_POST["emailid"];
 $foodid = $_POST["orderid"];
 $status = $_POST["ordervalue"];
 
-echo $foodid;
-
 $Result = mysqli_query($db,"UPDATE foodorders SET orderstatus='$status' WHERE customerid='$emailid' AND foodorderid ='$foodid'");
 if($Result){
 	echo "<script type='text/javascript'>
