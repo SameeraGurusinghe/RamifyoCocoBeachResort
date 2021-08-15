@@ -2,7 +2,6 @@
 <?php
 session_start();
 if(!isset($_SESSION['email'])){
-    header('location:Login.php');
 }
 ?>
 <!--Session end-->
@@ -10,130 +9,52 @@ if(!isset($_SESSION['email'])){
 <!--database connection-->
 <?php include_once("includes/dbconnection.php"); ?>
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta name="description" content=""/>
-  <meta name="author" content=""/>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
-  <link rel="shortcut icon" type="image/x-icon" href="images/hotel.png"/>
-  <link href="css/index.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="assets/css/animate.css" rel="stylesheet" type="text/css"/>
-  <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
-  <link href="assets/css/app-style.css" rel="stylesheet"/>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <title>Employee Dashboard</title>
+	<title>PDF Generate</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="images/hotel.png"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="assets/css/app-style.csss" rel="stylesheet"/>
+    <link href="css/tooltip.css" rel="stylesheet" type="text/css" />
+    <script src="assets/js/tooltip.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script language="javascript" type="text/javascript">
+function f3(){
+    window.print();
+}
+</script>
+
 </head>
 
-<body class="bg-theme bg-theme1">
+<body>
 
-<!-- Start wrapper-->
- <div id="wrapper">
-
-  <!--Start sidebar-wrapper-->
-   <div id="sidebar-wrapper" data-simplebar-auto-hide="true">
-      <ul class="sidebar-menu">
-        <li>
-          <a href="employeedashbord.php">
-            <i class="fa fa-th"></i><span>Dashboard</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="empfoodgallery.php">
-            <i class="fa fa-cutlery"></i><span>Food Gallery</span>
-          </a>
-        </li>
-      
-        <li>
-          <a href="empcalendar.php">
-            <i class="fa fa-calendar-check-o"></i><span>Calendar</span>
-          </a>
-        </li>
-      </ul>
-   </div>
-   <!--End sidebar-wrapper-->
-
-<!--header start-->
-<?php include_once("includes/header.php");?>
-<!--header end-->
-
-<!--Start topbar header-->
-<header class="topbar-nav">
-  <nav class="navbar navbar-expand fixed-top">
-    <ul class="navbar-nav mr-auto align-items-center">
-      <li class="nav-item">
-        <a class="nav-link toggle-menu" href="javascript:void();">
-          <i class="icon-menu menu-icon"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-</header>
-<!--End topbar header-->
-	
-<div class="content-wrapper">
-<div class="container-fluid">
-
-<!--employee content code design start-->
-<div class="col-md-12">
-<div class="card">
-<br>
-<h4 style="text-align: center;"><b>CHECK CUSTOMER BILL</b></h4><br>
-
-<div class="card-Secondary" style="align: center;">
-	<div class="card bg-dark col-md-12 text-center">
-		<div class="card-body text-center">
-			
-      <form method="post">	
-        <div class="form-group">
-          <div class="col-md-12">
-            <input type="text" class="form-control" name="un" placeholder="Enter Customer Email.." style="text-align: center;" required><br>
-          </div>
-        </div>
-
-        <div class="p-2">
-          <button type="reset" class="btn btn-warning btn-sm" style="width: 110px; float: center;"><b>CLEAR</b></button>
-          <button type="submit" class="btn btn-success btn-sm" name="checkstatus" style="width:  110px; float: center;"><b>PROCEED</b></button>
-        </div>
-      </form>
-
-		</div>
-  </div>
-</div><br>
+<div class="container-fluid"><br>
+<div class="row">
+<div class="p-1 text-center">
+    <img src="images/theme.png" style="width:220px;height:150px;">
+    <h4>Ramifyo Coco Beach Resort (Pvt) Ltd.</h4>
+    <h5>Customer Invoice</h5>
 </div>
-</div>
-<!--employee content code design end-->
-<br>
-
-<form action="printPDF.php" target="_blank" method="post">
-<?php
-if(isset($_POST["checkstatus"])){
-$useremail = $_POST["un"];
-?>
-<div class="p-2 text-center">
-<input type="hidden" name="cus_email" readonly value="<?php echo $useremail ?>">
-<input type="submit" class="p-2 btn btn-success" name="print_cus_info" value="Prints this Document">
-</div>
-<?php } ?>
-</form><br>
 
     <!--food bill calculate area start-->
-      <div class="col-md-12">
-        <div class="card">
+    <div class="col-md-12">
+        <div class="card bg-dark">
           <div class="card-body">
             <div class="table-responsive">
 
-              <h5 class="card-title text-center">- Customer Information -</h5>
+              <h6 class="card-title text-center text-light">- Customer Information -</h6>
               <div class="row">
               <?php
-              if(isset($_POST["checkstatus"])){
-              $useremail = $_POST["un"];
+              if(isset($_POST["print_cus_info"])){
+              $useremail = $_POST["cus_email"];
               //echo  $cus_name;
               
 
@@ -156,7 +77,7 @@ $useremail = $_POST["un"];
               <span>Address: <?php echo "$street",", ","$city",", ","$state";?></span>
               </div>
               <br>
-              <?php } ?>&nbsp;
+              <?php } ?>
 
               <?php
               $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$useremail' AND res_status='1'");
@@ -172,7 +93,7 @@ $useremail = $_POST["un"];
                   $reservationDate = $row["date_time"];
               ?>
   
-              <div class="card col-md-6 p-4">
+              <div class="card col-md-6 p-4 card-info">
               <p class="badge bg-success text-wrap">Room Reservation Details</p>
               <span>Room reservation date: <?php echo "$reservationDate";?></span>
               <span>Room number: <mark><?php echo "$room_no";?></mark></span>
@@ -188,9 +109,9 @@ $useremail = $_POST["un"];
               </div>
               <hr>
 
-              <h5 class="card-title text-center">- Summary of Meal Consumption of the Selected Customer -</h5>
+              <h6 class="card-title text-center text-light">- Summary of Meal Consumption of the Selected Customer -</h6>
               <div style="height:200px; overflow:auto;">
-              <table class="table table-sm table-hover table-dark">
+              <table class="table table-sm table-hover table-secondary">
                 <thead>
                     <tr>
                       <th scope="col">Food Name</th>
@@ -205,12 +126,14 @@ $useremail = $_POST["un"];
                   <tr>
                     <?php
                       $Totalbill=0;
-                      if(isset($_POST["checkstatus"])){
-                      $mail = $_POST["un"];
+                      //if(isset($_POST["checkstatus"])){
+                      //$mail = $_POST["un"];
+                      if(isset($_POST["print_cus_info"])){
+                        $useremail = $_POST["cus_email"];
 
                       $orderstatus=1;
                       $tobill=0;
-                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$mail' AND orderstatus='$orderstatus' order by date DESC;");
+                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail' AND orderstatus='$orderstatus' order by date DESC;");
                         //$Result = mysqli_query($db,"select foodorders.foodname,foodorders.price,foodorders.amount,foodorders.date,payment.amount FROM foodorders,payment where foodorders.$mail=payment.$mail");
                       
                         while($row=mysqli_fetch_array($Result)){
@@ -241,9 +164,9 @@ $useremail = $_POST["un"];
               <!--food bill calculate area end--> 
               <hr>
 
-              <h5 class="card-title text-center">Active Total Charges for Foods <span><mark><?php echo "Rs $Totalbill/=";?></mark></span></h5>
+              <h6 class="card-title text-center text-light">Active Total Charges for Foods <span><mark><?php echo "Rs $Totalbill/=";?></mark></span></h6>
               <!--total bill calculate area start--> 
-              <table class="table table-sm table-hover table-dark">
+              <table class="table table-sm table-hover table-secondary">
                 <thead>
                   <tr> 
                     <th scope="col"><span title="Your total meal consumption charge">Food Charge</span></th>
@@ -269,7 +192,7 @@ $useremail = $_POST["un"];
 
                 <tbody>
                 <?php
-                  if(isset($_POST["checkstatus"])){
+                  if(isset($_POST["print_cus_info"])){
                   ?>
                 <tr>
                   <td><?php $TotalChargeforFood=$Totalbill; echo "Rs.$TotalChargeforFood/=";?></td>
@@ -284,35 +207,20 @@ $useremail = $_POST["un"];
             </div>
           </div>
         </div>
+        <div class="p-1 text-center">
+            <img src="images/handshake.png" style="width:180px;height:150px;">
+            <h4>- Thank You ! Come Again -</h4>
+            <h6>Ramifyo Coco Beach Resort (Pvt) Ltd.</h6>
+        </div>
       </div>
       <!--total bill calculate area end-->
-	
-<!--start overlay-->
-<div class="overlay toggle-menu"></div>
-<!--end overlay-->
-		
-</div><!-- End container-fluid-->
-</div><!--End content-wrapper-->
+        <div class="p-2 text-center">
+            <input type="submit" class="btn btn-success p-2" value="Print this Document" onClick="return f3();">
+            <a href="employeedashbord.php" class="btn btn-warning p-2">Back to Dashboard</a>
+        </div>
 
-<!--Start Back To Top Button-->
-<a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-<!--End Back To Top Button-->
-
-</div><!--End wrapper-->
-
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/plugins/simplebar/js/simplebar.js"></script>
-  <script src="assets/js/sidebar-menu.js"></script>
-  <script src="assets/js/jquery.loading-indicator.js"></script>
-  <script src="assets/js/app-script.js"></script>
-  <script src="assets/plugins/Chart.js/Chart.min.js"></script>
-  <script src="assets/js/index.js"></script>
-
-<!--footer start-->
-<?php include_once("includes/footer.php"); ?>
-<!--footer end-->
+</div>
+</div>
 
 </body>
 </html>

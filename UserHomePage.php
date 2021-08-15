@@ -54,7 +54,7 @@ $useremail = $_SESSION['email'];
               <table class="table table-hover table-sm bg-dark">
                 <thead>
                     <tr>
-                      <th scope="col"><span title="Food Name">FOOD Name</span></th>
+                      <th scope="col"><span title="Food Name">Food Name</span></th>
                       <th scope="col"><span title="Unit Price">Unit Price</span></th>
                       <th scope="col"><span title="Meal amount that you have request">Amount</span></th>
                       <th scope="col"><span title="Total charge = Unit price * Amount you request">Total Charge</span></th>
@@ -149,6 +149,7 @@ $useremail = $_SESSION['email'];
               while($row=mysqli_fetch_array($Result)){
                 $AdvanceforRoom = $row["advance_amount"];
                 $nights = $row["nights"];
+                $_SESSION["rr"] = $AdvanceforRoom;
               }
 
             $Result = mysqli_query($db,"SELECT rate FROM room");
@@ -158,6 +159,9 @@ $useremail = $_SESSION['email'];
             ?>
 
             <tbody>
+              <?php
+                if(isset($_SESSION["rr"])){
+              ?>
               <tr>
                 <td><?php $TotalChargeforFood=$Totalbill; echo "Rs.$TotalChargeforFood/=";?></td>
                 <td title="<?php echo $TotalchargeforRoom ?> LKR * <?php echo $nights ?> night(s)"><?php $TotalchargeforRoom=$TotalchargeforRoom*$nights; echo "Rs.$TotalchargeforRoom/=";?></td>
@@ -165,6 +169,7 @@ $useremail = $_SESSION['email'];
                 <td><?php $AdvanceforRoom; echo "Rs.$AdvanceforRoom/=";?></td>
                 <td title="<?php echo $FinalTotalbill ?> LKR - <?php echo $AdvanceforRoom ?> LKR"><mark><?php $BalanceDue=$FinalTotalbill-$AdvanceforRoom; echo "Rs.$BalanceDue/=";?></mark></td>     
               </tr>
+              <?php } ?>
             </tbody>
           </table>
           <!--total bill calculate area end--> 
