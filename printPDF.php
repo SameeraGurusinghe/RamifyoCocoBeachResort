@@ -9,11 +9,10 @@ if(!isset($_SESSION['email'])){
 <!--database connection-->
 <?php include_once("includes/dbconnection.php"); ?>
 
-
 <!DOCTYPE html>
 <html>
-<head>
-	<title>PDF Generate</title>
+<head>                      
+	<title>Ramifyo Coco Beach Resort - Customer Invoice - <?php if(isset($_POST["print_cus_info"])){ $useremail = $_POST["cus_email"];echo $useremail;}?></title>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
@@ -32,25 +31,33 @@ function f3(){
 }
 </script>
 
+<style>
+<style>
+@page { size 8.5in 11in; margin: 2cm }
+div.page { page-break-after: always }
+</style>
+</style>
+
 </head>
 
 <body>
+<a id="timehandle"><?php echo "". date("l ");?><?php include_once("includes/clock.php");?></a>
 
 <div class="container-fluid"><br>
 <div class="row">
 <div class="p-1 text-center">
-    <img src="images/theme.png" style="width:220px;height:150px;">
+    <img src="images/theme.png" style="width:190px;height:120px;">
     <h4>Ramifyo Coco Beach Resort (Pvt) Ltd.</h4>
     <h5>Customer Invoice</h5>
 </div>
 
     <!--food bill calculate area start-->
+    <div class="table-responsive">
     <div class="col-md-12">
         <div class="card bg-dark">
           <div class="card-body">
-            <div class="table-responsive">
 
-              <h6 class="card-title text-center text-light">- Customer Information -</h6>
+              <h6 class="card-title text-center text-light">- Personal Information -</h6>
               <div class="row">
               <?php
               if(isset($_POST["print_cus_info"])){
@@ -69,7 +76,7 @@ function f3(){
               ?>
   
               <div class="card col-md-6 p-4">
-              <p class="badge bg-success text-wrap">Customer Personal Details</p>
+              <p class="badge bg-success text-wrap">Personal Details</p>
               <span>Email: <?php echo "$useremail";?></span>
               <span>Full Name: <?php echo "$fullname";?></span>
               <span>NIC: <?php echo "$nic";?></span>
@@ -96,7 +103,7 @@ function f3(){
               <div class="card col-md-6 p-4 card-info">
               <p class="badge bg-success text-wrap">Room Reservation Details</p>
               <span>Room reservation date: <?php echo "$reservationDate";?></span>
-              <span>Room number: <mark><?php echo "$room_no";?></mark></span>
+              <span>Room number: <?php echo "$room_no";?></span>
               <span>Check in: <?php echo "$check_in";?></span>
               <span>Check out: <?php echo "$check_out";?></span>
               <span>No. of night(s): <?php echo "$nights";?></span>
@@ -109,8 +116,7 @@ function f3(){
               </div>
               <hr>
 
-              <h6 class="card-title text-center text-light">- Summary of Meal Consumption of the Selected Customer -</h6>
-              <div style="height:200px; overflow:auto;">
+              <h6 class="card-title text-center text-light">- Summary of Meal Consumption -</h6>
               <table class="table table-sm table-hover table-secondary">
                 <thead>
                     <tr>
@@ -126,22 +132,19 @@ function f3(){
                   <tr>
                     <?php
                       $Totalbill=0;
-                      //if(isset($_POST["checkstatus"])){
-                      //$mail = $_POST["un"];
+
                       if(isset($_POST["print_cus_info"])){
                         $useremail = $_POST["cus_email"];
 
                       $orderstatus=1;
                       $tobill=0;
                       $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail' AND orderstatus='$orderstatus' order by date DESC;");
-                        //$Result = mysqli_query($db,"select foodorders.foodname,foodorders.price,foodorders.amount,foodorders.date,payment.amount FROM foodorders,payment where foodorders.$mail=payment.$mail");
                       
                         while($row=mysqli_fetch_array($Result)){
                         $fname = $row["foodname"];
                         $fprice = $row["price"];
                         $foodamount = $row["amount"];
                         $fooddate = $row["date"];  
-                        //$AdvanceforRoom = $row["amount"];
                     ?> 
 
                       <td><?php echo "$fname";?> </td>
@@ -160,11 +163,10 @@ function f3(){
                     
                 </tbody>
               </table>
-              </div>
               <!--food bill calculate area end--> 
               <hr>
 
-              <h6 class="card-title text-center text-light">Active Total Charges for Foods <span><mark><?php echo "Rs $Totalbill/=";?></mark></span></h6>
+              <h6 class=" card-title text-center text-light">Meal consumption fee <span><mark><?php echo "Rs.$Totalbill/=";?></mark></span></h6>
               <!--total bill calculate area start--> 
               <table class="table table-sm table-hover table-secondary">
                 <thead>
@@ -205,10 +207,18 @@ function f3(){
                 </tbody>
               </table>
             </div>
+            
+            <h6 class="text-light p-2">Bill Description</h6>
+            <span class="text-light p-2">Total Meal Charges ++++++++++++++  &nbsp;<?php $TotalChargeforFood=$Totalbill; echo "Rs.$TotalChargeforFood";?></span>
+            <span class="text-light p-2">Total Room Charges ++++++++++++++  Rs.<?php echo $TotalchargeforRoom ?> [for <?php echo $nights ?> night(s)]</span>
+            <span class="text-light p-2">Total Charges  ++++++++++++++++++  Rs.<?php echo $FinalTotalbill ?> [Meal charges + Room charges]</span>
+            <span class="text-light p-2">Advance for Room +++++++++++++++  <?php $AdvanceforRoom; echo "Rs.$AdvanceforRoom";?></span>
+            <span class="text-light p-2">Sub Total  +++++++++++++++++++++  Rs.<?php echo $FinalTotalbill ?> - Rs.<?php echo $AdvanceforRoom ?><br><br><mark>++++++++++++++++++++++++<b> <?php $BalanceDue=$FinalTotalbill-$AdvanceforRoom; if($FinalTotalbill == 0){echo "Rs.0.00/=";}else{echo "Rs.$BalanceDue/=";}?></b>++++++++++++++++++++++++</span><br>
           </div>
         </div>
+        
         <div class="p-1 text-center">
-            <img src="images/handshake.png" style="width:180px;height:150px;">
+            <img src="images/handshake.png" style="width:160px;height:130px;">
             <h4>- Thank You ! Come Again -</h4>
             <h6>Ramifyo Coco Beach Resort (Pvt) Ltd.</h6>
         </div>
@@ -216,7 +226,8 @@ function f3(){
       <!--total bill calculate area end-->
         <div class="p-2 text-center">
             <input type="submit" class="btn btn-success p-2" value="Print this Document" onClick="return f3();">
-            <a href="employeedashbord.php" class="btn btn-warning p-2">Back to Dashboard</a>
+            <input type="button" name="cancelvalue" value="CANCEL" class="btn btn-warning p-2" onClick="self.close()"> 
+            <!--<a onclick="document.location.href='employeedashbord.php';"  class="btn btn-warning p-2">Back to Previous Page</a>-->
         </div>
 
 </div>

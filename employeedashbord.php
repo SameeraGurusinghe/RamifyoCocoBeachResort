@@ -30,7 +30,7 @@ if(!isset($_SESSION['email'])){
   <title>Employee Dashboard</title>
 </head>
 
-<body class="bg-theme bg-theme1">
+<body>
 
 <!-- Start wrapper-->
  <div id="wrapper">
@@ -86,7 +86,7 @@ if(!isset($_SESSION['email'])){
 <br>
 <h4 style="text-align: center;"><b>CHECK CUSTOMER BILL</b></h4><br>
 
-<div class="card-Secondary" style="align: center;">
+<div class="card-secondary" style="align: center;">
 	<div class="card bg-dark col-md-12 text-center">
 		<div class="card-body text-center">
 			
@@ -99,7 +99,7 @@ if(!isset($_SESSION['email'])){
 
         <div class="p-2">
           <button type="reset" class="btn btn-warning btn-sm" style="width: 110px; float: center;"><b>CLEAR</b></button>
-          <button type="submit" class="btn btn-success btn-sm" name="checkstatus" style="width:  110px; float: center;"><b>PROCEED</b></button>
+          <button type="submit" class="btn btn-success btn-sm" name="checkstatus" style="width: 110px; float: center;"><b>PROCEED</b></button>
         </div>
       </form>
 
@@ -118,25 +118,26 @@ $useremail = $_POST["un"];
 ?>
 <div class="p-2 text-center">
 <input type="hidden" name="cus_email" readonly value="<?php echo $useremail ?>">
-<input type="submit" class="p-2 btn btn-success" name="print_cus_info" value="Prints this Document">
+<input type="submit" class="p-2 btn btn-success" name="print_cus_info" value="Prints this Details">
 </div>
 <?php } ?>
 </form><br>
 
     <!--food bill calculate area start-->
+    <div class="table-responsive">
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <div class="table-responsive">
+            
 
-              <h5 class="card-title text-center">- Customer Information -</h5>
-              <div class="row">
+              <h5 class="card-title text-center">- Customer Information -</h5><br>
+
+              <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <?php
               if(isset($_POST["checkstatus"])){
               $useremail = $_POST["un"];
               //echo  $cus_name;
               
-
               $Result = mysqli_query($db,"SELECT * FROM users WHERE email='$useremail'");
                 while($row=mysqli_fetch_array($Result)){
                   $fullname = $row["fullname"];
@@ -147,7 +148,7 @@ $useremail = $_POST["un"];
                   $state = $row["state"];  
               ?>
   
-              <div class="card col-md-6 p-4">
+              <div class="card col-md-5 p-4">
               <p class="badge bg-success text-wrap">Customer Personal Details</p>
               <span>Email: <?php echo "$useremail";?></span>
               <span>Full Name: <?php echo "$fullname";?></span>
@@ -156,7 +157,7 @@ $useremail = $_POST["un"];
               <span>Address: <?php echo "$street",", ","$city",", ","$state";?></span>
               </div>
               <br>
-              <?php } ?>&nbsp;
+              <?php } ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
               <?php
               $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$useremail' AND res_status='1'");
@@ -172,7 +173,7 @@ $useremail = $_POST["un"];
                   $reservationDate = $row["date_time"];
               ?>
   
-              <div class="card col-md-6 p-4">
+              <div class="card col-md-5 p-4">
               <p class="badge bg-success text-wrap">Room Reservation Details</p>
               <span>Room reservation date: <?php echo "$reservationDate";?></span>
               <span>Room number: <mark><?php echo "$room_no";?></mark></span>
@@ -241,7 +242,7 @@ $useremail = $_POST["un"];
               <!--food bill calculate area end--> 
               <hr>
 
-              <h5 class="card-title text-center">Active Total Charges for Foods <span><mark><?php echo "Rs $Totalbill/=";?></mark></span></h5>
+              <h5 class="card-title text-center">Active Total Charges for Foods <span><mark><?php echo "Rs. $Totalbill/=";?></mark></span></h5>
               <!--total bill calculate area start--> 
               <table class="table table-sm table-hover table-dark">
                 <thead>
@@ -259,7 +260,7 @@ $useremail = $_POST["un"];
                     while($row=mysqli_fetch_array($Result)){
                       $AdvanceforRoom = $row["advance_amount"];
                       $nights = $row["nights"];
-                    }
+                    
 
                   $Result = mysqli_query($db,"SELECT rate FROM room");
                     while($row=mysqli_fetch_array($Result)){
@@ -278,7 +279,7 @@ $useremail = $_POST["un"];
                   <td><?php $AdvanceforRoom; echo "Rs.$AdvanceforRoom/=";?></td>
                   <td title="<?php echo $FinalTotalbill ?> LKR - <?php echo $AdvanceforRoom ?> LKR"><mark><?php $BalanceDue=$FinalTotalbill-$AdvanceforRoom; if($FinalTotalbill == 0){echo "Rs.0.00/=";}else{echo "Rs.$BalanceDue/=";}?></mark></td>     
                 </tr>
-                <?php }?>
+                <?php }}?>
                 </tbody>
               </table>
             </div>

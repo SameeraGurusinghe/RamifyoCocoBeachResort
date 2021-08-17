@@ -132,7 +132,8 @@ if(!isset($_SESSION['email'])){
                 <th>ORDER ID</th>
                 <th>AMOUNT</th>
                 <th>DATE</th>
-                <th>ORDER STATUS</th> 
+                <th>ORDER STATUS</th>
+                <th>EMAIL</th>
               </tr>
 
               <?php
@@ -157,8 +158,7 @@ if(!isset($_SESSION['email'])){
                 <td><?php echo "$orderid" ?></td>
                 <td><?php echo "$amount" ?></td>
                 <td><?php echo "$date" ?></td>
-                <td>        
-            
+                <td>
                 <?php 
                   $oredrvelue=1;
                   echo "<form action='action_pages/orderaconformction.php' method='post'>";
@@ -172,6 +172,27 @@ if(!isset($_SESSION['email'])){
                   
                   elseif($status==1){
                   echo "<button class='btn btn-warning' style='float: right;' disabled>Order confirmed</button>";
+                  }
+
+                  echo "</form>";          
+                ?>
+                </td>
+
+                <td>        
+            
+                <?php 
+                  $oredrvelue=1;
+                  echo "<form action='action_pages/orderaconformction.php' method='post'>";
+                  echo "<input type='hidden' name='emailid' value='$cusname'>";
+                  echo "<input type='hidden' name='orderid' value='$orderid'>";
+                  echo "<input type='hidden' name='ordervalue' value='$oredrvelue'>";
+                  
+                  if($status==0){
+                  echo "<button type='submit' class='btn btn-success' style='float: right;'>Send</button>";
+                  }
+                  
+                  elseif($status==1){
+                  echo "<button class='btn btn-warning' style='float: right;' disabled>Sent</button>";
                   }
 
                   echo "</form>";          
