@@ -66,6 +66,84 @@ if(!isset($_SESSION['email'])){
 			<div class="card" style="background-color:#8f8f8f;">
         	<div class="card-body">
 
+          <?php
+            use PHPMailer\PHPMailer\PHPMailer;
+            use PHPMailer\PHPMailer\SMTP;
+            use PHPMailer\PHPMailer\Exception;
+
+            if(isset($_POST['room_reservation'])){
+              $roomno = $_POST["roomno"];
+              $emailid = $_POST["emailid"];
+              $date1 = $_POST["date1"];
+              $date2 = $_POST["date2"];
+              $adults = $_POST["adults"];
+              $childs = $_POST["childs"];
+              $nights = $_POST["nights"];
+              $pay = 1000;
+
+              $Result = mysqli_query($db,"SELECT * FROM users WHERE email='$emailid'");
+              while($row=mysqli_fetch_array($Result)){
+                //$fullname = $row["fullname"];
+                $_SESSION['cus_name'] = $row["fullname"];//add full name to session variable
+              }
+
+              $mail_body = "
+              <p>Dear ".$_SESSION['cus_name'].",</p>
+              <p>Thanks for your reservation.
+              <p><b>Your room reservation has been completed.</b></p>
+              <p>Your resevation detaile here</p>
+              Room No: <mark>".$roomno."</mark><br/>
+              Check-in: <mark>".$date1."</mark><br/>
+              Check-out: <mark>".$date2."</mark><br/>
+              No. of night(s): <mark>".$nights."</mark><br/>
+              Members: <mark>".$adults." Adult(s) ,".$childs." Children(s)</mark><br/>
+              Advance payment: <mark>Rs.".$pay."</mark></p>
+              <p>If you have any question feel free to contact us.</p>
+              <a href='tel: +94777242153'>+94 777 24 2153</a><br/>
+              <a href='mailto:ramifyonego@yahoo.com'>ramifyonego@yahoo.com</a><br/>
+              <a href='https://www.ramifyo.lk'>www.ramifyo.lk</a>
+              <p>Best Regards,<br/>Ramifyo Coco Beach Resort (Pvt) Ltd.</br></p>
+              ";
+
+              //Load Composer's autoloader
+              require './vendor/autoload.php';
+              require 'credential.php';
+
+              //Create an instance; passing `true` enables exceptions
+              $mail = new PHPMailer(true);
+
+              try {
+                  //Server settings
+                  //$mail->SMTPDebug = SMTP::DEBUG_SERVER;//Enable verbose debug output
+                  $mail->isSMTP();//Send using SMTP
+                  $mail->Host       = 'smtp.gmail.com';//Set the SMTP server to send through
+                  $mail->SMTPAuth   = true;//Enable SMTP authentication
+                  $mail->Username   = EMAIL;//SMTP username
+                  $mail->Password   = PASS;//SMTP password
+                  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;//Enable implicit TLS encryption
+                  $mail->Port       = 587;//TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+                  //Recipients
+                  $mail->setFrom(EMAIL, 'Ramifyo Resort');
+                  $mail->addAddress($_POST['emailid']);//Add a recipient
+                  $mail->addReplyTo(SUPPORT, 'Ramifyo Support');
+                  //$mail->addCC('cc@example.com');
+                  //$mail->addBCC('bcc@example.com');
+
+                  //Content
+                  $mail->isHTML(true);//Set email format to HTML
+                  $mail->Subject = 'Room No '.$roomno.' Reservation successfull !';
+                  $mail->Body    = $mail_body;
+                  $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                  $mail->send();
+                  //echo "<script>alert('Message has been sent')</script>";
+              } catch (Exception $e) {
+                  //echo "<script>alert('Message could not be sent. Mailer Error: {$mail->ErrorInfo}')</script>";
+              }
+              }
+              ?>
+
             <?php
             if(isset($_POST['room_reservation'])) {
                 $roomno = $_POST["roomno"];
@@ -79,7 +157,8 @@ if(!isset($_SESSION['email'])){
 
             $Result = mysqli_query($db,"SELECT * FROM users WHERE email='$emailid'");
             while($row=mysqli_fetch_array($Result)){
-                $fullname = $row["fullname"];
+                //$fullname = $row["fullname"];
+                $fullname = $row["fullname"];//add full name to session variable
                 $email = $row["email"];
                 $phoneno = $row["phoneno"];
                 $streete = $row["streete"];
@@ -89,8 +168,8 @@ if(!isset($_SESSION['email'])){
 
             <form method="post" action="https://sandbox.payhere.lk/pay/checkout">
                 <input type="hidden" name="merchant_id" value="1218261"> <!--Ramifyo Resort Merchant ID-->
-                <input type="hidden" name="return_url" value="http://sample.com/return">
-                <input type="hidden" name="cancel_url" value="http://sample.com/cancel">
+                <input type="hidden" name="return_url" value="http://127.0.0.1/project/reservation_complete.php">
+                <input type="hidden" name="cancel_url" value="http://127.0.0.1/project/booking.php">
                 <input type="hidden" name="notify_url" value="http://sample.com/notify">  
                 
                 <br><br><b>Selected Booking Details By You</b><br>
