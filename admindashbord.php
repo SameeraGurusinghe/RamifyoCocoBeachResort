@@ -99,29 +99,15 @@ if(!isset($_SESSION['email'])){
 </header>
 <!--End topbar header-->
 
-
 <div class="content-wrapper">
 <div class="container-fluid">
 
-<!--Room availability area start-->
-<div class="row">
-	<div class="card">
-
-  <!--Room tables file include.... area start-->
-  <?php //*****************************include_once("includes/roomavailability.php");**************************** ?>
-  <!--Room tables file include.... area end-->
-  room availability information box has been hidden due to some improment process...
-
-  </div>
-</div><br><br><br>
-<!--Room availability area end-->
-    
 <!--Oreder conform area start-->
 <div class="row">
 	  <div class="card">
 		  <div class="card-action">
 	      <div class="table-responsive">
-          <h4 style="text-align: center;"><b>Orders</b></h4>
+          <h4 style="text-align: center;"><b>Meal Orders</b></h4>
 
           <div style="height:350px; overflow:auto;">
           <table class="table table-sm table-hover" style="background-color:#282c2b;">
@@ -133,7 +119,6 @@ if(!isset($_SESSION['email'])){
                 <th>AMOUNT</th>
                 <th>DATE</th>
                 <th>ORDER STATUS</th>
-                <th>EMAIL</th>
               </tr>
 
               <?php
@@ -164,40 +149,23 @@ if(!isset($_SESSION['email'])){
                   echo "<form action='action_pages/orderaconformction.php' method='post'>";
                   echo "<input type='hidden' name='emailid' value='$cusname'>";
                   echo "<input type='hidden' name='orderid' value='$orderid'>";
-                  echo "<input type='hidden' name='ordervalue' value='$oredrvelue'>";
+                  echo "<input type='hidden' name='foodname' value='$foodname'>";
+                  echo "<input type='hidden' name='amount' value='$amount'>";
+                  echo "<input type='hidden' name='price' value='$price'>";
+                  echo "<input type='hidden' name='orderstatus' value='$oredrvelue'>";
                   
                   if($status==0){
-                  echo "<button type='submit' class='btn btn-success' style='float: right;'>Conform a Order</button>";
+                  echo "<button type='submit' name='meal_order_confirm' class='btn btn-success' style='float: right;'>Approve</button>";
                   }
                   
                   elseif($status==1){
-                  echo "<button class='btn btn-warning' style='float: right;' disabled>Order confirmed</button>";
+                  echo "<button class='btn btn-warning' style='float: right;' disabled>Approved</button>";
                   }
 
                   echo "</form>";          
                 ?>
                 </td>
 
-                <td>        
-            
-                <?php 
-                  $oredrvelue=1;
-                  echo "<form action='action_pages/orderaconformction.php' method='post'>";
-                  echo "<input type='hidden' name='emailid' value='$cusname'>";
-                  echo "<input type='hidden' name='orderid' value='$orderid'>";
-                  echo "<input type='hidden' name='ordervalue' value='$oredrvelue'>";
-                  
-                  if($status==0){
-                  echo "<button type='submit' class='btn btn-success' style='float: right;'>Send</button>";
-                  }
-                  
-                  elseif($status==1){
-                  echo "<button class='btn btn-warning' style='float: right;' disabled>Sent</button>";
-                  }
-
-                  echo "</form>";          
-                ?>
-                </td>
               </tr>
 
               <?php } ?>

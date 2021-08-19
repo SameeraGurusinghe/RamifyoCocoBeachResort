@@ -195,12 +195,12 @@ $useremail = $_SESSION['email'];
                 $orderstatus=$row["orderstatus"];
                         
                 if ($orderstatus==0){         
-                  echo "<p class='text-warning' title='Your order is under review status. We will send you a confirmation email once order confirm.'>Your '$fname' Order is uneder Review</p>"; 
+                  echo "<p class='text-warning' title='Your order is under review status. We will send you a confirmation email once order confirm.'>Your '$fname' order is under review</p>"; 
                   echo "<hr>";
                 }
                         
                 elseif ($orderstatus==1){          
-                  echo "<p class='text-success' title='Order confirmed. As soon as possible we will delivery your meal order.'>Your '$fname' Order is on the way.</p>"; 
+                  echo "<p class='text-success' title='Order confirmed. As soon as possible we will delivery your meal order.'>Your '$fname' order is on the way.</p>"; 
                   echo "<hr>";
                 }      
                 }
