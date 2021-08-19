@@ -7,14 +7,14 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 
-include('../includes/dbconnection.php');
+include('includes/dbconnection.php');
 if(isset($_POST['password-reset-token']) && $_POST['email'])
 {
     
     
     $emailId = $_POST['email'];
 
-    $result = mysqli_query($db,"SELECT * FROM user WHERE email='" . $emailId . "'");
+    $result = mysqli_query($db,"SELECT * FROM users WHERE email='" . $emailId . "'");
 
     $row= mysqli_fetch_array($result);
 
@@ -29,7 +29,7 @@ if(isset($_POST['password-reset-token']) && $_POST['email'])
 
     $expDate = date("Y-m-d H:i:s",$expFormat);
 
-    $update = mysqli_query($db,"UPDATE user set  password='" . $password . "', reset_link_token='" . $token . "' ,exp_date='" . $expDate . "' WHERE email='" . $emailId . "'");
+    $update = mysqli_query($db,"UPDATE users set  password='" . $password . "', reset_link_token='" . $token . "' ,exp_date='" . $expDate . "' WHERE email='" . $emailId . "'");
 
     $link = "<a href='www.yourwebsite.com/reset-password.php?key=".$emailId."&token=".$token."'>Click To Reset password</a>";
 
@@ -50,7 +50,7 @@ require 'credential.php';
     $mail->Port       = 587;//TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     
-    $mail->setFrom(EMAIL, 'Ramifyo Resort');
+     $mail->setFrom(EMAIL, 'Ramifyo Resort');
     $mail->AddAddress($emailId);
     $mail->Subject  =  'Reset Password';
     $mail->IsHTML(true);

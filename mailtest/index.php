@@ -12,7 +12,7 @@ if(isset($_POST['password-reset-token'])){
     
     $emailId = $_POST['email'];
 
-    $result = mysqli_query($db,"SELECT * FROM user WHERE email='" . $emailId . "'");
+    $result = mysqli_query($db,"SELECT * FROM users WHERE email='" . $emailId . "'");
 
     $row= mysqli_fetch_array($result);
 
@@ -27,7 +27,7 @@ if(isset($_POST['password-reset-token'])){
 
     $expDate = date("Y-m-d H:i:s",$expFormat);
 
-    $update = mysqli_query($db,"UPDATE user set  password='" . $password . "', reset_link_token='" . $token . "' ,exp_date='" . $expDate . "' WHERE email='" . $emailId . "'");
+    $update = mysqli_query($db,"UPDATE users set  password='" . $password . "', reset_link_token='" . $token . "' ,exp_date='" . $expDate . "' WHERE email='" . $emailId . "'");
 
     $link = "<a href='http://127.0.0.1/Remifiyonewone/project/reset-password.php?key=".$emailId."&token=".$token."'>Click To Reset password</a>";
 

@@ -22,7 +22,7 @@ include('includes/dbconnection.php');
 $email = $_GET['key'];
 $token = $_GET['token'];
 $query = mysqli_query($db,
-"SELECT * FROM `user` WHERE `reset_link_token`='".$token."' and `email`='".$email."';"
+"SELECT * FROM `users` WHERE `reset_link_token`='".$token."' and `email`='".$email."';"
 );
 $curDate = date("Y-m-d H:i:s");
 if (mysqli_num_rows($query) > 0) {
