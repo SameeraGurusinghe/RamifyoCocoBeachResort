@@ -1,6 +1,8 @@
 <?php
-session_start();
+
 include('includes/dbconnection.php');
+/*session_start();
+
 if(isset($_POST['login']))
 {
 $email=$_POST['email'];
@@ -20,7 +22,7 @@ $Result = $db->prepare("SELECT username,email,password FROM registration WHERE (
 				{
 				echo "<script>alert('Invalid Email/Contact no or password');</script>";
 				}
-			}
+			}*/
 				?>
 
 <!doctype html>
@@ -41,6 +43,19 @@ $Result = $db->prepare("SELECT username,email,password FROM registration WHERE (
 	<link rel="stylesheet" href="css/libraries/bootstrap-select.css">
 	<link rel="stylesheet" href="css/libraries/awesome-bootstrap-checkbox.css">
 	<link rel="stylesheet" href="css/ForgotStyle.css">
+    
+    
+    
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+
+<link rel="stylesheet" href="styles.css" >
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	
@@ -56,19 +71,20 @@ $Result = $db->prepare("SELECT username,email,password FROM registration WHERE (
 { ?>
 					<p>Your Password is <?php echo $pwd;?><br> Change the Password After login</p>
 					<?php }  ?>
-								<form class="mt" method="post">
-									<label for="" class="text-uppercase text-sm">Your Email</label>
-									<input type="email" placeholder="Email" name="email" class="form-control mb">
-									<label for="" class="text-uppercase text-sm">Your user name</label>
-									<input type="text" placeholder="User Name" name="username" class="form-control mb">
-									
-
-									<input type="submit" name="login" class="btn btn-primary btn-block" value="login" >
-								</form>
+                    
+                    
+              <form action="mailtest/index.php" method="post">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <input type="submit" name="password-reset-token" class="btn btn-primary">
+              </form>
 							</div>
 						</div>
 						<div class="text-center text-light">
-							<a href="Login.php" class="text-light">Sign in?</a>
+							
 						</div>
 					</div>
 				</div>
@@ -78,3 +94,20 @@ $Result = $db->prepare("SELECT username,email,password FROM registration WHERE (
 
 </body>
 </html>
+
+<?php
+/*if(isset($_POST) & !empty($_POST)){
+	$username = mysqli_real_escape_string($dbconnection, $_POST['email']);
+	$sql = "SELECT * FROM `users` WHERE email = '$username'";
+	$res = mysqli_query($dbconnectio, $sql);
+	$count = mysqli_num_rows($res);
+	if($count == 1){
+		echo "Send email to user with password";
+	}else{
+		echo "User name does not exist in database";
+	}
+}
+*/
+
+
+
