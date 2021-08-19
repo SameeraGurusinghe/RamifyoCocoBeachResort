@@ -40,21 +40,21 @@ if(isset($_POST["reg_user"])){
     $useremail = $email;
     
     if($obj->save("users",$arr,$userfullname,$useremail)){
-        /*echo "<script type='text/javascript'>           
+        echo "<script type='text/javascript'>           
         swal({ title: 'SUCCESSFUL',text: 'Registration Successfully!',icon: 'success'}).then(okay => {
         if (okay) {
         window.location.href = 'Login.php';}
         });
-        </script>";*/
+        </script>";
     }
     }
     else{
-        /*echo "<script type='text/javascript'>           
+        echo "<script type='text/javascript'>           
         swal({ title: 'Opps!',text: 'An error occured !',icon: 'error'}).then(okay => {
         if (okay) {
         window.location.href = 'Login.php';}
         });
-        </script>";*/
+        </script>";
     }
 }
 //user registration function end
