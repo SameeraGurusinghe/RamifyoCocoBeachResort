@@ -225,9 +225,9 @@ div.page { page-break-after: always }
       </div>
       <!--total bill calculate area end-->
         <div class="p-2 text-center">
-            <input type="submit" class="btn btn-success p-2" value="Print this Document" onClick="return f3();">
-            <input type="button" name="cancelvalue" value="CANCEL" class="btn btn-warning p-2" onClick="self.close()"> 
-            <!--<a onclick="document.location.href='employeedashbord.php';"  class="btn btn-warning p-2">Back to Previous Page</a>-->
+          <input type="button" name="cancelvalue" value="CANCEL" class="btn btn-warning p-2" onClick="self.close()"> 
+          <input type="submit" class="btn btn-success p-2" value="Print this Document" onClick="return f3();">
+          <!--<a onclick="document.location.href='employeedashbord.php';"  class="btn btn-warning p-2">Back to Previous Page</a>-->
         </div>
 
 </div>

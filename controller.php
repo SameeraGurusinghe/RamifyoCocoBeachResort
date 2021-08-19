@@ -1,6 +1,7 @@
 <html>
     <head>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
     </head>
     <body></body>
 </html>
@@ -35,25 +36,26 @@ if(isset($_POST["reg_user"])){
     
     // if the form is error free, then register the user
     $arr=array($id,$usertype,$fullname,$nic,$phoneno,$email,$password,$streete,$city,$state,$propicture,$regdate);
+    $userfullname = $fullname;
+    $useremail = $email;
     
-    if($obj->save("users",$arr)){
-        echo "<script type='text/javascript'>           
+    if($obj->save("users",$arr,$userfullname,$useremail)){
+        /*echo "<script type='text/javascript'>           
         swal({ title: 'SUCCESSFUL',text: 'Registration Successfully!',icon: 'success'}).then(okay => {
         if (okay) {
         window.location.href = 'Login.php';}
         });
-        </script>";
+        </script>";*/
     }
     }
     else{
-        echo "<script type='text/javascript'>           
+        /*echo "<script type='text/javascript'>           
         swal({ title: 'Opps!',text: 'An error occured !',icon: 'error'}).then(okay => {
         if (okay) {
         window.location.href = 'Login.php';}
         });
-        </script>";
+        </script>";*/
     }
-
 }
 //user registration function end
 
