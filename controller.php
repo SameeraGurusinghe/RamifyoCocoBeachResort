@@ -15,14 +15,16 @@ include("model.php");
 if(isset($_POST["reg_user"])){
 
     //receiving the values entered and storing in the variables
-    $id=0;
-    $usertype='0';
-    $fullname=$_POST["fullname"];
-    $nic=$_POST["nic"];
-    $phoneno=$_POST["phoneno"];
-    $email=$_POST["email"];
-    $password=$_POST["password"];
-    $password_2=$_POST["password_2"];
+    $id = 0;
+    $usertype = '0';
+    $fullname = $_POST["fullname"];
+    $nic = $_POST["nic"];
+    $phoneno = $_POST["phoneno"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $password_2 = $_POST["password_2"];
+    $reset_link_token = '';
+    $exp_date = '';
     $streete= '';
     $city= '';
     $state= '';
@@ -35,13 +37,13 @@ if(isset($_POST["reg_user"])){
     $password = md5($password);//password encryption to increase data security
     
     // if the form is error free, then register the user
-    $arr=array($id,$usertype,$fullname,$nic,$phoneno,$email,$password,$streete,$city,$state,$propicture,$regdate);
+    $arr=array($id,$usertype,$fullname,$nic,$phoneno,$email,$password,$reset_link_token,$exp_date,$streete,$city,$state,$propicture,$regdate);
     $userfullname = $fullname;
     $useremail = $email;
     
     if($obj->save("users",$arr,$userfullname,$useremail)){
         echo "<script type='text/javascript'>           
-        swal({ title: 'SUCCESSFUL',text: 'Registration Successfully!',icon: 'success'}).then(okay => {
+        swal({ title: 'SUCCESSFUL',text: 'Registration Successfull!',icon: 'success'}).then(okay => {
         if (okay) {
         window.location.href = 'Login.php';}
         });

@@ -1,39 +1,27 @@
 <?php
 
-
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-
 include('includes/dbconnection.php');
-if(isset($_POST['password-reset-token']) && $_POST['email'])
-{
-    
+
+if(isset($_POST['password-reset-token']) && $_POST['email']){
     
     $emailId = $_POST['email'];
-
     $result = mysqli_query($db,"SELECT * FROM users WHERE email='" . $emailId . "'");
-
     $row= mysqli_fetch_array($result);
 
-  if($row)
-  {
+  if($row){
     
-     $token = md5($emailId).rand(10,9999);
-
-     $expFormat = mktime(
-     date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y")
-     );
+    $token = md5($emailId).rand(10,9999);
+    $expFormat = mktime(
+    date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y")
+    );
 
     $expDate = date("Y-m-d H:i:s",$expFormat);
-
     $update = mysqli_query($db,"UPDATE users set  password='" . $password . "', reset_link_token='" . $token . "' ,exp_date='" . $expDate . "' WHERE email='" . $emailId . "'");
-
     $link = "<a href='www.yourwebsite.com/reset-password.php?key=".$emailId."&token=".$token."'>Click To Reset password</a>";
-
-   
 
 require './vendor/autoload.php';
 require 'credential.php';
