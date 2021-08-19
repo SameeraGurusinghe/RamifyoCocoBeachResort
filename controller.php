@@ -1,6 +1,7 @@
 <html>
     <head>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
     </head>
     <body></body>
 </html>
@@ -35,25 +36,26 @@ if(isset($_POST["reg_user"])){
     
     // if the form is error free, then register the user
     $arr=array($id,$usertype,$fullname,$nic,$phoneno,$email,$password,$streete,$city,$state,$propicture,$regdate);
+    $userfullname = $fullname;
+    $useremail = $email;
     
-    if($obj->save("users",$arr)){
-        echo "<script type='text/javascript'>           
+    if($obj->save("users",$arr,$userfullname,$useremail)){
+        /*echo "<script type='text/javascript'>           
         swal({ title: 'SUCCESSFUL',text: 'Registration Successfully!',icon: 'success'}).then(okay => {
         if (okay) {
         window.location.href = 'Login.php';}
         });
-        </script>";
+        </script>";*/
     }
     }
     else{
-        echo "<script type='text/javascript'>           
+        /*echo "<script type='text/javascript'>           
         swal({ title: 'Opps!',text: 'An error occured !',icon: 'error'}).then(okay => {
         if (okay) {
         window.location.href = 'Login.php';}
         });
-        </script>";
+        </script>";*/
     }
-
 }
 //user registration function end
 
@@ -89,8 +91,6 @@ if (isset($_POST['login_user'])) {
 
 
 //Food adding function start
-
-
 if(isset($_POST["addfood"])){
 
     $ftype=$_POST["ftype"];
@@ -125,9 +125,38 @@ if(isset($_POST["addfood"])){
 		});
 		</script>";
         }
-
 }
 //Food adding function end
+
+
+//Room adding function start
+if(isset($_POST["addroom"])){
+
+    $rnumber = $_POST["rnumber"];
+    $rprice = $_POST["rprice"];
+    $rdescription = $_POST["rdescription"];
+    $rid = 0;
+    
+    $arr=array($rid,$rnumber,$rdescription,$rprice);
+
+    if($obj->save("room",$arr)){
+        echo "<script type='text/javascript'>              
+        swal({ title: 'SUCCESS',text: 'Room has been added!',icon: 'success'}).then(okay => {
+        if (okay) {
+        window.location.href = 'roomgallery.php';}
+        });
+        </script>";
+    }
+    else{
+        echo "<script type='text/javascript'>              
+		swal({ title: 'ERROR',text: 'Room added failed!',icon: 'error'}).then(okay => {
+		if (okay) {
+		window.location.href = 'roomgallery.php';}
+		});
+		</script>";
+        }
+}
+//Room adding function end
 
 
 //News adding function start
@@ -166,8 +195,6 @@ if(isset($_POST["addnews"])){
 
 
 //Feedback adding function start
-
-
 if(isset($_POST["sendfeedback"])){
     
         $feedid=0;
@@ -182,25 +209,21 @@ if(isset($_POST["sendfeedback"])){
     
     
         if($obj->save("customer_feedback",$arr)){
-            echo "<script type='text/javascript'>
-                            
+            echo "<script type='text/javascript'>              
             swal({ title: 'SUCCESS',text: 'Feedback has been added!',icon: 'success',timer: 000}).then(okay => {
             if (okay) {
             window.location.href = 'UserHomePage.php';}
             });
             </script>";
-        
         }
         else{
-            echo "<script type='text/javascript'>
-                            
+            echo "<script type='text/javascript'>               
             swal({ title: 'ERROR',text: 'Feedback added failed!',icon: 'error',timer: 4000}).then(okay => {
             if (okay) {
             window.location.href = 'UserHomePage.php';}
             });
             </script>";
             }
-    
     }
     //Feedback adding function end
 
