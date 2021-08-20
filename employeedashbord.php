@@ -93,7 +93,7 @@ if(!isset($_SESSION['email'])){
       <form method="post">	
         <div class="form-group">
           <div class="col-md-12">
-            <input type="text" class="form-control" name="un" placeholder="Enter Customer Email.." style="text-align: center;" required><br>
+            <input type="text" class="form-control" name="un" placeholder="Enter Customer Email" style="text-align: center;" required><br>
           </div>
         </div>
 

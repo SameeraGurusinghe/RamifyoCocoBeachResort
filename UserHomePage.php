@@ -30,17 +30,15 @@ if(!isset($_SESSION['email'])){
 </head>
 
 <body> 
-<body class="bg-theme bg-theme1">
+
 <!--header start-->
 <?php
 include_once("includes/header.php");
 $useremail = $_SESSION['email'];
 ?>
 <!--header end-->
-
-    
-  <div class="container-fluid">
-
+  
+<div class="container-fluid">
 
  <!--Noodles menu area start-->
  <div class="row">
@@ -138,9 +136,10 @@ $useremail = $_SESSION['email'];
               <tr> 
                 <th scope="col"><span title="Your total meal consumption charge">Food Charge</span></th>
                 <th scope="col"><span title="Your total room charge">Room Charge</span></th>
-                <th scope="col"><span title="Total Bill = Meal charge + Room charge">Total bill</span></th>
-                <th scope="col"><span title="Amount that you paid when you booking the our hotel room.">Advance for Room</span></th>
+                <th scope="col"><span title="Total Bill = Meal charge + Room charge">Total</span></th>
+                <th scope="col"><span title="Amount that you paid when you booking the our hotel room.">Room Advance</span></th>
                 <th scope="col"><span title="Your have to pay below amount.">Balance Due</span></th>
+                <th scope="col"><span title="Payment that your have made.">Payment</span></th>
               </tr>
             </thead>
 
@@ -149,6 +148,8 @@ $useremail = $_SESSION['email'];
               while($row=mysqli_fetch_array($Result)){
                 $AdvanceforRoom = $row["advance_amount"];
                 $nights = $row["nights"];
+                $fullpayment = $row["fullpayment"];
+                $_SESSION["yy"] = $fullpayment;
                 $_SESSION["rr"] = $AdvanceforRoom;
               }
 
@@ -167,13 +168,46 @@ $useremail = $_SESSION['email'];
                 <td title="<?php echo $TotalchargeforRoom ?> LKR * <?php echo $nights ?> night(s)"><?php $TotalchargeforRoom=$TotalchargeforRoom*$nights; echo "Rs.$TotalchargeforRoom/=";?></td>
                 <td title="<?php echo $TotalChargeforFood ?> LKR (Food charges) + <?php echo $TotalchargeforRoom ?> LKR (Total room charges)"><?php $FinalTotalbill=$TotalChargeforFood+$TotalchargeforRoom; echo "Rs.$FinalTotalbill/=";?></td>
                 <td><?php $AdvanceforRoom; echo "Rs.$AdvanceforRoom/=";?></td>
-                <td title="<?php echo $FinalTotalbill ?> LKR - <?php echo $AdvanceforRoom ?> LKR"><mark><?php $BalanceDue=$FinalTotalbill-$AdvanceforRoom; echo "Rs.$BalanceDue/=";?></mark></td>     
+                <input type="hidden" value="<?php echo $BalanceDue=$FinalTotalbill-$AdvanceforRoom; "Rs.$BalanceDue/="; ?>">
+                <?php
+                if($fullpayment == 0){
+                echo "<td title='$FinalTotalbill LKR - $AdvanceforRoom LKR'><mark> Rs.$BalanceDue/=</mark></td>";
+                }
+                elseif($fullpayment != 0){
+                  echo "<td>Rs.0/=</td>";
+                }
+                ?>
+                <td><?php $fullpayment; echo "Rs.$fullpayment/=";?></td>   
               </tr>
               <?php } ?>
             </tbody>
           </table>
           <!--total bill calculate area end--> 
+        </div><br>
+
+        <!--display payment due balance button or payment complete button start-->
+        <div class="text-center">
+          <form action="pay_full_payment.php" method="post">
+            <?php
+            if(isset($_SESSION["yy"])){
+            $BalanceDue;
+            $fullpayment;
+              if($BalanceDue != $fullpayment){
+              echo "<input type='hidden' name='emailid' value='$useremail'>";
+              echo "<input type='hidden' name='balancedue' value='$BalanceDue'>";
+              echo "<i class='fa fa-arrow-circle-right'></i><button type='submit' name='make_full_payment' class='btn btn-danger text-dark'>Please Settle the Due Balance ->>> <b>Rs.$BalanceDue</b></button><i class='fa fa-arrow-circle-left'></i>";
+              }
+
+              elseif($BalanceDue == $fullpayment){
+              echo "<span class='btn btn-success'>All the payment has been completed !<i class='fa fa-check-circle'></i></span>"; 
+              }
+            }
+            ?>
+          
+          </form>
         </div>
+        <!--display payment due balance button or payment complete button end-->
+
       </div>
     </div>
   </div>
@@ -209,6 +243,8 @@ $useremail = $_SESSION['email'];
             </div>
           </div>
         </div><br>
+        
+        <!--reservation cancel start-->
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body bg-dark text-center">
@@ -248,8 +284,7 @@ $useremail = $_SESSION['email'];
                   $Result = mysqli_query($db,"UPDATE reservation SET advance_amount='0',res_status='0' WHERE email='$useremail' AND room_no='$room_number';");
                     if($Result){
 
-                    echo "<script type='text/javascript'>
-                                      
+                    echo "<script type='text/javascript'>              
                     swal({ title: 'SUCCESS',text: 'Room reservation cancellation successfull!',icon: 'success'}).then(okay => {
                     if (okay) {
                     window.location.href = 'UserHomePage.php';}
@@ -258,8 +293,7 @@ $useremail = $_SESSION['email'];
                     }
                                         
                     else{
-                    echo "<script type='text/javascript'>
-                                      
+                    echo "<script type='text/javascript'>                
                     swal({ title: 'SUCCESS',text: 'Room reservation cancellation was failed!',icon: 'error'}).then(okay => {
                     if (okay) {
                     window.location.href = 'UserHomePage.php';}
@@ -267,20 +301,19 @@ $useremail = $_SESSION['email'];
                     </script>";
                     }
                   }
-
               ?>
-
               </form>
 
             </div>
           </div>
         </div><br>
+        <!--reservation cancel end-->
 
-        <!--Permananlty detele reservation details start-->
+        <!--Permananlty detele reservation start-->
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body bg-dark text-center">
-              <h5>Permananlty detele reservation details</h5>
+              <h5>Permananlty Detele Reservation Details</h5>
 
               <form method="post">
               <div class="form-group">
@@ -316,8 +349,7 @@ $useremail = $_SESSION['email'];
                   $Result = mysqli_query($db,"DELETE FROM reservation WHERE email='$useremail' AND room_no='$room_number';");
                     if($Result){
 
-                    echo "<script type='text/javascript'>
-                                      
+                    echo "<script type='text/javascript'>              
                     swal({ title: 'SUCCESS',text: 'Reservation details delete successfull!',icon: 'success'}).then(okay => {
                     if (okay) {
                     window.location.href = 'UserHomePage.php';}
@@ -326,8 +358,7 @@ $useremail = $_SESSION['email'];
                     }
                                         
                     else{
-                    echo "<script type='text/javascript'>
-                                      
+                    echo "<script type='text/javascript'>             
                     swal({ title: 'SUCCESS',text: 'An error occured!',icon: 'error'}).then(okay => {
                     if (okay) {
                     window.location.href = 'UserHomePage.php';}
@@ -335,15 +366,35 @@ $useremail = $_SESSION['email'];
                     </script>";
                     }
                   }
-
               ?>
-
               </form>
 
             </div>
           </div>
         </div><br>
-        <!--Permananlty detele reservation details end-->
+        <!--Permananlty detele reservation end-->
+
+        <!--Prepare My Invoice START-->
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body bg-dark text-center">
+              <h5>Prepare My Invoice</h5>
+              <form action="printPDF.php" target="_blank" method="post">
+                <?php
+                if(isset($_SESSION["email"])){
+                $useremail = $_SESSION["email"];
+                ?>
+                <div class="p-2 text-center">
+                <input type="hidden" name="cus_email" readonly value="<?php echo $useremail ?>">
+                <input type="submit" class="p-2 btn btn-success" name="print_cus_info" value="Prepare">
+                </div>
+                <?php } ?>
+                </form>
+            </div>
+          </div>
+        </div><br>
+        <!--Prepare My Invoice END-->
+
         <div class="col-sm-3">
           <div class="bg-info text-center" style="height:60px;">
             <h6 class="tooltip" onmouseover="tooltip.pop(this,'<h4><b>Room reservation policies</b></h4><h6><b>Check-in Time and Check-out Time</b></h6><h6>Check-in Time: From 1400h (02:00 pm)<br>Check-out Time: Until 1200h (12:00 noon)</h6><br><h6><b>Child Policy</b></h6><br><h6>- Children below 5 years - free of charge on existing bedding.<br>- Children between 6-11 years (up to maximum 02 children) sharing parents room - 50%.<br>- Children of 12 years and above are considered as adults, and full rate will be charged.</h6><br><h6><b>Applicable Rate</b></h6><br><h6>- The Sri Lankan rate made available through the online booking engine in LKR, are only applicable for Sri Lankans and Sri Lankan resident visa holders.<br>- Verification (Sri Lankan National ID or the Passport) will also be requested at the hotel during check-in to confirm Nationality.<br>- If a guest book the Sri Lankan rate and a foreign national(s) is a part of the group, the standard foreign rate will be charged from that guest(s) at the hotel during check-in.<br>- If a foreign national does book the Sri Lankan rate, then the difference between the Sri Lankan rate and the standard foreign rate will have to be paid.</h6><br><h6><b>Booking (Reservation) Disputes.</b></h6><br><h6>If a dispute arises with regard to a reservation made with Ramifyo Coco Beach Resort, then Ramifyo Coco Beach Resort(Pvt) Ltd has the sole authority to cancel the reservation by informing the guest via email. The reservation amount will be refunded in full minus any bank charges to the credit card of the guest.</h6><br>')">Hover me<h5>Our<br>Policies</h5></h6>

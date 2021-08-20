@@ -56,8 +56,9 @@ if(!isset($_SESSION['email'])){
                 $nights = $_GET["datediff"];
                 $advance_amount = 1000;
                 $res_status = 1;
+                $fullpayment = 0;
 
-                $Result = mysqli_query($db,"INSERT INTO reservation (room_no,email,adults,childs,advance_amount,check_in,check_out,nights,res_status) VALUES ('$roomno','$emailid','$adults','$childs','$advance_amount','$date1','$date2','$nights','$res_status')");
+                $Result = mysqli_query($db,"INSERT INTO reservation (room_no,email,adults,childs,advance_amount,check_in,check_out,nights,res_status,fullpayment) VALUES ('$roomno','$emailid','$adults','$childs','$advance_amount','$date1','$date2','$nights','$res_status','$fullpayment')");
             ?>
 
             <form method="post" action="reservation_process.php">

@@ -182,6 +182,7 @@ div.page { page-break-after: always }
                   $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$useremail' AND res_status='1';");
                     while($row=mysqli_fetch_array($Result)){
                       $AdvanceforRoom = $row["advance_amount"];
+                      $fullpayment = $row["fullpayment"];
                       $nights = $row["nights"];
                     }
 
@@ -212,7 +213,11 @@ div.page { page-break-after: always }
             <span class="text-light p-2">Total Room Charges ++++++++++++++  Rs.<?php echo $TotalchargeforRoom ?> [for <?php echo $nights ?> night(s)]</span>
             <span class="text-light p-2">Total Charges  ++++++++++++++++++  Rs.<?php echo $FinalTotalbill ?> [Meal charges + Room charges]</span>
             <span class="text-light p-2">Advance for Room +++++++++++++++  <?php $AdvanceforRoom; echo "Rs.$AdvanceforRoom";?></span>
-            <span class="text-light p-2">Sub Total  +++++++++++++++++++++  Rs.<?php echo $FinalTotalbill ?> - Rs.<?php echo $AdvanceforRoom ?><br><br><mark>++++++++++++++++++++++++<b> <?php $BalanceDue=$FinalTotalbill-$AdvanceforRoom; if($FinalTotalbill == 0){echo "Rs.0.00/=";}else{echo "Rs.$BalanceDue/=";}?></b>++++++++++++++++++++++++</span><br>
+            <span class="text-light p-2">Sub Total  +++++++++++++++++++++  Rs.<?php echo $FinalTotalbill ?> - Rs.<?php echo $AdvanceforRoom ?></span>
+            <span class="text-light p-2">Amount to be Pay +++++++++++++++ <b><?php $BalanceDue=$FinalTotalbill-$AdvanceforRoom; if($FinalTotalbill == 0){echo "Rs.0.00/=";}else{echo "Rs.$BalanceDue/=";}?></b></span>
+            <span class="text-success p-2"><b>We have successfully received your payment amount <i class="fa fa-check-circle"></i></b></span>
+            <h5 class="text-success p-3">Your Payment <i class="fa fa-arrow-circle-right"></i><?php $fullpayment; echo " Rs.$fullpayment/=";?></h5>
+            <span class="text-warning p-2 text-center">We are happy to say, now your all the due balance have been fully settle.<br> See you next time.</span>
           </div>
         </div>
         
