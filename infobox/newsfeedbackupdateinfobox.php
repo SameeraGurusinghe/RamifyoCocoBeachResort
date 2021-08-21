@@ -10,7 +10,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancel</button>
-        <button type="submit" name="profileup" class="btn btn-success">Confirm</button>
+        <button type="submit" name="addnews" class="btn btn-success">Confirm</button>
       </div>
     </div>
   </div>

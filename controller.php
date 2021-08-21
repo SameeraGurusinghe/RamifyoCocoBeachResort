@@ -38,12 +38,15 @@ if(isset($_POST["reg_user"])){
     
     // if the form is error free, then register the user
     $arr=array($id,$usertype,$fullname,$nic,$phoneno,$email,$password,$reset_link_token,$exp_date,$streete,$city,$state,$propicture,$regdate);
-    $userfullname = $fullname;
-    $useremail = $email;
+    //$userfullname = $fullname;
+    //$useremail = $email;
     
-    if($obj->save("users",$arr,$userfullname,$useremail)){
+    if($obj->save("users",$arr)){
+
+        $obj->mailsend($fullname,$email);
+
         echo "<script type='text/javascript'>           
-        swal({ title: 'SUCCESSFUL',text: 'Registration Successfull!',icon: 'success'}).then(okay => {
+        swal({ title: 'Registration Successful!',text: 'Registration Successfull!',icon: 'success'}).then(okay => {
         if (okay) {
         window.location.href = 'Login.php';}
         });
@@ -113,7 +116,7 @@ if(isset($_POST["addfood"])){
 
     if($obj->save("foods",$arr)){
         echo "<script type='text/javascript'>              
-        swal({ title: 'SUCCESS',text: 'Food has been added!',icon: 'success'}).then(okay => {
+        swal({ title: 'SUCCESS',text: 'The food has been added!',icon: 'success'}).then(okay => {
         if (okay) {
         window.location.href = 'foodgallery.php';}
         });
@@ -121,7 +124,7 @@ if(isset($_POST["addfood"])){
     }
     else{
         echo "<script type='text/javascript'>              
-		swal({ title: 'ERROR',text: 'Food added failed!',icon: 'error'}).then(okay => {
+		swal({ title: 'ERROR',text: 'The food added was failed!',icon: 'error'}).then(okay => {
 		if (okay) {
 		window.location.href = 'foodgallery.php';}
 		});
@@ -143,7 +146,7 @@ if(isset($_POST["addroom"])){
 
     if($obj->save("room",$arr)){
         echo "<script type='text/javascript'>              
-        swal({ title: 'SUCCESS',text: 'Room has been added!',icon: 'success'}).then(okay => {
+        swal({ title: 'SUCCESS',text: 'The room has been added!',icon: 'success'}).then(okay => {
         if (okay) {
         window.location.href = 'roomgallery.php';}
         });
@@ -151,7 +154,7 @@ if(isset($_POST["addroom"])){
     }
     else{
         echo "<script type='text/javascript'>              
-		swal({ title: 'ERROR',text: 'Room added failed!',icon: 'error'}).then(okay => {
+		swal({ title: 'ERROR',text: 'The room added was failed!',icon: 'error'}).then(okay => {
 		if (okay) {
 		window.location.href = 'roomgallery.php';}
 		});
@@ -164,20 +167,26 @@ if(isset($_POST["addroom"])){
 //News adding function start
 if(isset($_POST["addnews"])){
 
-    $newsid=0;
-    $posttype=$_POST["posttype"];
-    $tit=$_POST["tit"];
-    $annou=$_POST["annou"];
-    $postimage=$_POST["postimage"];
+    $newsid = 0;
+    $posttype = $_POST["posttype"];
+    $expiredate = $_POST["expiredate"];
+    $tit = $_POST["tit"];
+    $annou = $_POST["annou"];
 
     date_default_timezone_set('Asia/Colombo');
     $newsadddate = date('y-m-d h.i.s AM');
-    
-    $arr=array($newsid,$posttype,$tit,$annou,$postimage,$newsadddate);
+
+	//nesw or offer pic upload
+	$file = $_FILES["postimage"]["tmp_name"];
+	$picturename = $newsadddate;
+	$path1 = "images/postimages/".$picturename.".jpg";
+	$r = move_uploaded_file($file, $path1);
+
+    $arr=array($newsid,$posttype,$expiredate,$tit,$annou,$path1,$newsadddate);
 
     if($obj->save("news_offer",$arr)){
         echo "<script type='text/javascript'>               
-        swal({ title: 'SUCCESS',text: 'News has been added!',icon: 'success'}).then(okay => {
+        swal({ title: 'SUCCESS',text: 'The post has been published!',icon: 'success'}).then(okay => {
         if (okay) {
         window.location.href = 'News & Feedback.php';}
         });
@@ -185,7 +194,7 @@ if(isset($_POST["addnews"])){
     }
     else{
         echo "<script type='text/javascript'>               
-		swal({ title: 'ERROR',text: 'News added failed!',icon: 'error'}).then(okay => {
+		swal({ title: 'ERROR',text: 'The post published was failed!',icon: 'error'}).then(okay => {
 		if (okay) {
 		window.location.href = 'News & Feedback.php';}
 		});
@@ -206,13 +215,11 @@ if(isset($_POST["sendfeedback"])){
         date_default_timezone_set('Asia/Colombo');
         $feedadddate = date('y-m-d h.i.s AM');
         
-        
         $arr=array($feedid,$feedname,$feddemailid,$feeddescription,$feedadddate);
-    
     
         if($obj->save("customer_feedback",$arr)){
             echo "<script type='text/javascript'>              
-            swal({ title: 'SUCCESS',text: 'Feedback has been added!',icon: 'success',timer: 000}).then(okay => {
+            swal({ title: 'SUCCESS',text: 'Your feedback has been recorded!',icon: 'success',timer: 000}).then(okay => {
             if (okay) {
             window.location.href = 'UserHomePage.php';}
             });
@@ -220,7 +227,7 @@ if(isset($_POST["sendfeedback"])){
         }
         else{
             echo "<script type='text/javascript'>               
-            swal({ title: 'ERROR',text: 'Feedback added failed!',icon: 'error',timer: 4000}).then(okay => {
+            swal({ title: 'ERROR',text: 'Your feedback record was failed!',icon: 'error',timer: 4000}).then(okay => {
             if (okay) {
             window.location.href = 'UserHomePage.php';}
             });

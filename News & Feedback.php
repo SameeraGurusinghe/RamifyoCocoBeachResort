@@ -112,29 +112,37 @@ include_once("includes/header.php");
     <div class="col-lg-12">
       <div class="card">
         <div class="card-body">
-          <h4 style="text-align: center;"><b>POST A NEWS OR OFFER</b></h4>
+          <h4 style="text-align: center;"><b>POST a NEWS or OFFER</b></h4>
 				
-          <form action="controller.php" method="POST">
+          <form action="controller.php" method="POST" enctype="multipart/form-data">
               
-              <div class="p-2">           
-                <select class="form-control" name="posttype" required>
-                  <option selected>Select post type - News or Offer</option>
-                  <option value="news">News</option>
-                  <option value="offer">Offer</option>
-                </select>
+              <div class="row">
+                <div class="p-4 col-md-6">
+                  <span>Select post type - News or Offer</span>           
+                  <select class="form-control" name="posttype" required>
+                    <option selected>Select post type - News or Offer</option>
+                    <option value="news">News</option>
+                    <option value="offer">Offer</option>
+                  </select>
+                </div>
+
+                <div class="p-4 col-md-6">
+                  <span>Expiration Date and Time</span>            
+                    <input type="datetime-local" name="expiredate" class="form-control"  placeholder="Expired Date">
+							  </div>
 							</div>
 
               <div class="p-2">           
-                <input type="text" name="tit" class="form-control" id="Write Announcement Title"  placeholder="News Title" required>
+                <input type="text" name="tit" class="form-control"  placeholder="News Title" required>
 							</div>
                           
               <div class="p-2">
-                <textarea type="text" name="annou" class="form-control" id="Write Description"  placeholder="Description" required></textarea>
+                <textarea type="text" name="annou" class="form-control"  placeholder="Description" required></textarea>
               </div>
 
               <div class="p-2">
                 <h6>Attach a image. No required.</h6>
-                <input class="form-control" type="file" value="" name="postimage">
+                <input class="form-control" type="file" name="postimage">
               </div>
 									
 							<div class="p-2">

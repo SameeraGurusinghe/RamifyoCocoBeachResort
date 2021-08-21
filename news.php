@@ -43,21 +43,23 @@ include_once("includes/header.php");
 
 <!--Offer from database start-->
 <?php
-	$Result = mysqli_query($db,"SELECT * FROM news_offer WHERE posttype='offer' order by news_id DESC LIMIT 3;");
+	$Result = mysqli_query($db,"SELECT * FROM news_offer WHERE posttype='offer' AND expiredate > now() order by expiredate;");
 	while($row=mysqli_fetch_array($Result)){
 	//$p = $row["news_id"];
 	$title = $row["title"];
 	$desc = $row["postdescription"];
+	$expiredate = $row["expiredate"];
 	$datetime = $row["datetime"];
 	$imgs = $row["postimage"];
 
 			echo "<div class='news'>";
-				echo "<h6><mark>$datetime</mark></h6>";
+				echo "<h6>Offer Posted date time:<mark>$datetime</mark></h6>";
 				echo "<h4><b>$title</b></h4>";
 				echo "<h5>$desc</h5>";
+				echo "<h5 class='text-danger'>The offer will expire on : <b>$expiredate</b></h5>";
 
 				echo "<div class='offer-img'>";
-				echo "<img src='admin_php/$imgs' alt='* image not available for this offer'>";
+				echo "<img src='$imgs' alt='* image not available for this offer'>";
 			echo "</div>";
 				
 			echo "</div>";
@@ -72,7 +74,7 @@ include_once("includes/header.php");
 
 <!--News from database start-->
 <?php
-	$Result = mysqli_query($db,"SELECT * FROM news_offer WHERE posttype='news' order by news_id DESC LIMIT 3;");
+	$Result = mysqli_query($db,"SELECT * FROM news_offer WHERE posttype='news' order by news_id DESC;");
 	while($row=mysqli_fetch_array($Result)){
 	//$p = $row["news_id"];
 	$title = $row["title"];
@@ -81,14 +83,13 @@ include_once("includes/header.php");
 	$imgs = $row["postimage"];
 
 			echo "<div class='news'>";
-				echo "<h6><mark>$datetime</mark></h6>";
+				echo "<h6>News Posted date time:<mark>$datetime</mark></h6>";
 				echo "<h4><b>$title</b></h4>";
 				echo "<h5>$desc</h5>";
 
 				echo "<div class='offer-img'>";
-				//echo '<img src="data:image;base64,'.base64_encode( $row['postimage'] ).'"/>';
-				echo "<img src='admin_php/$imgs' alt='* image not available for this news'>";
-				//echo "<img src='images/story/3.jpg'>";
+				echo "<img src='$imgs' alt='* image not available for this news'>";
+
 			echo "</div>";
 				
 			echo "</div>";
