@@ -86,19 +86,21 @@ include_once("includes/header.php");
                 </div><br>
                         
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                  <label class="col-lg-3 col-form-label form-control-label">Address line 1</label>
                     <div class="col-lg-9">
                       <input class="form-control" type="text" value="<?php echo "$streete"; ?>" placeholder="Street" name="street">
                     </div>
                 </div><br>
 
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label"></label>
-                    <div class="col-lg-6">
+                  <label class="col-lg-3 col-form-label form-control-label">City</label>
+                    <div class="col-lg-3">
                       <input class="form-control" type="text" value="<?php echo "$city"; ?>" placeholder="City" name="city">
                     </div>
+
+                  <label class="col-lg-3 col-form-label form-control-label">Country</label>
                     <div class="col-lg-3">
-                      <input class="form-control" type="text" value="<?php echo "$state"; ?>" placeholder="State" name="state">
+                      <input class="form-control" type="text" value="<?php echo "$state"; ?>" placeholder="Country" name="state">
                     </div>
                 </div><br>
 

@@ -153,6 +153,8 @@ $useremail = $_SESSION['email'];
                 $_SESSION["rr"] = $AdvanceforRoom;
               }
 
+              //$_SESSION["yy"];
+
             $Result = mysqli_query($db,"SELECT rate FROM room");
               while($row=mysqli_fetch_array($Result)){
                 $TotalchargeforRoom = $row["rate"]; 
@@ -377,18 +379,24 @@ $useremail = $_SESSION['email'];
         <!--Prepare My Invoice START-->
         <div class="col-lg-12">
           <div class="card">
-            <div class="card-body bg-dark text-center">
+            <div class="card-body bg-dark text-center text-dark">
               <h5>Prepare My Invoice</h5>
               <form action="printPDF.php" target="_blank" method="post">
                 <?php
-                if(isset($_SESSION["email"])){
+                //if(isset($_SESSION["email"])){
+                if(isset($_SESSION["email"]) && ($_SESSION["yy"] > 1)){
                 $useremail = $_SESSION["email"];
                 ?>
                 <div class="p-2 text-center">
                 <input type="hidden" name="cus_email" readonly value="<?php echo $useremail ?>">
                 <input type="submit" class="p-2 btn btn-success" name="print_cus_info" value="Prepare">
                 </div>
-                <?php } ?>
+                <?php }
+                  else{
+                    echo "<input type='button' class='p-2 btn btn-danger' value='Action not allowed untill full payment !'>";
+                    }
+                ?>
+                
                 </form>
             </div>
           </div>
