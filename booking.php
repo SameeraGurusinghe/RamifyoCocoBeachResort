@@ -128,6 +128,7 @@ if(!isset($_SESSION['email'])){
       $date2 = $_POST["checkout"];
       $adults = $_POST["adults"];
       $childs = $_POST["childs"];
+
       echo "<div class='card'>";
       echo "<h6>Selected Date : From <b>$date1</b> to <b>$date2</b></h6>";
       echo "<h6><b>$adults</b> Adult(s) and <b>$childs</b> Children(s)</h6>";
@@ -158,7 +159,7 @@ if(!isset($_SESSION['email'])){
       <thead>
       <tr>
         <th scope="col">Room No</th>
-        <th scope="col">Room Facilities</th>
+        <!--<th scope="col">Room Facilities</th>-->
         <th scope="col">Rate</th>
         <th scope="col">Action</th>
       </tr>
@@ -174,7 +175,14 @@ if(!isset($_SESSION['email'])){
           $childs = $_POST["childs"];
           $_SESSION['datediff']= $dateDiff;
 
-          $Result = mysqli_query($db,"SELECT * FROM room WHERE room_no NOT IN (SELECT DISTINCT room_no FROM reservation WHERE check_in <= '$date1' AND check_out >= '$date2' AND res_status='1')");
+          //add specific time to the customer selected date
+          $time= "14:00:00";
+          $newdate1 = $date1." ".$time;
+    
+          $time= "12:00:00";
+          $newdate2 = $date2." ".$time;
+
+          $Result = mysqli_query($db,"SELECT * FROM room WHERE room_no NOT IN (SELECT DISTINCT room_no FROM reservation WHERE check_in <= '$newdate1' AND check_out >= '$newdate2' AND res_status='1')");
 
           while($row=mysqli_fetch_array($Result)){
           $id = $row["id"];
@@ -184,7 +192,7 @@ if(!isset($_SESSION['email'])){
         ?>
         
           <td><?php echo $roomno ?></td>
-          <td><?php echo $description ?></td>
+          <!--<td><?php //echo $description ?></td>-->
           <td>LKR. <?php echo $rate ?>/=</td>
           <?php
           if(!isset($_SESSION['email'])) {

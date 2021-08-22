@@ -51,6 +51,13 @@ if(!isset($_SESSION['email'])){
                 $emailid = $_GET["emailid"];
                 $date1 = $_GET["date1"];
                 $date2 = $_GET["date2"];
+
+                $time= "14:00:00";
+                $newdate1 = $date1." ".$time;
+          
+                $time= "12:00:00";
+                $newdate2 = $date2." ".$time;
+
                 $adults = $_GET["adults"];
                 $childs = $_GET["childs"];
                 $nights = $_GET["datediff"];
@@ -58,7 +65,7 @@ if(!isset($_SESSION['email'])){
                 $res_status = 1;
                 $fullpayment = 0;
 
-                $Result = mysqli_query($db,"INSERT INTO reservation (room_no,email,adults,childs,advance_amount,check_in,check_out,nights,res_status,fullpayment) VALUES ('$roomno','$emailid','$adults','$childs','$advance_amount','$date1','$date2','$nights','$res_status','$fullpayment')");
+                $Result = mysqli_query($db,"INSERT INTO reservation (room_no,email,adults,childs,advance_amount,check_in,check_out,nights,res_status,fullpayment) VALUES ('$roomno','$emailid','$adults','$childs','$advance_amount','$newdate1','$newdate2','$nights','$res_status','$fullpayment')");
             ?>
 
             <form method="post" action="reservation_process.php">

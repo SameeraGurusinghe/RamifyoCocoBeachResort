@@ -66,7 +66,21 @@ $useremail = $_SESSION['email'];
                       $Totalbill=0;
                       $tobill=0;
                       $orderstatus=1;
-                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail 'AND orderstatus='$orderstatus' order by date DESC;");
+                      $res_status=1;
+
+                      //get checkin & checkout dates from database for relevant user
+                      $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$useremail' AND res_status='$res_status'");
+                      while($row=mysqli_fetch_array($Result)){
+                        $checkin = $row["check_in"];
+                        $checkout = $row["check_out"];
+                      
+                      //$checkin;
+                      //$checkout;
+                            
+                      //filter the ordered meals according to the customer reservation date
+                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail'
+                      AND orderstatus='$orderstatus' AND date BETWEEN '$checkin' AND '$checkout' order by date DESC;");
+
                       while($row=mysqli_fetch_array($Result)){
                       $fname = $row["foodname"];
                       $fprice = $row["price"];
@@ -86,7 +100,7 @@ $useremail = $_SESSION['email'];
                     <td><?php echo "$fooddate";?></td>
                   </tr>
 
-                    <?php } ?> 
+                    <?php }} ?> 
                     
                 </tbody>
               
@@ -95,7 +109,7 @@ $useremail = $_SESSION['email'];
               <hr>
 
               <?php
-              $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$useremail' order by date_time DESC LIMIT 3;");
+              $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$useremail' AND check_out>now() order by date_time DESC LIMIT 3;");
                 while($row=mysqli_fetch_array($Result)){
                   $room_no = $row["room_no"];
                   $adults = $row["adults"];
@@ -113,8 +127,8 @@ $useremail = $_SESSION['email'];
               <p class="text-center">My reservaion details</p>
               <span>Room reservation date: <?php echo "$reservationDate";?></span>
               <span>Room number: <mark><?php echo "$room_no";?></mark></span>
-              <span>Check in: <?php echo "$check_in";?></span>
-              <span>Check out: <?php echo "$check_out";?></span>
+              <span>Check in: <?php echo "$check_in"."<span> noon</span>";?></span>
+              <span>Check out: <?php echo "$check_out"."<span> pm</span>";?></span>
               <span>No. of night(s): <?php echo "$nights";?></span>
               <span>No. of adults: <?php echo "$adults";?></span>
               <span>No. of childs: <?php echo "$childs";?></span>
@@ -144,16 +158,16 @@ $useremail = $_SESSION['email'];
             </thead>
 
             <?php
-            $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$useremail' AND res_status='1';");
+            $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$useremail' /*AND check_out<now() AND check_in<now()*/ AND res_status='1';");
               while($row=mysqli_fetch_array($Result)){
                 $AdvanceforRoom = $row["advance_amount"];
                 $nights = $row["nights"];
                 $fullpayment = $row["fullpayment"];
                 $_SESSION["yy"] = $fullpayment;
                 $_SESSION["rr"] = $AdvanceforRoom;
+                $_SESSION["checkin"] = $row["check_in"];
+                $_SESSION["checkout"] = $row["check_out"];
               }
-
-              //$_SESSION["yy"];
 
             $Result = mysqli_query($db,"SELECT rate FROM room");
               while($row=mysqli_fetch_array($Result)){
@@ -163,25 +177,29 @@ $useremail = $_SESSION['email'];
 
             <tbody>
               <?php
-                if(isset($_SESSION["rr"])){
+              $currentdatatime =  date("Y-m-d h:i:sa");
+              //echo $currentdatatime;
+              if(isset($_SESSION["rr"]) && ($_SESSION["checkout"] > $currentdatatime)){
               ?>
+
               <tr>
                 <td><?php $TotalChargeforFood=$Totalbill; echo "Rs.$TotalChargeforFood/=";?></td>
                 <td title="<?php echo $TotalchargeforRoom ?> LKR * <?php echo $nights ?> night(s)"><?php $TotalchargeforRoom=$TotalchargeforRoom*$nights; echo "Rs.$TotalchargeforRoom/=";?></td>
                 <td title="<?php echo $TotalChargeforFood ?> LKR (Food charges) + <?php echo $TotalchargeforRoom ?> LKR (Total room charges)"><?php $FinalTotalbill=$TotalChargeforFood+$TotalchargeforRoom; echo "Rs.$FinalTotalbill/=";?></td>
                 <td><?php $AdvanceforRoom; echo "Rs.$AdvanceforRoom/=";?></td>
-                <input type="hidden" value="<?php echo $BalanceDue=$FinalTotalbill-$AdvanceforRoom; "Rs.$BalanceDue/="; ?>">
+                <input type="hidden" value="<?php echo $_SESSION['BalanceDue'] = $FinalTotalbill-$AdvanceforRoom; "Rs.$BalanceDue/="; ?>">
                 <?php
                 if($fullpayment == 0){
-                echo "<td title='$FinalTotalbill LKR - $AdvanceforRoom LKR'><mark> Rs.$BalanceDue/=</mark></td>";
+                echo "<td title='$FinalTotalbill LKR - $AdvanceforRoom LKR'><mark> Rs.".$_SESSION['BalanceDue']."/=</mark></td>";
                 }
                 elseif($fullpayment != 0){
                   echo "<td>Rs.0/=</td>";
                 }
+                else{}
                 ?>
                 <td><?php $fullpayment; echo "Rs.$fullpayment/=";?></td>   
               </tr>
-              <?php } ?>
+              <?php } else{} ?>
             </tbody>
           </table>
           <!--total bill calculate area end--> 
@@ -192,17 +210,24 @@ $useremail = $_SESSION['email'];
           <form action="pay_full_payment.php" method="post">
             <?php
             if(isset($_SESSION["yy"])){
-            $BalanceDue;
+
+            $currentdatatime =  date("Y-m-d h:i:sa");
+            if($_SESSION['BalanceDue'] != NULL){
+              //echo $_SESSION['BalanceDue'];
+              //echo "<p class='text-dark'>no record</p>";
+            }
+            elseif($_SESSION['BalanceDue'] = NULL){}
             $fullpayment;
-              if($BalanceDue != $fullpayment){
+              if($_SESSION['BalanceDue'] != $fullpayment && $_SESSION["checkout"] > $currentdatatime){
               echo "<input type='hidden' name='emailid' value='$useremail'>";
-              echo "<input type='hidden' name='balancedue' value='$BalanceDue'>";
-              echo "<i class='fa fa-arrow-circle-right'></i><button type='submit' name='make_full_payment' class='btn btn-danger text-dark'>Please Settle the Due Balance ->>> <b>Rs.$BalanceDue</b></button><i class='fa fa-arrow-circle-left'></i>";
+              echo "<input type='hidden' name='balancedue' value=".$_SESSION['BalanceDue'].">";
+              echo "<i class='fa fa-arrow-circle-right'></i><button type='submit' name='make_full_payment' class='btn btn-danger text-dark'>Please Settle the Due Balance ->>> <b>Rs.".$_SESSION['BalanceDue']."</b></button><i class='fa fa-arrow-circle-left'></i>";
               }
 
-              elseif($BalanceDue == $fullpayment){
+              elseif($_SESSION['BalanceDue'] == $fullpayment){
               echo "<span class='btn btn-success'>All the payment has been completed !<i class='fa fa-check-circle'></i></span>"; 
               }
+              else{echo "<span class='text-dark'>You don't have past record !</span>";}
             }
             ?>
           
@@ -224,8 +249,18 @@ $useremail = $_SESSION['email'];
               <h5 class="card-title text-center">My Meal Order Status</h5>
               
               <?php
-                $orderstatus='';
-                $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail' order by date DESC LIMIT 10;");
+                $res_status = 1;
+                $orderstatus = 1;
+                
+                //get checkin & checkout dates from database for relevant user
+                $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$useremail' AND res_status='$res_status'");
+                while($row=mysqli_fetch_array($Result)){
+                  $checkin = $row["check_in"];
+                  $checkout = $row["check_out"];
+
+                //filter the ordered meals according to the customer reservation date
+                $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail'
+                AND orderstatus='$orderstatus' AND date BETWEEN '$checkin' AND '$checkout' order by date DESC;");
                 while($row=mysqli_fetch_array($Result)){
                 $fname = $row["foodname"];
                 $orderstatus=$row["orderstatus"];
@@ -239,6 +274,7 @@ $useremail = $_SESSION['email'];
                   echo "<p class='text-success' title='Order confirmed. As soon as possible we will delivery your meal order.'>Your '$fname' order is on the way.</p>"; 
                   echo "<hr>";
                 }      
+                }
                 }
               ?>
               </div>
@@ -352,7 +388,7 @@ $useremail = $_SESSION['email'];
                     if($Result){
 
                     echo "<script type='text/javascript'>              
-                    swal({ title: 'SUCCESS',text: 'Reservation details delete successfull!',icon: 'success'}).then(okay => {
+                    swal({ title: 'SUCCESS',text: 'Reservation details deletion successfull!',icon: 'success'}).then(okay => {
                     if (okay) {
                     window.location.href = 'UserHomePage.php';}
                     });
@@ -383,13 +419,15 @@ $useremail = $_SESSION['email'];
               <h5>Prepare My Invoice</h5>
               <form action="printPDF.php" target="_blank" method="post">
                 <?php
+                $currentdatatime =  date("Y-m-d h:i:sa");
+                //yy = fullpayment
                 //if(isset($_SESSION["email"])){
-                if(isset($_SESSION["email"]) && ($_SESSION["yy"] > 1)){
-                $useremail = $_SESSION["email"];
+                if($_SESSION["yy"] > 1 && $_SESSION["checkout"] > $currentdatatime){
+                //$useremail = $_SESSION["email"];
                 ?>
                 <div class="p-2 text-center">
                 <input type="hidden" name="cus_email" readonly value="<?php echo $useremail ?>">
-                <input type="submit" class="p-2 btn btn-success" name="print_cus_info" value="Prepare">
+                <input type="submit" class="p-2 btn btn-success" name="print_cus_info" value="Prepare My Invoice">
                 </div>
                 <?php }
                   else{

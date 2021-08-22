@@ -87,7 +87,7 @@ include_once("includes/dbconnection.php");
 				echo "<ul>";
 					echo "<small class='text-warning'>";
 					echo "<mark>Hi ".$fullname;
-					echo "</mark></small>";
+					echo "<br>$useremail</mark></small>";
 					echo "<img class='user-image' src='action_pages/$proimg' alt='No profile picture'>";
 					echo "<li><a href='profile.php'><i class='fas fa-pencil-square-o'>&nbsp;&nbsp;Edit Profile</i></a></li>";
 
