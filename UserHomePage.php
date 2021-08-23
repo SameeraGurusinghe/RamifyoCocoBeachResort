@@ -127,8 +127,8 @@ $useremail = $_SESSION['email'];
               <p class="text-center">My reservaion details</p>
               <span>Room reservation date: <?php echo "$reservationDate";?></span>
               <span>Room number: <mark><?php echo "$room_no";?></mark></span>
-              <span>Check in: <?php echo "$check_in"."<span> noon</span>";?></span>
-              <span>Check out: <?php echo "$check_out"."<span> pm</span>";?></span>
+              <span>Check in: <?php echo "$check_in"."<span> pm</span>";?></span>
+              <span>Check out: <?php echo "$check_out"."<span> noon</span>";?></span>
               <span>No. of night(s): <?php echo "$nights";?></span>
               <span>No. of adults: <?php echo "$adults";?></span>
               <span>No. of childs: <?php echo "$childs";?></span>
@@ -227,7 +227,7 @@ $useremail = $_SESSION['email'];
               elseif($_SESSION['BalanceDue'] == $fullpayment){
               echo "<span class='btn btn-success'>All the payment has been completed !<i class='fa fa-check-circle'></i></span>"; 
               }
-              else{echo "<span class='text-dark'>You don't have past record !</span>";}
+              else{echo "<span class='text-dark'>You don't have past record. <a href='booking.php'>Reservation Now!</a></span>";}
             }
             ?>
           
