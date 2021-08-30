@@ -31,15 +31,13 @@ if(isset($_POST["reg_user"])){
     $propicture= '';
 	
     date_default_timezone_set('Asia/Colombo');
-    $regdate = date('y-m-d h.i.s AM');
+    $regdate = date('y-m-d h.i.s');
 
 	if ($password == $password_2) {
     $password = md5($password);//password encryption to increase data security
     
     // if the form is error free, then register the user
     $arr=array($id,$usertype,$fullname,$nic,$phoneno,$email,$password,$reset_link_token,$exp_date,$streete,$city,$state,$propicture,$regdate);
-    //$userfullname = $fullname;
-    //$useremail = $email;
     
     if($obj->save("users",$arr)){
 
@@ -174,7 +172,7 @@ if(isset($_POST["addnews"])){
     $annou = $_POST["annou"];
 
     date_default_timezone_set('Asia/Colombo');
-    $newsadddate = date('y-m-d h.i.s AM');
+    $newsadddate = date('y-m-d h.i.s');
 
 	//nesw or offer pic upload
 	$file = $_FILES["postimage"]["tmp_name"];
@@ -213,7 +211,7 @@ if(isset($_POST["sendfeedback"])){
         $feddemailid=$_POST["feddemailid"];
         $feeddescription=$_POST["feeddescription"];
         date_default_timezone_set('Asia/Colombo');
-        $feedadddate = date('y-m-d h.i.s AM');
+        $feedadddate = date('y-m-d h.i.s');
         
         $arr=array($feedid,$feedname,$feddemailid,$feeddescription,$feedadddate);
     

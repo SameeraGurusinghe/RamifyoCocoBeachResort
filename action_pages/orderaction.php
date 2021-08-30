@@ -33,9 +33,9 @@ else{
 	echo ("<br>");*/
 }
 
-date_default_timezone_set('Asia/Colombo');
-$date = date('y-m-d h.i.s AM');
-$Result = mysqli_query($db,"INSERT INTO foodorders (customerid,foodname,foodid,amount,price,date) VALUES('$emailid','$fname','$fid','$mcount','$fprice','$date')");
+//date_default_timezone_set('Asia/Colombo');
+//$date = date('y-m-d h.i.s AM');
+$Result = mysqli_query($db,"INSERT INTO foodorders (customerid,foodname,foodid,amount,price) VALUES('$emailid','$fname','$fid','$mcount','$fprice')");
 
 if($Result){
 	echo "<script type='text/javascript'>

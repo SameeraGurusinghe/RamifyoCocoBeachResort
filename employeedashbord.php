@@ -93,7 +93,7 @@ if(!isset($_SESSION['email'])){
       <form method="post">	
         <div class="form-group">
           <div class="col-md-12">
-            <input type="text" class="form-control" name="un" placeholder="Enter Customer Email" style="text-align: center;" required><br>
+            <input type="text" class="form-control" name="nic" placeholder="Enter Customer NIC" style="text-align: center;" required><br>
           </div>
         </div>
 
@@ -114,13 +114,17 @@ if(!isset($_SESSION['email'])){
 <form action="printPDF.php" target="_blank" method="post">
 <?php
 if(isset($_POST["checkstatus"])){
-$useremail = $_POST["un"];
+$nic = $_POST["nic"];
+$Result = mysqli_query($db,"SELECT * FROM users WHERE nic='$nic'");
+while($row=mysqli_fetch_array($Result)){
+  $_SESSION['useremail'] = $row["email"];
+
 ?>
 <div class="p-2 text-center">
-<input type="hidden" name="cus_email" readonly value="<?php echo $useremail ?>">
+<input type="hidden" name="cus_email" readonly value="<?php echo $_SESSION['useremail'] ?>">
 <input type="submit" class="p-2 btn btn-success" name="print_cus_info" value="Prints this Details">
 </div>
-<?php } ?>
+<?php }} ?>
 </form><br>
 
     <!--food bill calculate area start-->
@@ -135,11 +139,13 @@ $useremail = $_POST["un"];
               <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <?php
               if(isset($_POST["checkstatus"])){
-              $useremail = $_POST["un"];
+              $nic = $_POST["nic"];
               //echo  $cus_name;
               
-              $Result = mysqli_query($db,"SELECT * FROM users WHERE email='$useremail'");
+              $Result = mysqli_query($db,"SELECT * FROM users WHERE nic='$nic'");
                 while($row=mysqli_fetch_array($Result)){
+                  $_SESSION['useremail'] = $row["email"];
+                  $useremail = $_SESSION["useremail"];
                   $fullname = $row["fullname"];
                   $nic = $row["nic"];
                   $phoneno = $row["phoneno"];
@@ -150,7 +156,7 @@ $useremail = $_POST["un"];
   
               <div class="card col-md-5 p-4">
               <p class="badge bg-success text-wrap">Customer Personal Details</p>
-              <span>Email: <?php echo "$useremail";?></span>
+              <span>Email: <?php echo $_SESSION['useremail'];?></span>
               <span>Full Name: <?php echo "$fullname";?></span>
               <span>NIC: <?php echo "$nic";?></span>
               <span>Contact No: <?php echo "$phoneno";?></span>
@@ -207,11 +213,15 @@ $useremail = $_POST["un"];
                     <?php
                       $Totalbill=0;
                       if(isset($_POST["checkstatus"])){
-                      $mail = $_POST["un"];
+                      $nic = $_POST["nic"];
+                      $Result = mysqli_query($db,"SELECT * FROM users WHERE nic='$nic'");
+                      while($row=mysqli_fetch_array($Result)){
+                      $_SESSION['useremail'] = $row["email"];
+                      $uemail = $_SESSION['useremail'];
 
                       $orderstatus=1;
                       $tobill=0;
-                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$mail' AND orderstatus='$orderstatus' order by date DESC;");
+                      $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$uemail' AND orderstatus='$orderstatus' order by date DESC;");
                         //$Result = mysqli_query($db,"select foodorders.foodname,foodorders.price,foodorders.amount,foodorders.date,payment.amount FROM foodorders,payment where foodorders.$mail=payment.$mail");
                       
                         while($row=mysqli_fetch_array($Result)){
@@ -256,7 +266,7 @@ $useremail = $_POST["un"];
                 </thead>
 
                 <?php
-                  $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$useremail' AND res_status='1';");
+                  $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$uemail' AND res_status='1';");
                     while($row=mysqli_fetch_array($Result)){
                       $AdvanceforRoom = $row["advance_amount"];
                       $nights = $row["nights"];
@@ -279,7 +289,7 @@ $useremail = $_POST["un"];
                   <td><?php $AdvanceforRoom; echo "Rs.$AdvanceforRoom/=";?></td>
                   <td title="<?php echo $FinalTotalbill ?> LKR - <?php echo $AdvanceforRoom ?> LKR"><mark><?php $BalanceDue=$FinalTotalbill-$AdvanceforRoom; if($FinalTotalbill == 0){echo "Rs.0.00/=";}else{echo "Rs.$BalanceDue/=";}?></mark></td>     
                 </tr>
-                <?php }}?>
+                <?php }}} ?>
                 </tbody>
               </table>
             </div>

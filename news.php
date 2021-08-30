@@ -24,7 +24,7 @@ if(!isset($_SESSION['email'])){
 </head>
 
 
-<body>
+<body style="background-color:#d4d4d4">
 
 <!--header start-->
 <?php
@@ -33,10 +33,10 @@ include_once("includes/header.php");
 <!--header end-->
 
 
-<div class="container-fluid">
+<div class="container">
 
 	<div class="row">
-		<h1>offers & news</h1>
+		<h1 class="text-center">OFFER & NEWS</h1>
 
 		<div class="col-sm-6 text-center">
 			<h3>Offers</h3>

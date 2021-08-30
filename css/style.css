@@ -579,7 +579,10 @@ body{
 
 /* Food Menu page CSS start */
 .container-fluid{
-		background: linear-gradient(to right, #e0ce9e,#d0d4d1,#e0ce9e);
+	background: linear-gradient(to right, #e0ce9e,#d0d4d1,#e0ce9e);
+}
+.container-rr{
+	background-color:#000;
 }
 /* Food Menu page CSS end */
 

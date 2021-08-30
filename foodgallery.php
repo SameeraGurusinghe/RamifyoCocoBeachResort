@@ -315,8 +315,9 @@ include_once("includes/header.php");
               ?>
 
                       <?php if($foodstatus == 0){
-                      echo "<span style='float: left;'>This meal currently available.<br>Do you need to change it as an unavailable status ?</span>";
-                      echo "<span style='float: left;color:black;'><b>$foodname</b></span>";
+                      echo "<hr>";
+                      echo "<span style='float: left;'>This meal currently available.<br>Do you need to change it as an unavailable status ?</span><br>";
+                      echo "<span style='float: left;'><mark>$foodname</mark></span>";
                       echo "<div class='p-2'>";
                       echo "<input type='hidden' name='fid' value='$fid'>";
                       echo "<input type='hidden' name='fstatus' value='1'>";
@@ -325,8 +326,9 @@ include_once("includes/header.php");
                       } 
 
                       else if($foodstatus == 1){
-                      echo "<span style='float: left;'>This meal currently unavailable.<br>Do you need to change it as an available status ?</span>";
-                      echo "<span style='float: left; color:black;'><b>$foodname</b></span>";
+                      echo "<hr>";
+                      echo "<span style='float: left;'>This meal currently unavailable.<br>Do you need to change it as an available status ?</span><br>";
+                      echo "<br><span style='float: left;'><mark>$foodname</mark></span>";
                       echo "<div class='p-2'>";
                       echo "<input type='hidden' name='fid' value='$fid'>";
                       echo "<input type='hidden' name='fstatus' value='0'>";

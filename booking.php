@@ -47,26 +47,26 @@ if(!isset($_SESSION['email'])){
 </head>
 
 
-<body>
+<body style="background-color:#3d3d3d;">
 
 <!--header start-->
 <?php include_once("includes/header.php"); ?>
 <!--header end-->
 
 
-<div class="container-fluid">
+<div class="container" style="background-color:#919191;">
 
-<h1>Room Reservation</h1><br>
+<h1 class="text-center">Room Reservation</h1><br>
 
 <div class="row">
 
 <div class="col-sm-1">
-  <div class="bg-info text-center" style="height:60px;">
+  <div class="bg-info text-center" style="height:60px;border-style: ridge;">
     <h6 class="tooltip" onmouseover="tooltip.pop(this, '<h4><b>How to reservation room(s)?</b></h4><h5>Do following steps</h5><h6>1. Select a <b>check in</b> date that you wish..</h6><br><h6>2. Select a <b>check out</b> date..</h6><br><h6>3. Select no. of adult(s) and children(s)..</h6><br><h6>4. Then click <b>Check Availability</b> button..</h6><br><h6>5. After you click above mentioned button, bottom of the page will displayed the available room(s)..</h6><br><h6>6. Now you can select any room(s) and click the <b>Reservation</b> button..</h6><h6><br>7. After you click the above mentioned button, you will redirect to the reservation conformation page..</h6><br><h6>8. The reservation conformation page you need to confirm your reservation by clicking <b>Yes. I want to reserve selected room</b> button..</h6>')">Hover me<h5>How<br>to</h5></h6>
   </div>
 <br>
-  <div class="bg-info text-center" style="height:60px;">
-    <h6 class="tooltip" onmouseover="tooltip.pop(this,'<h4><b>Room reservation policies</b></h4><h6><b>Check-in Time and Check-out Time</b></h6><h6>Check-in Time: From 1400h (02:00 pm)<br>Check-out Time: Until 1200h (12:00 noon)</h6><br><h6><b>Child Policy</b></h6><br><h6>- Children below 5 years - free of charge on existing bedding.<br>- Children between 6-11 years (up to maximum 02 children) sharing parents room - 50%.<br>- Children of 12 years and above are considered as adults, and full rate will be charged.</h6><br><h6><b>Applicable Rate</b></h6><br><h6>- The Sri Lankan rate made available through the online booking engine in LKR, are only applicable for Sri Lankans and Sri Lankan resident visa holders.<br>- Verification (Sri Lankan National ID or the Passport) will also be requested at the hotel during check-in to confirm Nationality.<br>- If a guest book the Sri Lankan rate and a foreign national(s) is a part of the group, the standard foreign rate will be charged from that guest(s) at the hotel during check-in.<br>- If a foreign national does book the Sri Lankan rate, then the difference between the Sri Lankan rate and the standard foreign rate will have to be paid.</h6><br><h6><b>Booking (Reservation) Disputes.</b></h6><br><h6>If a dispute arises with regard to a reservation made with Ramifyo Coco Beach Resort, then Ramifyo Coco Beach Resort(Pvt) Ltd has the sole authority to cancel the reservation by informing the guest via email. The reservation amount will be refunded in full minus any bank charges to the credit card of the guest.</h6><br>')">Hover me<h5>Our<br>Policies</h5></h6>
+  <div class="bg-info text-center" style="height:60px;border-style: ridge;">
+    <h6 class="tooltip" onmouseover="tooltip.pop(this,'<h4><b>Room reservation policies</b></h4><h6><b>Check-in Time and Check-out Time</b></h6><h6>Check-in Time: From 1400h (02:00 pm)<br>Check-out Time: Until 1200h (12:00 noon)</h6><br><h6><b>Child Policy</b></h6><br><h6>- Children below 5 years - free of charge on existing bedding.<br>- Children between 6-11 years (up to maximum 02 children) sharing parents room - 50%.<br>- Children of 12 years and above are considered as adults, and full rate will be charged.</h6><br><h6><b>Applicable Rate</b></h6><br><h6>- The Sri Lankan rate made available through the online booking engine in LKR, are only applicable for Sri Lankans and Sri Lankan resident visa holders.<br>- Verification (Sri Lankan National ID or the Passport) will also be requested at the hotel during check-in to confirm Nationality.<br>- If a guest book the Sri Lankan rate and a foreign national(s) is a part of the group, the standard foreign rate will be charged from that guest(s) at the hotel during check-in.<br>- If a foreign national does book the Sri Lankan rate, then the difference between the Sri Lankan rate and the standard foreign rate will have to be paid.</h6><br><h6><b>Booking (Reservation) Disputes.</b></h6><br><h6>If a dispute arises with regard to a reservation made with Ramifyo Coco Beach Resort, then Ramifyo Coco Beach Resort(Pvt) Ltd has the sole authority to cancel the reservation by informing the guest via email. The reservation amount will be refunded in full minus any bank charges to the credit card of the guest.</h6><br><h6><b>Reservation Cancellation</b></h6><br><h6>If you cancel the reservation, we will not debit your advance amount.(1000 LKR)</h6>')">Hover me<h5>Our<br>Policies</h5></h6>
   </div>
 </div>
 
@@ -97,7 +97,7 @@ if(!isset($_SESSION['email'])){
           </select>
           <br><br>
 
-          <button type="submit" name="check" class="btn btn-danger">Check Availability</button><br><br>
+          <button type="submit" name="check" class="btn btn-success">Check Availability</button><br><br>
 
       </div>
     </form>
@@ -159,8 +159,8 @@ if(!isset($_SESSION['email'])){
       <thead>
       <tr>
         <th scope="col">Room No</th>
-        <!--<th scope="col">Room Facilities</th>-->
-        <th scope="col">Rate</th>
+        <th scope="col">Room Floor</th>
+        <th scope="col">Price Range</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -192,7 +192,7 @@ if(!isset($_SESSION['email'])){
         ?>
         
           <td><?php echo $roomno ?></td>
-          <!--<td><?php //echo $description ?></td>-->
+          <td><?php echo $description ?></td>
           <td>LKR. <?php echo $rate ?>/=</td>
           <?php
           if(!isset($_SESSION['email'])) {

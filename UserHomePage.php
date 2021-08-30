@@ -123,7 +123,10 @@ $useremail = $_SESSION['email'];
                 
             ?>
   
-              <div class="card col-md-6">
+              
+              <div class="row">
+              <div class="col-md-2"></div>
+              <div class="card col-md-8">
               <p class="text-center">My reservaion details</p>
               <span>Room reservation date: <?php echo "$reservationDate";?></span>
               <span>Room number: <mark><?php echo "$room_no";?></mark></span>
@@ -134,6 +137,7 @@ $useremail = $_SESSION['email'];
               <span>No. of childs: <?php echo "$childs";?></span>
               <span>Status: <?php if($res_status == '1'){ echo "<span class='text-success'>Reservation confirmed</span>";} else{echo "<span class='text-danger'>Reservation canceled</span>";}?></span>
               </div>
+              <div class="col-md-2"></div></div>
               <br>
               <?php } ?>
               <hr>
@@ -225,7 +229,7 @@ $useremail = $_SESSION['email'];
               }
 
               elseif($_SESSION['BalanceDue'] == $fullpayment){
-              echo "<span class='btn btn-success'>All the payment has been completed !<i class='fa fa-check-circle'></i></span>"; 
+              echo "<span class='btn btn-success'>All the payments successful paid !<i class='fa fa-check-circle'></i></span>"; 
               }
               else{echo "<span class='text-dark'>You don't have past record. <a href='booking.php'>Reservation Now!</a></span>";}
             }
@@ -250,7 +254,7 @@ $useremail = $_SESSION['email'];
               
               <?php
                 $res_status = 1;
-                $orderstatus = 1;
+                //$orderstatus = 1;
                 
                 //get checkin & checkout dates from database for relevant user
                 $Result = mysqli_query($db,"SELECT * FROM reservation WHERE email='$useremail' AND res_status='$res_status'");
@@ -260,7 +264,9 @@ $useremail = $_SESSION['email'];
 
                 //filter the ordered meals according to the customer reservation date
                 $Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail'
-                AND orderstatus='$orderstatus' AND date BETWEEN '$checkin' AND '$checkout' order by date DESC;");
+                AND date BETWEEN '$checkin' AND '$checkout' order by date DESC;");
+                //$Result = mysqli_query($db,"SELECT * FROM foodorders WHERE customerid='$useremail'
+                //AND orderstatus='$orderstatus' AND date BETWEEN '$checkin' AND '$checkout' order by date DESC;");
                 while($row=mysqli_fetch_array($Result)){
                 $fname = $row["foodname"];
                 $orderstatus=$row["orderstatus"];

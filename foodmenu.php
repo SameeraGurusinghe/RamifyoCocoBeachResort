@@ -66,8 +66,8 @@ include_once("includes/header.php");
                                           <li><a href='#tabs-1'><img src="images/foodmenu/tab-icon-01.png" alt="">Breakfast</a></li>
                                           <li><a href='#tabs-2'><img src="images/foodmenu/tab-icon-02.png" alt="">Lunch</a></a></li>
                                           <li><a href='#tabs-3'><img src="images/foodmenu/tab-icon-03.png" alt="">Dinner</a></a></li>
-                                          <li><a href='#tabs-4'><img src="images/foodmenu/tab-icon-03.png" alt="">Dessert</a></a></li>
-                                          <li><a href='#tabs-5'><img src="images/foodmenu/tab-icon-03.png" alt="">Drink</a></a></li>
+                                          <li><a href='#tabs-4'><img src="images/foodmenu/tab-icon-04.jpg" alt="">Dessert</a></a></li>
+                                          <li><a href='#tabs-5'><img src="images/foodmenu/tab-icon-05.jpg" alt="">Drink</a></a></li>
                                         </ul>
                                 </div>
                             </div>

@@ -35,6 +35,8 @@ if(!isset($_SESSION['email'])){
 
 
 <div class="container-fluid">
+<div class="row">
+    <div class="col-sm-3"></div>
 
 		<div class="col-sm-6 text-center">
 			<br><h1>Final Bill Payment</h1><br>
@@ -148,15 +150,17 @@ if(!isset($_SESSION['email'])){
                 <input type="text" name="city" readonly value="<?php echo $city ?>">
                 <input type="hidden" name="country" value="Sri Lanka"><br><br>
 
-                <input type="submit" class="btn btn-success" value="Make a Reservation"> 
+                <input type="submit" class="btn btn-success" value="PAY"> 
             </form>
             <?php } ?>
 
             </div>
           </div>
 	    </div>
-    </div><br>
-</div>
+    </div>
+    <div class="col-sm-3"></div>
+    <br>
+</div></div></div>
 
 <!--footer include start-->
 <?php include_once("includes/footer.php"); ?>

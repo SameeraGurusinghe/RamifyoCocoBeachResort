@@ -79,6 +79,7 @@ if(!isset($_SESSION['email'])){
                 <input type="hidden" name="nights" readonly value="<?php echo $nights ?>">
 
                 <div class="alert alert-secondary text-center">
+                <a href="booking.php" class="btn btn-warning text-center">No. Go Back</a>
                 <input type="submit" name="room_reservation" class="btn btn-success text-center" value="Yes. I want to reserve selected room">
                 </div>
             </form>

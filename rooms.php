@@ -36,7 +36,7 @@ if(!isset($_SESSION['email'])){
 <h1>Rooms</h1>
 
 <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
-    <span>Currently Ramifyo Coco Beach Resort has 30+ rooms. All the rooms have grate facilities. <a href="booking.php" class="btn btn-success">Reservation Now !</a></span>
+    <span>Currently Ramifyo Coco Beach Resort has 30+ rooms. All the rooms have same facilities. <a href="booking.php" class="btn btn-success">Reservation Now !</a></span>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" title="Hide"></button>
 </div>
 
