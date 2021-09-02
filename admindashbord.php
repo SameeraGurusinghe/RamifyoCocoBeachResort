@@ -71,12 +71,7 @@ if(!isset($_SESSION['email'])){
           <i class="fa fa-address-card-o"></i><span>Contact Info</span>
           </a>
         </li>
-
-        <li>
-          <a href="calendar.html">
-          <i class="fa fa-calendar-check-o"></i><span>Calendar</span>
-          </a>
-        </li>    
+  
       </ul>
    </div>
    <!--End sidebar-wrapper-->
@@ -114,17 +109,20 @@ if(!isset($_SESSION['email'])){
             <thead>
               <tr>
                 <th>CUSTOMER NAME</th>
+                <th>ROOM NO</th>
                 <th>FOOD NAME</th>
                 <th>ORDER ID</th>
                 <th>AMOUNT</th>
-                <th>DATE</th>
                 <th>ORDER STATUS</th>
+                <th>DATE</th>
               </tr>
 
               <?php
-                $Result = mysqli_query($db,"SELECT * FROM foodorders order by date DESC;");
+                //$Result = mysqli_query($db,"SELECT * FROM foodorders AND order by date DESC;");
+                $Result = mysqli_query($db,"SELECT foodorders.foodorderid,foodorders.customerid,foodorders.foodname,foodorders.foodid,foodorders.amount,foodorders.price,foodorders.date,foodorders.orderstatus, reservation.room_no FROM foodorders INNER JOIN reservation ON foodorders.customerid=reservation.email order by date DESC;;");
+                
                 while($row=mysqli_fetch_array($Result)){
-
+                  $roomno = $row["room_no"];
                   $cusname = $row["customerid"];
                   $foodname = $row["foodname"];
                   $foodid = $row["foodid"];
@@ -139,10 +137,10 @@ if(!isset($_SESSION['email'])){
             <tbody>
               <tr>
                 <td><?php echo "$cusname" ?></td>
+                <td><?php echo "$roomno" ?></td>
                 <td><?php echo "$foodname" ?></td>
                 <td><?php echo "$orderid" ?></td>
                 <td><?php echo "$amount" ?></td>
-                <td><?php echo "$date" ?></td>
                 <td>
                 <?php 
                   $oredrvelue=1;
@@ -165,6 +163,7 @@ if(!isset($_SESSION['email'])){
                   echo "</form>";          
                 ?>
                 </td>
+                <td><?php echo "$date" ?></td>
 
               </tr>
 

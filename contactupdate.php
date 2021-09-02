@@ -74,12 +74,7 @@ if(!isset($_SESSION['email'])){
           <i class="fa fa-address-card-o"></i><span>Contact Info</span>
           </a>
         </li>
-
-        <li>
-          <a href="calendar.html">
-          <i class="fa fa-calendar-check-o"></i><span>Calendar</span>
-          </a>
-        </li>    
+   
       </ul>
    </div>
    <!--End sidebar-wrapper-->

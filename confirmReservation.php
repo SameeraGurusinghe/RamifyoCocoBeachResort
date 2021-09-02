@@ -52,7 +52,7 @@ if(!isset($_SESSION['email'])){
                 $date1 = $_GET["date1"];
                 $date2 = $_GET["date2"];
 
-                $time= "14:00:00";
+                $time= "07:00:00";
                 $newdate1 = $date1." ".$time;
           
                 $time= "12:00:00";

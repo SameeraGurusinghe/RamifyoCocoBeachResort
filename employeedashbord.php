@@ -50,11 +50,6 @@ if(!isset($_SESSION['email'])){
           </a>
         </li>
       
-        <li>
-          <a href="empcalendar.php">
-            <i class="fa fa-calendar-check-o"></i><span>Calendar</span>
-          </a>
-        </li>
       </ul>
    </div>
    <!--End sidebar-wrapper-->

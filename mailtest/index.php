@@ -28,7 +28,8 @@ if(isset($_POST['password-reset-token'])){
     );
 
     $expDate = date("Y-m-d H:i:s",$expFormat);
-    $update = mysqli_query($db,"UPDATE users set  password='" . $password . "', reset_link_token='" . $token . "' ,exp_date='" . $expDate . "' WHERE email='" . $emailId . "'");
+    $update = mysqli_query($db,"UPDATE users set  password='" . $password . "', reset_link_token='" . $token . "' ,
+    exp_date='" . $expDate . "' WHERE email='" . $emailId . "'");
     $link = "<a href='http://127.0.0.1/project/reset-password.php?key=".$emailId."&token=".$token."'>Reset Password</a>";
 
     //email body
